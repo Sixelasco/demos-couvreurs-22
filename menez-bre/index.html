@@ -1,0 +1,682 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Charpente du Menez Bre — Expert Charpente &amp; Extension Bois Trégor</title>
+<meta name="description" content="Charpente traditionnelle et moderne, maison bois, extension et aménagement intérieur. Jessy Sebille, charpentier à Louargat depuis plus de 15 ans. Lannion, Guingamp, Perros-Guirec, Bégard.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,380..700;1,9..144,380..700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/hero.jpg">
+<style>
+  /* ============ Tokens ============ */
+  :root {
+    --bg:        oklch(97.3% 0.012 84);
+    --surface:   oklch(94.6% 0.019 82);
+    --fg:        oklch(26% 0.022 55);
+    --muted:     oklch(47% 0.028 60);
+    --border:    oklch(88% 0.022 80);
+    --accent:    oklch(49% 0.096 50);
+    --accent-hover: oklch(42% 0.09 48);
+    --dark:      oklch(23.5% 0.021 52);
+    --dark-soft: oklch(29% 0.024 52);
+    --on-dark:   oklch(95.5% 0.014 85);
+    --on-dark-muted: oklch(74% 0.02 80);
+    --display: "Fraunces", Georgia, "Times New Roman", serif;
+    --body: "Manrope", system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    --measure: 62ch;
+    --gutter: clamp(1.25rem, 4.5vw, 4rem);
+    --header-h: 76px;
+  }
+
+  /* ============ Base ============ */
+  *, *::before, *::after { box-sizing: border-box; }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--header-h) + 12px);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  }
+  body {
+    margin: 0;
+    font-family: var(--body);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    color: var(--fg);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+  }
+  img { display: block; max-width: 100%; }
+  h1, h2, h3 { font-family: var(--display); font-weight: 550; line-height: 1.08; margin: 0; letter-spacing: -0.01em; }
+  p { margin: 0; }
+  a { color: inherit; }
+  .wrap { max-width: 1220px; margin-inline: auto; padding-inline: var(--gutter); }
+
+  .eyebrow {
+    font-family: var(--body);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 1.1rem;
+  }
+  .section { padding-block: clamp(4.5rem, 10vw, 8.5rem); }
+  .section-title { font-size: clamp(2rem, 4.6vw, 3.3rem); max-width: 18ch; text-wrap: balance; }
+  .section-intro { color: var(--muted); max-width: var(--measure); margin-top: 1.25rem; font-size: 1.1rem; }
+
+  /* Reveal on scroll */
+  .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* ============ Buttons ============ */
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    font-family: var(--body); font-weight: 700; font-size: 0.98rem;
+    padding: 0.95rem 1.7rem; border-radius: 4px;
+    text-decoration: none; cursor: pointer; border: 0;
+    min-height: 44px;
+    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .btn-primary {
+    background: var(--accent); color: oklch(97% 0.012 84);
+    box-shadow: 0 1px 2px oklch(23% 0.02 52 / 0.25), 0 6px 18px oklch(49% 0.096 50 / 0.28);
+  }
+  .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); box-shadow: 0 2px 4px oklch(23% 0.02 52 / 0.25), 0 10px 24px oklch(49% 0.096 50 / 0.32); }
+  .btn-ghost {
+    background: transparent; color: currentColor;
+    border: 1px solid oklch(97% 0.012 84 / 0.55);
+  }
+  .btn-ghost:hover { background: oklch(97% 0.012 84 / 0.12); }
+
+  /* ============ Header ============ */
+  .site-header {
+    position: fixed; inset: 0 0 auto 0; z-index: 50;
+    height: var(--header-h);
+    display: flex; align-items: center;
+    color: oklch(97% 0.012 84);
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .site-header .wrap { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+  .site-header.scrolled {
+    background: oklch(97.3% 0.012 84 / 0.92);
+    -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+    color: var(--fg);
+    box-shadow: 0 1px 0 var(--border);
+  }
+  .brand { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; min-width: 0; }
+  .brand svg { flex: none; }
+  .brand-name { font-family: var(--display); font-weight: 600; font-size: 1.06rem; letter-spacing: 0.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .header-actions { display: flex; align-items: center; gap: 1.4rem; flex: none; }
+  .header-phone { text-decoration: none; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.02em; display: inline-flex; align-items: center; gap: 0.5rem; }
+  .header-phone:hover { color: var(--accent); }
+  .site-header:not(.scrolled) .header-phone:hover { color: oklch(88% 0.05 80); }
+  .site-header .btn { padding: 0.65rem 1.2rem; font-size: 0.9rem; }
+  @media (max-width: 640px) {
+    .header-phone span { display: none; }
+    .brand-name { font-size: 0.95rem; }
+  }
+
+  /* ============ Hero ============ */
+  .hero {
+    position: relative; min-height: 100svh;
+    display: flex; align-items: flex-end;
+    color: oklch(97.5% 0.012 84);
+    background: var(--dark);
+    overflow: hidden;
+  }
+  .hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .hero-scrim {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(to bottom, oklch(20% 0.02 52 / 0.45), transparent 30%),
+      linear-gradient(to top, oklch(18% 0.02 52 / 0.88) 0%, oklch(18% 0.02 52 / 0.35) 45%, transparent 72%);
+  }
+  .hero-content { position: relative; padding-block: clamp(4rem, 9vw, 7rem); width: 100%; }
+  .hero-eyebrow { color: oklch(86% 0.045 80); margin-bottom: 1.4rem; }
+  .hero h1 {
+    font-size: clamp(2.9rem, 8.2vw, 6.2rem);
+    font-weight: 500;
+    max-width: 13ch;
+    text-wrap: balance;
+  }
+  .hero-tagline {
+    margin-top: 1.5rem;
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    font-weight: 500;
+    color: oklch(92% 0.02 84);
+    max-width: 46ch;
+    line-height: 1.55;
+  }
+  .hero-tagline strong { font-weight: 700; color: oklch(97.5% 0.012 84); }
+  .hero-ctas { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-top: 2.4rem; }
+  .hero-meta {
+    margin-top: 3rem; padding-top: 1.5rem;
+    border-top: 1px solid oklch(97% 0.012 84 / 0.22);
+    display: flex; flex-wrap: wrap; gap: 0.4rem 2.5rem;
+    font-size: 0.88rem; font-weight: 600; letter-spacing: 0.04em;
+    color: oklch(86% 0.02 82);
+  }
+
+  /* ============ Savoir-faire ============ */
+  .services-head { display: grid; gap: 1rem; grid-template-columns: 1fr; align-items: end; margin-bottom: clamp(2.5rem, 5vw, 4.5rem); }
+  @media (min-width: 900px) {
+    .services-head { grid-template-columns: 1.2fr 1fr; gap: 4rem; }
+    .services-head .section-intro { margin-top: 0; justify-self: end; }
+  }
+  .services-grid { display: grid; grid-template-columns: 1fr; border-top: 1px solid var(--border); }
+  @media (min-width: 760px) { .services-grid { grid-template-columns: 1fr 1fr; } }
+  .service-card {
+    padding: clamp(1.8rem, 3.5vw, 2.8rem) clamp(0.2rem, 2vw, 2.2rem) clamp(1.8rem, 3.5vw, 2.8rem) 0;
+    border-bottom: 1px solid var(--border);
+    display: grid; grid-template-columns: auto 1fr; gap: 1.4rem;
+    align-content: start;
+    transition: background-color 0.25s ease;
+  }
+  @media (min-width: 760px) {
+    .service-card:nth-child(odd) { border-right: 1px solid var(--border); padding-right: clamp(1.5rem, 3vw, 3rem); }
+    .service-card:nth-child(even) { padding-left: clamp(1.5rem, 3vw, 3rem); }
+  }
+  .service-num {
+    font-family: var(--display); font-style: italic; font-weight: 450;
+    font-size: 1.05rem; color: var(--accent);
+    padding-top: 0.35rem;
+  }
+  .service-card h3 { font-size: clamp(1.35rem, 2.2vw, 1.7rem); font-weight: 560; }
+  .service-card p { margin-top: 0.7rem; color: var(--muted); font-size: 1rem; max-width: 46ch; }
+  .service-tag { margin-top: 1.1rem; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg); opacity: 0.55; }
+
+  /* ============ Engagement ============ */
+  .engagement { background: var(--surface); }
+  .engagement-grid { display: grid; gap: clamp(2.5rem, 5vw, 5rem); grid-template-columns: 1fr; align-items: center; }
+  @media (min-width: 940px) { .engagement-grid { grid-template-columns: 5fr 6fr; } }
+  .engagement-photo { position: relative; }
+  .engagement-photo img {
+    width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 4px;
+    box-shadow: 0 24px 60px oklch(26% 0.022 55 / 0.18);
+    background: linear-gradient(160deg, oklch(80% 0.04 75), oklch(58% 0.06 60));
+  }
+  .engagement-photo figcaption {
+    margin-top: 0.8rem; font-size: 0.85rem; color: var(--muted); font-style: italic; font-family: var(--display); font-weight: 450;
+  }
+  .engagement-copy .section-title { max-width: 16ch; }
+  .engagement-copy > p { margin-top: 1.5rem; color: var(--muted); max-width: var(--measure); }
+  .engagement-copy > p strong { color: var(--fg); font-weight: 700; }
+  .trust-list { list-style: none; margin: 2.2rem 0 0; padding: 0; display: grid; grid-template-columns: 1fr; gap: 0.9rem 2rem; }
+  @media (min-width: 560px) { .trust-list { grid-template-columns: 1fr 1fr; } }
+  .trust-list li { display: flex; align-items: flex-start; gap: 0.75rem; font-weight: 600; font-size: 0.98rem; }
+  .trust-list svg { flex: none; margin-top: 0.2rem; }
+
+  /* ============ Réalisations ============ */
+  .works-grid { display: grid; grid-template-columns: 1fr; gap: clamp(1.6rem, 3vw, 2.5rem); margin-top: clamp(2.5rem, 5vw, 4rem); }
+  @media (min-width: 700px) {
+    .works-grid { grid-template-columns: repeat(12, 1fr); }
+    .work:nth-child(6n+1) { grid-column: span 7; }
+    .work:nth-child(6n+2) { grid-column: span 5; }
+    .work:nth-child(6n+3) { grid-column: span 5; }
+    .work:nth-child(6n+4) { grid-column: span 7; }
+    .work:nth-child(6n+5) { grid-column: span 6; }
+    .work:nth-child(6n+6) { grid-column: span 6; }
+  }
+  .work { margin: 0; }
+  .work-img {
+    position: relative; overflow: hidden; border-radius: 4px;
+    aspect-ratio: 4 / 3;
+    background: linear-gradient(150deg, oklch(84% 0.035 78), oklch(60% 0.055 58) 70%, oklch(42% 0.05 50));
+  }
+  .work-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1); }
+  .work:hover .work-img img { transform: scale(1.035); }
+  .work figcaption {
+    display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
+    margin-top: 0.85rem;
+  }
+  .work-title { font-family: var(--display); font-weight: 560; font-size: 1.08rem; }
+  .work-place { font-size: 0.82rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+
+  /* ============ Zone ============ */
+  .zone-grid { display: grid; gap: clamp(2.5rem, 5vw, 5rem); grid-template-columns: 1fr; align-items: center; }
+  @media (min-width: 900px) { .zone-grid { grid-template-columns: 6fr 5fr; } }
+  .zone-copy p { margin-top: 1.5rem; color: var(--muted); max-width: var(--measure); }
+  .zone-copy p strong { color: var(--fg); }
+  .towns { list-style: none; margin: 2rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .towns li {
+    border: 1px solid var(--border); background: var(--bg);
+    border-radius: 999px; padding: 0.5rem 1.05rem;
+    font-size: 0.92rem; font-weight: 600;
+  }
+  .towns li span { color: var(--muted); font-weight: 500; }
+  .towns li.hq { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+  .towns li.hq span { color: oklch(80% 0.02 80); }
+  .zone-map { display: flex; justify-content: center; }
+  .zone-map svg { width: min(100%, 420px); height: auto; }
+
+  /* ============ Contact ============ */
+  .contact { background: var(--dark); color: var(--on-dark); }
+  .contact .eyebrow { color: oklch(75% 0.07 70); }
+  .contact-grid { display: grid; gap: clamp(3rem, 5vw, 5rem); grid-template-columns: 1fr; }
+  @media (min-width: 940px) { .contact-grid { grid-template-columns: 5fr 6fr; } }
+  .contact-title { font-size: clamp(2.1rem, 4.5vw, 3.4rem); max-width: 14ch; text-wrap: balance; }
+  .contact-lede { margin-top: 1.4rem; color: var(--on-dark-muted); max-width: 44ch; }
+  .contact-details { list-style: none; margin: 2.5rem 0 0; padding: 0; display: grid; gap: 1.6rem; }
+  .contact-details a { text-decoration: none; }
+  .contact-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--on-dark-muted); display: block; margin-bottom: 0.3rem; }
+  .contact-value { font-family: var(--display); font-weight: 500; font-size: clamp(1.35rem, 2.6vw, 1.9rem); }
+  .contact-value a:hover { color: oklch(84% 0.06 72); }
+
+  .contact-form-panel {
+    background: var(--dark-soft);
+    border: 1px solid oklch(97% 0.012 84 / 0.1);
+    border-radius: 6px;
+    padding: clamp(1.6rem, 3.5vw, 2.6rem);
+  }
+  .contact-form-panel h3 { font-size: 1.4rem; font-weight: 550; }
+  .form-note { margin-top: 0.5rem; font-size: 0.92rem; color: var(--on-dark-muted); }
+  .contact-form { margin-top: 1.8rem; display: grid; gap: 1.15rem; grid-template-columns: 1fr 1fr; }
+  .field { display: grid; gap: 0.4rem; }
+  .field.full { grid-column: 1 / -1; }
+  @media (max-width: 560px) { .contact-form { grid-template-columns: 1fr; } .field { grid-column: auto; } }
+  .field label { font-size: 0.85rem; font-weight: 700; letter-spacing: 0.04em; }
+  .field input, .field select, .field textarea {
+    font-family: var(--body); font-size: 1rem; color: var(--on-dark);
+    background: oklch(20% 0.02 52);
+    border: 1px solid oklch(97% 0.012 84 / 0.16);
+    border-radius: 4px; padding: 0.8rem 0.9rem; width: 100%;
+    min-height: 44px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .field textarea { resize: vertical; min-height: 120px; }
+  .field input:focus-visible, .field select:focus-visible, .field textarea:focus-visible {
+    outline: none; border-color: oklch(66% 0.1 55);
+    box-shadow: 0 0 0 3px oklch(66% 0.1 55 / 0.28);
+  }
+  .field input::placeholder, .field textarea::placeholder { color: oklch(60% 0.02 70); }
+  .contact-form .btn { grid-column: 1 / -1; justify-content: center; margin-top: 0.4rem; }
+  .form-success { display: none; margin-top: 1.8rem; padding: 1.4rem; border: 1px solid oklch(75% 0.12 150 / 0.5); border-radius: 4px; background: oklch(75% 0.12 150 / 0.1); }
+  .form-success.show { display: block; }
+  .form-success strong { display: block; font-family: var(--display); font-size: 1.15rem; margin-bottom: 0.3rem; }
+  .form-success p { color: var(--on-dark-muted); font-size: 0.95rem; }
+
+  /* ============ Footer ============ */
+  .site-footer { background: var(--dark); color: var(--on-dark-muted); border-top: 1px solid oklch(97% 0.012 84 / 0.1); padding-block: 2.2rem; font-size: 0.9rem; }
+  .site-footer .wrap { display: flex; flex-wrap: wrap; gap: 0.6rem 2.5rem; align-items: center; justify-content: space-between; }
+  .footer-id { display: flex; flex-wrap: wrap; gap: 0.3rem 1.6rem; align-items: baseline; }
+  .footer-name { font-family: var(--display); font-weight: 550; color: var(--on-dark); font-size: 1.02rem; }
+  .site-footer a { text-decoration: none; }
+  .site-footer a:hover { color: var(--on-dark); }
+  .footer-credit { font-size: 0.82rem; opacity: 0.75; }
+
+/* Témoignages */
+.sec--testimonials{padding:clamp(4rem,8vw,7rem) var(--gutter);background:var(--surface);border-top:1px solid var(--line)}
+.sec--testimonials .eyebrow{color:var(--accent-2);font-family:var(--display);font-size:.85rem;text-transform:uppercase;letter-spacing:.15em;font-weight:600}
+.sec--testimonials h2{font-family:var(--display);font-size:clamp(1.9rem,3vw + .8rem,3rem);line-height:1.05;font-weight:700;letter-spacing:-0.015em;color:var(--ink)}
+.sec--testimonials .sec-head>p{color:var(--ink-soft);margin-top:.8rem;max-width:55ch}
+.sec--testimonials .t-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2rem;max-width:1100px;margin:2.5rem auto 0}
+.sec--testimonials .t-card{padding:2rem;background:var(--bg);border:1px solid var(--line);border-radius:4px;box-shadow:0 1px 0 rgba(0,0,0,.02)}
+.sec--testimonials .t-stars{color:var(--accent);font-size:1.3rem;letter-spacing:.05em;margin-bottom:1rem}
+.sec--testimonials .t-card blockquote{margin:0 0 1.2rem}
+.sec--testimonials .t-card blockquote p{font-family:var(--body);font-size:1.02rem;line-height:1.65;color:var(--ink);font-style:italic;margin:0}
+.sec--testimonials .t-card figcaption{font-family:var(--body);font-size:.9rem;color:var(--ink-soft);line-height:1.5;border-top:1px solid var(--line);padding-top:1rem}
+.sec--testimonials .t-card figcaption strong{color:var(--ink);font-weight:600}
+.sec--testimonials .t-source{color:var(--muted);font-size:.85rem}
+.sec--testimonials .t-disclaimer{text-align:center;margin-top:2rem;font-size:.85rem;color:var(--muted)}
+.sec--testimonials .t-disclaimer a{color:var(--accent-2);text-decoration:none;border-bottom:1px solid currentColor}
+
+</style>
+</head>
+<body>
+
+<header class="site-header" id="site-header" data-od-id="site-header">
+  <div class="wrap">
+    <a class="brand" href="#" data-od-id="brand-logo" aria-label="Charpente du Menez Bre — retour en haut">
+      <svg width="30" height="26" viewBox="0 0 30 26" fill="none" aria-hidden="true">
+        <path d="M2 24 L15 3 L28 24" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M8.5 24 L15 13.5 L21.5 24" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.55"/>
+      </svg>
+      <span class="brand-name">Charpente du Menez Bre</span>
+    </a>
+    <div class="header-actions">
+      <a class="header-phone" href="tel:+33683630527" data-od-id="header-phone">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.6 1.5c.5-.3 1.1-.1 1.4.4l1.2 2.1c.3.5.2 1-.2 1.4l-.9.9c.7 1.4 1.8 2.5 3.2 3.2l.9-.9c.4-.4.9-.5 1.4-.2l2.1 1.2c.5.3.7.9.4 1.4l-.8 1.4c-.3.5-.8.8-1.4.7C6.3 12.5 1.9 8 1.4 3.5c-.1-.6.2-1.1.7-1.4l1.5-.6Z" fill="currentColor"/></svg>
+        <span>06 83 63 05 27</span>
+      </a>
+      <a class="btn btn-primary" href="#contact" data-od-id="header-cta">Demander un devis</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ Hero ============ -->
+  <section class="hero" id="accueil" data-od-id="hero">
+    <img class="hero-img" src="assets/hero.jpg" alt="Charpente traditionnelle en chêne aux fermes cintrées, levée sur des murs de pierre" onerror="this.style.display='none'">
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="hero-content wrap">
+      <span class="eyebrow hero-eyebrow" data-od-id="hero-eyebrow">Louargat · Trégor · Côtes-d'Armor</span>
+      <h1 data-od-id="hero-title">L'Excellence du Bois depuis plus de 15 ans</h1>
+      <p class="hero-tagline" data-od-id="hero-tagline">
+        <strong>Expert charpente &amp; extension bois en Trégor.</strong>
+        Depuis plus de quinze ans, Jessy Sebille et son équipe façonnent le bois
+        pour les maisons du pays — charpentes, extensions, aménagements.
+      </p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#contact" data-od-id="hero-cta-devis">Demander un devis</a>
+        <a class="btn btn-ghost" href="#realisations" data-od-id="hero-cta-realisations">Voir nos réalisations</a>
+      </div>
+      <div class="hero-meta" data-od-id="hero-meta">
+        <span>15+ ans de métier</span>
+        <span>Garantie décennale</span>
+        <span>Devis gratuit sous 48 h</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Savoir-faire ============ -->
+  <section class="section" id="savoir-faire" data-od-id="section-savoir-faire">
+    <div class="wrap">
+      <div class="services-head reveal">
+        <div>
+          <span class="eyebrow">Nos savoir-faire</span>
+          <h2 class="section-title" data-od-id="savoir-faire-title">Quatre métiers, une même exigence.</h2>
+        </div>
+        <p class="section-intro">
+          Du levage d'une ferme traditionnelle à la pose d'un escalier, chaque ouvrage
+          est pensé, taillé et assemblé avec le même soin. C'est le bois qui commande&nbsp;;
+          nous, nous l'écoutons.
+        </p>
+      </div>
+      <div class="services-grid">
+        <article class="service-card reveal" data-od-id="service-card-traditionnelle">
+          <span class="service-num" aria-hidden="true">N°&nbsp;01</span>
+          <div>
+            <h3>Charpente traditionnelle</h3>
+            <p>Spécialistes de la charpente dans le Trégor, nous réalisons tous vos travaux de charpente : construction neuve, rénovation, modification de charpente. Notre expertise garantit solidité et esthétique.</p>
+            <div class="service-tag">Neuf &amp; rénovation</div>
+          </div>
+        </article>
+        <article class="service-card reveal" data-od-id="service-card-moderne">
+          <span class="service-num" aria-hidden="true">N°&nbsp;02</span>
+          <div>
+            <h3>Charpente moderne</h3>
+            <p>Spécialistes de l\'étanchéité, nous assurons la pérennité de vos constructions avec des matériaux de qualité et des techniques éprouvées. Votre satisfaction est notre priorité.</p>
+            <div class="service-tag">Construction neuve</div>
+          </div>
+        </article>
+        <article class="service-card reveal" data-od-id="service-card-maison-bois">
+          <span class="service-num" aria-hidden="true">N°&nbsp;03</span>
+          <div>
+            <h3>Maison bois &amp; extension</h3>
+            <p>Ossature bois, surélévation, extension&nbsp;: agrandissez votre maison avec un
+            matériau sain, performant et durable, en harmonie avec le bâti breton.</p>
+            <div class="service-tag">Agrandissement</div>
+          </div>
+        </article>
+        <article class="service-card reveal" data-od-id="service-card-amenagement">
+          <span class="service-num" aria-hidden="true">N°&nbsp;04</span>
+          <div>
+            <h3>Aménagement intérieur</h3>
+            <p>De la charpente traditionnelle à l\'extension bois, en passant par la construction de maisons bois et l\'aménagement intérieur, notre équipe met son expertise à votre service pour donner vie à vos rêves.</p>
+            <div class="service-tag">Intérieur &amp; combles</div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Engagement ============ -->
+  <section class="section engagement" id="engagement" data-od-id="section-engagement">
+    <div class="wrap engagement-grid">
+      <figure class="engagement-photo reveal" data-od-id="engagement-photo">
+        <img src="assets/real-01.jpg" alt="Mains d'un charpentier rabotant une poutre de chêne à l'atelier, copeaux de bois en lumière chaude" loading="lazy" onerror="this.removeAttribute('src')">
+        <figcaption>À l'atelier — le geste avant la machine.</figcaption>
+      </figure>
+      <div class="engagement-copy reveal">
+        <span class="eyebrow">Notre engagement</span>
+        <h2 class="section-title" data-od-id="engagement-title">Un métier qui s'apprend avec le temps.</h2>
+        <p>
+          Depuis plus de <strong>quinze ans</strong>, Charpente du Menez Bre accompagne les
+          habitants du Trégor dans leurs projets de charpente et de construction bois.
+          Chaque chantier commence par une écoute attentive&nbsp;: comprendre la maison,
+          son histoire, la manière dont vous y vivez. Ensuite seulement vient le bois —
+          choisi, taillé et posé pour durer.
+        </p>
+        <p style="margin-top: 1rem;">
+          <strong>Jessy Sebille</strong> s'engage personnellement sur chaque ouvrage&nbsp;:
+          un interlocuteur unique, du premier échange à la réception du chantier.
+        </p>
+        <ul class="trust-list" data-od-id="trust-list">
+          <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="8.2" stroke="oklch(49% 0.096 50)" stroke-width="1.4"/><path d="M5.5 9.3 8 11.8 12.7 6.5" stroke="oklch(49% 0.096 50)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Devis gratuit sous 48&nbsp;h</li>
+          <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="8.2" stroke="oklch(49% 0.096 50)" stroke-width="1.4"/><path d="M5.5 9.3 8 11.8 12.7 6.5" stroke="oklch(49% 0.096 50)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Garantie décennale</li>
+          <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="8.2" stroke="oklch(49% 0.096 50)" stroke-width="1.4"/><path d="M5.5 9.3 8 11.8 12.7 6.5" stroke="oklch(49% 0.096 50)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Assurance professionnelle</li>
+          <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="8.2" stroke="oklch(49% 0.096 50)" stroke-width="1.4"/><path d="M5.5 9.3 8 11.8 12.7 6.5" stroke="oklch(49% 0.096 50)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Intervention rapide</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Réalisations ============ -->
+  <section class="section" id="realisations" data-od-id="section-realisations">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="eyebrow">Nos réalisations</span>
+        <h2 class="section-title" data-od-id="realisations-title">Le travail parle mieux que nous.</h2>
+        <p class="section-intro">Un aperçu de chantiers récents, de Lannion à Guingamp.</p>
+      </div>
+      <div class="works-grid">
+        <figure class="work reveal" data-od-id="work-charpente-traditionnelle-lannion">
+          <div class="work-img"><img src="assets/real-02.jpg" alt="Assemblages d'une charpente traditionnelle en bois massif, pannes et chevrons" loading="lazy" onerror="this.style.display='none'"></div>
+          <figcaption><span class="work-title">Charpente traditionnelle</span><span class="work-place">Lannion</span></figcaption>
+        </figure>
+        <figure class="work reveal" data-od-id="work-extension-perros">
+          <div class="work-img"><img src="assets/real-03.jpg" alt="Ossature bois d'une maison en cours de montage, murs et toit charpentés" loading="lazy" onerror="this.style.display='none'"></div>
+          <figcaption><span class="work-title">Extension ossature bois</span><span class="work-place">Perros-Guirec</span></figcaption>
+        </figure>
+        <figure class="work reveal" data-od-id="work-charpente-moderne-guingamp">
+          <div class="work-img"><img src="assets/real-04.jpg" alt="Charpente moderne en résille de bois, structure géométrique précise" loading="lazy" onerror="this.style.display='none'"></div>
+          <figcaption><span class="work-title">Charpente moderne</span><span class="work-place">Guingamp</span></figcaption>
+        </figure>
+        <figure class="work reveal" data-od-id="work-escalier-begard">
+          <div class="work-img"><img src="assets/real-05.jpg" alt="Escalier massif en chêne dans une ferme rénovée" loading="lazy" onerror="this.style.display='none'"></div>
+          <figcaption><span class="work-title">Escalier massif en chêne</span><span class="work-place">Bégard</span></figcaption>
+        </figure>
+        <figure class="work reveal" data-od-id="work-renovation-louargat">
+          <div class="work-img"><img src="assets/real-06.jpg" alt="Charpente de grange en bois brut, chevrons et pannes avant rénovation" loading="lazy" onerror="this.style.display='none'"></div>
+          <figcaption><span class="work-title">Rénovation de charpente</span><span class="work-place">Louargat</span></figcaption>
+        </figure>
+        <figure class="work reveal" data-od-id="work-patrimoine-bretagne">
+          <div class="work-img"><img src="assets/real-07.jpg" alt="Sablière sculptée d'une charpente ancienne de chapelle bretonne" loading="lazy" onerror="this.style.display='none'"></div>
+          <figcaption><span class="work-title">Charpente sculptée restaurée</span><span class="work-place">Patrimoine breton</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Zone d'intervention ============ -->
+  <section class="section engagement" id="zone" data-od-id="section-zone">
+    <div class="wrap zone-grid">
+      <div class="zone-copy reveal">
+        <span class="eyebrow">Zone d'intervention</span>
+        <h2 class="section-title" data-od-id="zone-title">Basés à Louargat, au pied du Menez&nbsp;Bre.</h2>
+        <p>
+          Nous intervenons dans tout le <strong>Trégor</strong> et les Côtes-d'Armor&nbsp;:
+          assez près pour venir voir votre projet rapidement, assez enracinés pour
+          connaître les maisons du pays — la longère en granit comme le pavillon des
+          années 80.
+        </p>
+        <ul class="towns" data-od-id="zone-towns">
+          <li class="hq">Louargat <span>· siège</span></li>
+          <li>Guingamp <span>· 15 min</span></li>
+          <li>Bégard <span>· 15 min</span></li>
+          <li>Lannion <span>· 25 min</span></li>
+          <li>Perros-Guirec <span>· 35 min</span></li>
+          <li>… et alentours <span>· 22</span></li>
+        </ul>
+      </div>
+      <div class="zone-map reveal" aria-hidden="true">
+        <svg viewBox="0 0 420 420" fill="none">
+          <circle cx="210" cy="230" r="190" stroke="oklch(88% 0.022 80)" stroke-width="1"/>
+          <circle cx="210" cy="230" r="130" stroke="oklch(88% 0.022 80)" stroke-width="1"/>
+          <circle cx="210" cy="230" r="70" stroke="oklch(85% 0.03 75)" stroke-width="1" stroke-dasharray="4 5"/>
+          <line x1="210" y1="230" x2="128" y2="96" stroke="oklch(88% 0.022 80)" stroke-width="1"/>
+          <line x1="210" y1="230" x2="236" y2="60" stroke="oklch(88% 0.022 80)" stroke-width="1"/>
+          <line x1="210" y1="230" x2="322" y2="310" stroke="oklch(88% 0.022 80)" stroke-width="1"/>
+          <line x1="210" y1="230" x2="292" y2="128" stroke="oklch(88% 0.022 80)" stroke-width="1"/>
+          <circle cx="210" cy="230" r="9" fill="oklch(49% 0.096 50)"/>
+          <circle cx="210" cy="230" r="17" stroke="oklch(49% 0.096 50)" stroke-width="1.4" opacity="0.4"/>
+          <text x="210" y="266" text-anchor="middle" font-family="Manrope, sans-serif" font-size="14" font-weight="700" fill="oklch(26% 0.022 55)">Louargat</text>
+          <circle cx="128" cy="96" r="5" fill="oklch(26% 0.022 55)"/>
+          <text x="128" y="80" text-anchor="middle" font-family="Manrope, sans-serif" font-size="13" font-weight="600" fill="oklch(47% 0.028 60)">Lannion</text>
+          <circle cx="236" cy="60" r="5" fill="oklch(26% 0.022 55)"/>
+          <text x="236" y="44" text-anchor="middle" font-family="Manrope, sans-serif" font-size="13" font-weight="600" fill="oklch(47% 0.028 60)">Perros-Guirec</text>
+          <circle cx="292" cy="128" r="5" fill="oklch(26% 0.022 55)"/>
+          <text x="292" y="112" text-anchor="middle" font-family="Manrope, sans-serif" font-size="13" font-weight="600" fill="oklch(47% 0.028 60)">Bégard</text>
+          <circle cx="322" cy="310" r="5" fill="oklch(26% 0.022 55)"/>
+          <text x="322" y="336" text-anchor="middle" font-family="Manrope, sans-serif" font-size="13" font-weight="600" fill="oklch(47% 0.028 60)">Guingamp</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Contact ============ -->
+  
+
+<!-- Section Témoignages Google -->
+<section class="sec sec--testimonials rv" id="temoignages" data-od-id="temoignages">
+  <div class="sec-head">
+    <p class="eyebrow">Témoignages</p>
+    <h2>Ce qu'en disent nos clients.</h2>
+    <p>Deux avis vérifiés sur Google &mdash; 5/5 étoiles.</p>
+  </div>
+  <div class="t-grid">
+    <figure class="t-card">
+      <div class="t-stars" aria-label="5 étoiles sur 5">★★★★★</div>
+      <blockquote>
+        <p>«&nbsp;Jessy and her team worked on our extension. They provided fast and high-quality work. It&rsquo;s a pleasure to work with such skilled tradespeople! We highly recommend them 😊&nbsp;»</p>
+      </blockquote>
+      <figcaption>
+        <strong>Marie LE LOARER</strong><br>
+        <span class="t-source">Avis Google &middot; il y a 1 mois</span>
+      </figcaption>
+    </figure>
+    <figure class="t-card">
+      <div class="t-stars" aria-label="5 étoiles sur 5">★★★★★</div>
+      <blockquote>
+        <p>«&nbsp;A very efficient and reliable company. I had a great experience with Jessy and her team; the work was high-quality, the advice excellent, and the after-sales service outstanding. You can count on them without hesitation.&nbsp;»</p>
+      </blockquote>
+      <figcaption>
+        <strong>Gildas Ollivier</strong><br>
+        <span class="t-source">Avis Google &middot; il y a 1 an</span>
+      </figcaption>
+    </figure>
+  </div>
+  <p class="t-disclaimer">Avis collectés via Google Maps &middot; <a href="https://www.google.com/maps/search/Charpente+du+Menez+Bre+Louargat" target="_blank" rel="noopener">voir sur Google</a></p>
+</section>
+
+
+<section class="section contact" id="contact" data-od-id="section-contact">
+    <div class="wrap contact-grid">
+      <div class="reveal">
+        <span class="eyebrow">Contact</span>
+        <h2 class="contact-title" data-od-id="contact-title">Parlons de votre projet.</h2>
+        <p class="contact-lede">
+          Un toit à refaire, une extension en tête, un escalier à dessiner&nbsp;?
+          Décrivez-nous votre projet — nous revenons vers vous sous 48&nbsp;h avec
+          un premier avis et un devis gratuit.
+        </p>
+        <ul class="contact-details">
+          <li data-od-id="contact-phone">
+            <span class="contact-label">Téléphone</span>
+            <span class="contact-value"><a href="tel:+33683630527">06 83 63 05 27</a></span>
+          </li>
+          <li data-od-id="contact-email">
+            <span class="contact-label">Email</span>
+            <span class="contact-value"><a href="mailto:contact@charpentedumenezbre.fr">contact@charpentedumenezbre.fr</a></span>
+          </li>
+          <li data-od-id="contact-address">
+            <span class="contact-label">Atelier</span>
+            <span class="contact-value">22540 Louargat</span>
+          </li>
+        </ul>
+      </div>
+      <div class="contact-form-panel reveal" data-od-id="contact-form-panel">
+        <h3>Demande de devis</h3>
+        <p class="form-note">Gratuit et sans engagement — réponse sous 48&nbsp;h.</p>
+        <form class="contact-form" id="devis-form" data-od-id="contact-form" novalidate>
+          <div class="field">
+            <label for="f-nom">Nom</label>
+            <input id="f-nom" name="nom" type="text" autocomplete="name" placeholder="Votre nom" required>
+          </div>
+          <div class="field">
+            <label for="f-tel">Téléphone</label>
+            <input id="f-tel" name="tel" type="tel" autocomplete="tel" placeholder="06 …" required>
+          </div>
+          <div class="field full">
+            <label for="f-email">Email</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" placeholder="vous@exemple.fr">
+          </div>
+          <div class="field full">
+            <label for="f-projet">Type de projet</label>
+            <select id="f-projet" name="projet">
+              <option>Charpente traditionnelle</option>
+              <option>Charpente moderne</option>
+              <option>Maison bois / extension</option>
+              <option>Aménagement intérieur</option>
+              <option>Autre / je ne sais pas encore</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label for="f-message">Votre projet</label>
+            <textarea id="f-message" name="message" placeholder="Décrivez votre projet en quelques lignes : la maison, l'ouvrage envisagé, la commune…"></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit" data-od-id="form-submit">Envoyer ma demande</button>
+        </form>
+        <div class="form-success" id="form-success" role="status" aria-live="polite">
+          <strong>Merci, votre demande est bien partie.</strong>
+          <p>Jessy Sebille vous recontacte sous 48&nbsp;h. (Formulaire de démonstration — aucun message n'est réellement envoyé.)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer" data-od-id="site-footer">
+  <div class="wrap">
+    <div class="footer-id">
+      <span class="footer-name">Charpente du Menez Bre</span>
+      <span>22540 Louargat</span>
+      <a href="tel:+33683630527">06 83 63 05 27</a>
+    </div>
+    <span class="footer-credit" data-od-id="footer-credit">Hent Goas Vel, 22540 Louargat &middot; 06 83 63 05 27 &middot; contact@charpentedumenezbre.fr &middot; Démo générée par Sixelasco · Photos d'illustration&nbsp;: Wikimedia Commons</span>
+  </div>
+</footer>
+
+<script>
+  // Header: solid once past hero top
+  const header = document.getElementById('site-header');
+  const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 40);
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }
+  }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+  // Demo form: visual success only, no backend
+  const form = document.getElementById('devis-form');
+  form.addEventListener('submit', (ev) => {
+    ev.preventDefault();
+    if (!form.reportValidity()) return;
+    form.style.display = 'none';
+    document.getElementById('form-success').classList.add('show');
+  });
+</script>
+</body>
+</html>

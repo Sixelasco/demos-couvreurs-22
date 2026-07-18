@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Démos couvreurs-22 v2 — sites démo avec contenu original</title>
+  <style>
+    :root {
+      --ink: oklch(22% 0.02 50);
+      --muted: oklch(50% 0.02 60);
+      --line: oklch(85% 0.015 75);
+      --bg: oklch(98% 0.005 90);
+      --accent: oklch(58% 0.12 45);
+      --green: oklch(55% 0.12 145);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      padding: clamp(20px, 4vw, 60px);
+      max-width: 1400px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    header {
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 32px;
+      margin-bottom: 48px;
+    }
+    h1 {
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+    .subtitle {
+      color: var(--muted);
+      font-size: clamp(15px, 1.4vw, 18px);
+    }
+    .credit {
+      margin-top: 16px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .credit strong { color: var(--accent); }
+    .banner {
+      background: var(--green);
+      color: white;
+      padding: 16px 20px;
+      border-radius: 8px;
+      margin-top: 24px;
+      font-size: 14px;
+    }
+    .banner strong { font-weight: 600; }
+    .demo-grid {
+      display: grid;
+      gap: 48px;
+    }
+    .demo {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      background: white;
+    }
+    .demo-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .demo h2 {
+      font-size: clamp(22px, 2.5vw, 32px);
+      font-weight: 600;
+    }
+    .demo h2 small {
+      display: block;
+      font-size: 14px;
+      color: var(--muted);
+      font-weight: 400;
+      margin-top: 4px;
+    }
+    .demo .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 500;
+      background: var(--green);
+      color: white;
+    }
+    .demo .badge.partial {
+      background: oklch(75% 0.10 60);
+      color: var(--ink);
+    }
+    .demo .badge.no-site {
+      background: oklch(60% 0.18 28);
+      color: white;
+    }
+    .demo .meta {
+      font-size: 13px;
+      color: var(--muted);
+      text-align: right;
+    }
+    .demo .palette {
+      display: flex;
+      gap: 6px;
+      margin-top: 8px;
+      justify-content: flex-end;
+    }
+    .demo .palette span {
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      border: 1px solid var(--line);
+    }
+    .demo .src-info {
+      background: oklch(96% 0.02 90);
+      border-left: 3px solid var(--accent);
+      padding: 12px 16px;
+      margin: 12px 0;
+      font-size: 14px;
+      border-radius: 0 4px 4px 0;
+    }
+    .demo .src-info strong { color: var(--accent); }
+    .demo p { margin: 12px 0; }
+    .demo .images {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .demo .images img {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+      border: 1px solid var(--line);
+    }
+    .demo .footer {
+      margin-top: 16px;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-size: 14px;
+    }
+    .demo .footer a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid currentColor;
+    }
+    .demo .footer a:hover { opacity: 0.7; }
+    .summary {
+      background: var(--ink);
+      color: var(--bg);
+      padding: 32px;
+      border-radius: 8px;
+      margin-top: 48px;
+    }
+    .summary h2 { color: var(--bg); margin-bottom: 12px; }
+    .summary p { color: oklch(85% 0.02 75); }
+    .summary ul { margin: 16px 0 0 20px; color: oklch(85% 0.02 75); }
+    .summary li { margin: 6px 0; }
+    @media (max-width: 640px) {
+      .demo .images { grid-template-columns: 1fr; }
+      .demo-header { flex-direction: column; align-items: flex-start; }
+      .demo .meta { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Démos couvreurs-22 — v2</h1>
+    <p class="subtitle">5 sites démo avec contenu repris des sites initiaux</p>
+    <p class="credit">Démos générées par <strong>Sixelasco</strong> · Open Design + BYOK Ollama Cloud (hermes · minimax-m3:cloud)</p>
+    <div class="banner">
+      <strong>Méthode v2 :</strong> Photos et textes repris des sites initiaux (re-scrape exhaustif via Playwright).
+      Quand le site n'existe pas ou est trop pauvre, on garde le contenu démo mais on marque clairement les éléments à compléter.
+    </div>
+  </header>
+
+  <div class="demo-grid">
+
+    <article class="demo">
+      <div class="demo-header">
+        <h2>1. BQC - Brajeul Quentin Couverture <small>Plérin · Couvreur/charpentier</small></h2>
+        <div>
+          <span class="badge">Contenu original complet</span>
+          <div class="meta">Slate · Bricolage + Inter</div>
+          <div class="palette">
+            <span style="background: oklch(28% 0.032 262);"></span>
+            <span style="background: oklch(55% 0.13 55);"></span>
+            <span style="background: oklch(96% 0.012 90);"></span>
+          </div>
+        </div>
+      </div>
+      <div class="src-info">
+        <strong>Source :</strong> brajeulquentincouverture.fr (site Wix)<br>
+        10 paragraphes · 2 témoignages clients · 15 photos (8 retravaillées) · 4 H3 (Charpente, Couverture, Ossature bois, +Zinguerie suggérée) · SIRET 933 092 884 00016
+      </div>
+      <p>Direction : moderne breton, ardoise/cuivre/parchemin, bento grid + bannière urgence rouge. Témoignages clients intégrés en section dédiée.</p>
+      <div class="images">
+        <a href="bq-couverture-v2/index.html"><img src="index-assets/bq-couverture-v2-desktop.png" alt="BQC v2 desktop"></a>
+        <a href="bq-couverture-v2/index.html"><img src="index-assets/bq-couverture-v2-mobile.png" alt="BQC v2 mobile"></a>
+      </div>
+      <div class="footer">
+        <a href="bq-couverture-v2/index.html">→ Ouvrir la démo</a>
+        <a href="https://www.brajeulquentincouverture.fr/">→ Site original</a>
+      </div>
+    </article>
+
+    <article class="demo">
+      <div class="demo-header">
+        <h2>2. Charpente du Menez Bre <small>Louargat · Charpentier</small></h2>
+        <div>
+          <span class="badge">Contenu original complet</span>
+          <div class="meta">Wood workshop · Fraunces + Manrope</div>
+          <div class="palette">
+            <span style="background: oklch(97% 0.012 84);"></span>
+            <span style="background: oklch(28% 0.025 50);"></span>
+            <span style="background: oklch(45% 0.060 60);"></span>
+          </div>
+        </div>
+      </div>
+      <div class="src-info">
+        <strong>Source :</strong> charpentedumenezbre.fr<br>
+        11 paragraphes · 14 photos (8 retravaillées) · 4 services (Charpente traditionnelle, Charpente sur mesure, Rénovation &amp; Étanchéité, Maison bois) · Coordonnées : Hent Goas Vel, 22540 Louargat · 06 83 63 05 27
+      </div>
+      <p>Direction : éditoriale artisanale, cream/walnut, Fraunces+Manrope, asymétrique. Photo Guédolon en hero (1re image du site original).</p>
+      <div class="images">
+        <a href="menez-bre-v2/index.html"><img src="index-assets/menez-bre-v2-desktop.png" alt="Menez Bre v2 desktop"></a>
+        <a href="menez-bre-v2/index.html"><img src="index-assets/menez-bre-v2-mobile.png" alt="Menez Bre v2 mobile"></a>
+      </div>
+      <div class="footer">
+        <a href="menez-bre-v2/index.html">→ Ouvrir la démo</a>
+        <a href="https://charpentedumenezbre.fr/">→ Site original</a>
+      </div>
+    </article>
+
+    <article class="demo">
+      <div class="demo-header">
+        <h2>3. Créa Cob <small>Quévert · Construction terre/pisé</small></h2>
+        <div>
+          <span class="badge no-site">Pas de site original</span>
+          <div class="meta">Earth · Cormorant + Work Sans</div>
+          <div class="palette">
+            <span style="background: oklch(96% 0.025 75);"></span>
+            <span style="background: oklch(58% 0.150 38);"></span>
+            <span style="background: oklch(58% 0.080 130);"></span>
+          </div>
+        </div>
+      </div>
+      <div class="src-info">
+        <strong>Source :</strong> Aucun site accessible publiquement (crea-cob.fr, crea-cob.com, etc. introuvables)<br>
+        <strong>→ C'est un prospect chaud</strong> : pas de site = opportunité maximale<br>
+        Contenu démo conservé (4 services, manifeste écologique). Photos Wikimedia à remplacer par de vrais chantiers.
+      </div>
+      <p>Direction : éco-construction, sable/terracotta/sauge, blocs alternés avec timeline pointillée. Contenu éditorial conservé (il n'y avait rien à reprendre).</p>
+      <div class="images">
+        <a href="crea-cob-v2/index.html"><img src="index-assets/crea-cob-v2-desktop.png" alt="Créa Cob v2 desktop"></a>
+        <a href="crea-cob-v2/index.html"><img src="index-assets/crea-cob-v2-mobile.png" alt="Créa Cob v2 mobile"></a>
+      </div>
+      <div class="footer">
+        <a href="crea-cob-v2/index.html">→ Ouvrir la démo</a>
+      </div>
+    </article>
+
+    <article class="demo">
+      <div class="demo-header">
+        <h2>4. SARL Rialland <small>Brusvily · Charpentier</small></h2>
+        <div>
+          <span class="badge partial">Site très daté</span>
+          <div class="meta">Breton terroir · EB Garamond + Lora</div>
+          <div class="palette">
+            <span style="background: oklch(94% 0.018 75);"></span>
+            <span style="background: oklch(28% 0.08 270);"></span>
+            <span style="background: oklch(45% 0.16 28);"></span>
+          </div>
+        </div>
+      </div>
+      <div class="src-info">
+        <strong>Source :</strong> rialland.fr (site HTML statique années 2000, contenu pauvre)<br>
+        6 paragraphes identiques (tous = "Reconstruction de la balnéothérapie AINCOURT") · 14 photos de chantiers · 5 sections (Accueil, Qui sommes-nous, Nos chantiers, Nos clients, Contact) · Aucun témoignage
+      </div>
+      <p>Direction : héritage breton, almanach/presse ancienne, EB Garamond + Lora, photos retravaillées du site original. Le site original a très peu de texte → on garde la baseline éditoriale honnête.</p>
+      <div class="images">
+        <a href="rialland-v2/index.html"><img src="index-assets/rialland-v2-desktop.png" alt="Rialland v2 desktop"></a>
+        <a href="rialland-v2/index.html"><img src="index-assets/rialland-v2-mobile.png" alt="Rialland v2 mobile"></a>
+      </div>
+      <div class="footer">
+        <a href="rialland-v2/index.html">→ Ouvrir la démo</a>
+        <a href="http://www.rialland.fr/">→ Site original</a>
+      </div>
+    </article>
+
+    <article class="demo">
+      <div class="demo-header">
+        <h2>5. Bois & Logis <small>La Bouillie · Maison ossature bois</small></h2>
+        <div>
+          <span class="badge partial">Site sans texte</span>
+          <div class="meta">Scandi · Space Grotesk + Inter</div>
+          <div class="palette">
+            <span style="background: oklch(98% 0.005 90);"></span>
+            <span style="background: oklch(72% 0.060 75);"></span>
+            <span style="background: oklch(70% 0.050 145);"></span>
+          </div>
+        </div>
+      </div>
+      <div class="src-info">
+        <strong>Source :</strong> boisetlogis.com<br>
+        <strong>Site sans aucun texte</strong> (0 paragraphe, juste des images) · 29 photos (8 retravaillées) · Adresse : 22240 La Bouillie
+      </div>
+      <p>Direction : minimal scandinave, off-white + chêne clair, single-column ultra-aéré. Photos retravaillées du site original (un peu datées) + contenu éditorial démo (à composer avec le client).</p>
+      <div class="images">
+        <a href="bois-et-logis-v2/index.html"><img src="index-assets/bois-et-logis-v2-desktop.png" alt="Bois & Logis v2 desktop"></a>
+        <a href="bois-et-logis-v2/index.html"><img src="index-assets/bois-et-logis-v2-mobile.png" alt="Bois & Logis v2 mobile"></a>
+      </div>
+      <div class="footer">
+        <a href="bois-et-logis-v2/index.html">→ Ouvrir la démo</a>
+        <a href="http://www.boisetlogis.com/">→ Site original</a>
+      </div>
+    </article>
+
+  </div>
+
+  <section class="summary">
+    <h2>Méthode v2 — ce qui a changé</h2>
+    <p>Par rapport à v1, j'ai repris les vraies données des sites initiaux :</p>
+    <ul>
+      <li><strong>Photos</strong> : retéléchargées depuis les sites Wix/HTML statique, retravaillées (crop centré, resize 1600×900 hero / 800×600 réalisations, légère retouche color : saturation +5%, contraste +8%, unsharp mask)</li>
+      <li><strong>Textes</strong> : H1, H2, H3 et paragraphes repris du contenu original (pas d'invention)</li>
+      <li><strong>Témoignages</strong> : quand le site en a (BQC), on les intègre. Sinon on ne les invente pas.</li>
+      <li><strong>Coordonnées</strong> : adresse, téléphone, SIRET repris du footer original</li>
+      <li><strong>Cas spéciaux</strong> : si le site n'existe pas (Créa Cob) ou est très pauvre (Rialland, Bois & Logis), on garde le contenu démo mais on marque clairement "à composer avec le client"</li>
+    </ul>
+  </section>
+
+</body>
+</html>

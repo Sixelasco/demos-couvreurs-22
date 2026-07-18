@@ -1,0 +1,1371 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>SARL Rialland - Spécialiste des charpentes traditionnelles, ossatures bois, étaiements, lamellés collés et ouvrages bois</title>
+<meta name="description" content="SARL Rialland, charpentier traditionnel à Brusvily près de Dinan (Côtes-d'Armor). Charpente, ossature bois, bardage, menuiserie, isolation par l'extérieur et rénovation. Trois générations de savoir-faire breton." />
+<meta name="theme-color" content="#1a2238" />
+<meta property="og:title" content="SARL Rialland — Charpentier breton depuis trois générations" />
+<meta property="og:description" content="Charpente traditionnelle, ossature bois et rénovation du patrimoine en Côtes-d'Armor." />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="fr_FR" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" />
+<style>
+/* ============================================================
+   SARL Rialland — Charpentier à Brusvily, Côtes-d'Armor
+   Charte : "almanach breton" — presse ancienne × artisanat
+   ============================================================ */
+
+:root {
+  /* Palette oklch : parchemin, marine breton, hermine, encre */
+  --bg:        oklch(94% 0.018 75);    /* parchemin cream chaud */
+  --bg-deep:   oklch(90% 0.022 72);    /* section contrastée */
+  --surface:   oklch(97% 0.012 78);    /* papier plus clair (cartes) */
+  --ink:       oklch(22% 0.04 270);    /* encre très sombre, presque noir, légèrement bleutée */
+  --ink-soft:  oklch(35% 0.03 268);    /* encre secondaire (corps) */
+  --muted:     oklch(52% 0.015 70);    /* terre d'ombre */
+  --rule:      oklch(30% 0.025 270);   /* filets */
+  --rule-soft: oklch(70% 0.015 75);    /* filets clairs */
+
+  --breton:    oklch(28% 0.08 270);    /* marine du drapeau breton */
+  --breton-2:  oklch(38% 0.07 270);    /* marine clair, contraste texte */
+  --hermine:   oklch(45% 0.16 28);     /* rouge hermine, drapeau breton */
+  --patina:    oklch(62% 0.06 55);     /* vert-de-gris, vieil atelier */
+
+  /* Typo */
+  --font-display: "EB Garamond", "Iowan Old Style", "Palatino Linotype",
+                  Palatino, "URW Palladio L", P052, Georgia, serif;
+  --font-body:    "Lora", "Iowan Old Style", "Palatino Linotype",
+                  Palatino, Georgia, "Times New Roman", serif;
+  --font-mono:    ui-monospace, SFMono-Regular, "SF Mono", Menlo,
+                  Consolas, "Liberation Mono", monospace;
+
+  /* Échelle */
+  --gutter:   clamp(1rem, 3vw, 2rem);
+  --col:      min(72rem, 100% - 2 * var(--gutter));
+  --rule-thick: 3px;
+  --rule-thin: 1px;
+  --radius:   0;       /* Almanach : angles vifs, pas de coins arrondis */
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 0.95rem + 0.2vw, 1.0625rem);
+  line-height: 1.65;
+  color: var(--ink);
+  background:
+    /* grain papier très léger */
+    radial-gradient(ellipse at 20% 10%, oklch(96% 0.015 78) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 90%, oklch(93% 0.022 73) 0%, transparent 55%),
+    var(--bg);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: var(--breton); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
+a:hover, a:focus-visible { color: var(--hermine); }
+
+/* ============================================================
+   Typographie — presse ancienne
+   ============================================================ */
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+  margin: 0 0 0.5em;
+}
+h1 { font-size: clamp(2.4rem, 1.6rem + 3.6vw, 4.6rem); line-height: 1.02; font-weight: 700; }
+h2 { font-size: clamp(1.85rem, 1.4rem + 2vw, 3rem);   line-height: 1.08; }
+h3 { font-size: clamp(1.3rem, 1.1rem + 0.7vw, 1.6rem); line-height: 1.18; }
+h4 { font-size: 1.1rem; line-height: 1.25; font-weight: 700; }
+
+p { margin: 0 0 1rem; }
+p + p { text-indent: 1.5em; }
+
+em, i { font-style: italic; }
+strong, b { font-weight: 700; }
+
+/* Petites majuscules typographiques pour les labels */
+.smallcaps,
+.kicker,
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--breton);
+}
+
+/* Drop cap : utilisé pour la section histoire */
+.dropcap::first-letter {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 5.2em;
+  line-height: 0.82;
+  float: left;
+  margin: 0.08em 0.08em 0 0;
+  padding: 0.02em 0.04em 0 0;
+  color: var(--hermine);
+  font-feature-settings: "lnum";
+}
+
+/* ============================================================
+   Filets — double rule, signature almanach
+   ============================================================ */
+
+.rule-double {
+  border: 0;
+  border-top: var(--rule-thick) double var(--rule);
+  margin: 0;
+}
+.rule-thick { border: 0; border-top: var(--rule-thick) solid var(--rule); margin: 0; }
+.rule-thin  { border: 0; border-top: var(--rule-thin)  solid var(--rule-soft); margin: 0; }
+
+.section-title {
+  display: flex;
+  align-items: baseline;
+  gap: 0.9rem;
+  margin: 0 0 1.5rem;
+  padding-bottom: 0.6rem;
+  border-bottom: var(--rule-thick) double var(--rule);
+}
+.section-title .num {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--hermine);
+  font-size: 0.95em;
+  letter-spacing: 0.02em;
+}
+.section-title h2 {
+  margin: 0;
+  flex: 1;
+}
+.section-title .kicker {
+  white-space: nowrap;
+}
+
+/* ============================================================
+   Header
+   ============================================================ */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: oklch(94% 0.018 75 / 0.96);
+  backdrop-filter: saturate(140%) blur(6px);
+  -webkit-backdrop-filter: saturate(140%) blur(6px);
+  border-bottom: var(--rule-thick) double var(--rule);
+}
+.site-header__inner {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0.65rem var(--gutter);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1rem;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  text-decoration: none;
+  color: var(--ink);
+}
+.brand__mark {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  background: var(--breton);
+  color: var(--bg);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.45rem;
+  letter-spacing: -0.02em;
+  flex: none;
+}
+.brand__text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+.brand__text strong {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: 0.01em;
+}
+.brand__text span {
+  font-family: var(--font-body);
+  font-size: 0.66rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--breton);
+  margin-top: 4px;
+  font-weight: 600;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6rem;
+  font-family: var(--font-body);
+}
+.nav a {
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+  letter-spacing: 0.02em;
+  position: relative;
+  padding: 0.3rem 0;
+}
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -2px;
+  height: 1px;
+  background: var(--ink-soft);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 220ms ease;
+}
+.nav a:hover::after, .nav a:focus-visible::after { transform: scaleX(1); }
+
+.header-cta {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  justify-self: end;
+}
+.header-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-weight: 500;
+}
+.header-phone svg { flex: none; }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.92rem;
+  letter-spacing: 0.02em;
+  padding: 0.7rem 1.1rem;
+  border: 1.5px solid var(--breton);
+  background: var(--breton);
+  color: var(--bg);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 180ms ease, color 180ms ease, border-color 180ms ease;
+}
+.btn:hover, .btn:focus-visible {
+  background: var(--hermine);
+  border-color: var(--hermine);
+  color: var(--bg);
+}
+.btn--ghost {
+  background: transparent;
+  color: var(--breton);
+}
+.btn--ghost:hover, .btn--ghost:focus-visible {
+  background: var(--breton);
+  color: var(--bg);
+  border-color: var(--breton);
+}
+
+/* Mobile : on simplifie la nav et le téléphone */
+@media (max-width: 760px) {
+  .site-header__inner { grid-template-columns: auto 1fr auto; }
+  .nav { display: none; }
+  .header-phone { display: none; }
+  .brand__text strong { font-size: 1.1rem; }
+  .brand__text span { font-size: 0.58rem; letter-spacing: 0.18em; }
+  .btn { padding: 0.6rem 0.9rem; font-size: 0.85rem; }
+}
+
+/* ============================================================
+   Hero — pleine page, almanach + photo en bandeau
+   ============================================================ */
+
+.hero {
+  position: relative;
+  border-bottom: var(--rule-thick) double var(--rule);
+  overflow: hidden;
+}
+.hero__photo {
+  position: relative;
+  height: clamp(420px, 64vh, 720px);
+  background: var(--ink) url("assets/dinan-cotes-armor.jpg") center/cover no-repeat;
+  filter: contrast(1.02) saturate(0.9);
+}
+.hero__photo::after {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(to bottom,
+      oklch(22% 0.04 270 / 0.55) 0%,
+      oklch(22% 0.04 270 / 0.20) 35%,
+      oklch(22% 0.04 270 / 0.55) 100%),
+    linear-gradient(to right,  oklch(22% 0.04 270 / 0.35) 0%, transparent 60%);
+  pointer-events: none;
+}
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  align-items: end;
+  padding: var(--gutter);
+  z-index: 1;
+}
+.hero__panel {
+  max-width: 56rem;
+  margin: 0 auto;
+  width: 100%;
+  background: oklch(94% 0.018 75 / 0.92);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: var(--rule-thick) double var(--ink);
+  padding: clamp(1.2rem, 2.5vw, 2rem);
+}
+.hero__panel .kicker {
+  display: inline-block;
+  margin-bottom: 0.6rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--rule-soft);
+}
+.hero h1 {
+  margin: 0 0 0.6rem;
+  color: var(--ink);
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--hermine);
+  font-weight: 600;
+}
+.hero__sub {
+  font-size: clamp(1.05rem, 0.95rem + 0.4vw, 1.25rem);
+  line-height: 1.45;
+  color: var(--ink-soft);
+  max-width: 38rem;
+  margin: 0 0 1.4rem;
+}
+.hero__ctas {
+  display: flex;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+}
+.hero__credits {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.7rem;
+  z-index: 2;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: oklch(94% 0.018 75 / 0.85);
+  background: oklch(22% 0.04 270 / 0.55);
+  padding: 0.18rem 0.5rem;
+  border: 1px solid oklch(94% 0.018 75 / 0.3);
+}
+
+/* Bandeau de chiffres sous le hero — style almanach */
+.hero__stats {
+  background: var(--bg-deep);
+  border-bottom: var(--rule-thick) double var(--rule);
+}
+.hero__stats-inner {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 1.2rem var(--gutter);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+.stat {
+  padding: 0.4rem 1.2rem;
+  text-align: center;
+  border-right: 1px solid var(--rule-soft);
+}
+.stat:last-child { border-right: 0; }
+.stat__num {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 1.4rem + 1.4vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--hermine);
+  font-feature-settings: "lnum", "tnum";
+}
+.stat__label {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-top: 0.3rem;
+  font-weight: 600;
+}
+@media (max-width: 760px) {
+  .hero__stats-inner { grid-template-columns: repeat(2, 1fr); }
+  .stat:nth-child(2) { border-right: 0; }
+  .stat:nth-child(1), .stat:nth-child(2) { border-bottom: 1px solid var(--rule-soft); padding-bottom: 0.9rem; }
+  .stat:nth-child(3), .stat:nth-child(4) { padding-top: 0.9rem; }
+}
+
+/* ============================================================
+   Sections : wrapper générique
+   ============================================================ */
+
+.section {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: clamp(3rem, 5vw, 5rem) var(--gutter);
+  border-bottom: var(--rule-thick) double var(--rule);
+}
+.section:last-of-type { border-bottom: 0; }
+.section--alt { background: var(--bg-deep); max-width: none; }
+.section--alt .section-inner { max-width: 72rem; margin: 0 auto; }
+
+/* ============================================================
+   Notre histoire
+   ============================================================ */
+
+.histoire {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.2rem;
+}
+@media (min-width: 880px) {
+  .histoire {
+    grid-template-columns: 1.1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+}
+.histoire__text p {
+  font-size: clamp(1.05rem, 1rem + 0.2vw, 1.18rem);
+  line-height: 1.7;
+  color: var(--ink);
+  margin-bottom: 1rem;
+}
+.histoire__text p + p { text-indent: 1.5em; }
+.histoire__pull {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.4rem, 1.1rem + 0.7vw, 1.7rem);
+  line-height: 1.35;
+  color: var(--breton);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 1rem 0;
+  margin: 1.4rem 0 0.4rem;
+}
+.histoire__pull::before { content: "« "; color: var(--hermine); font-weight: 600; }
+.histoire__pull::after  { content: " »"; color: var(--hermine); font-weight: 600; }
+
+.histoire__media figure {
+  margin: 0;
+  border: 1px solid var(--rule);
+  background: var(--surface);
+  padding: 10px;
+  box-shadow: 0 1px 0 var(--rule-soft);
+}
+.histoire__media img {
+  filter: contrast(1.05) saturate(0.85) sepia(0.08);
+}
+.histoire__media figcaption {
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  text-align: center;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--rule-soft);
+  margin-top: 0.6rem;
+  font-style: italic;
+}
+
+/* ============================================================
+   Nos savoir-faire — almanach 6 colonnes
+   ============================================================ */
+
+.savoirfaire {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  border-top: 1px solid var(--rule-soft);
+  border-left: 1px solid var(--rule-soft);
+}
+@media (min-width: 560px) { .savoirfaire { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 880px) { .savoirfaire { grid-template-columns: repeat(3, 1fr); } }
+
+.skill {
+  padding: 1.6rem 1.3rem 1.4rem;
+  border-right: 1px solid var(--rule-soft);
+  border-bottom: 1px solid var(--rule-soft);
+  background: var(--surface);
+  position: relative;
+}
+.skill__num {
+  position: absolute;
+  top: 0.7rem; right: 0.9rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--hermine);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+.skill__icon {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border: 1.5px solid var(--breton);
+  color: var(--breton);
+  margin-bottom: 0.9rem;
+}
+.skill h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 0.45rem;
+  color: var(--ink);
+}
+.skill p {
+  font-size: 0.94rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+/* ============================================================
+   Nos valeurs — 3 colonnes typographiques
+   ============================================================ */
+
+.valeurs {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  border-top: var(--rule-thick) double var(--rule);
+  border-bottom: var(--rule-thick) double var(--rule);
+}
+@media (min-width: 720px) { .valeurs { grid-template-columns: repeat(3, 1fr); } }
+
+.valeur {
+  padding: 2rem 1.6rem;
+  border-bottom: 1px solid var(--rule-soft);
+  text-align: center;
+}
+@media (min-width: 720px) {
+  .valeur { border-bottom: 0; border-right: 1px solid var(--rule-soft); }
+  .valeur:last-child { border-right: 0; }
+}
+.valeur__roman {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--hermine);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.4rem;
+}
+.valeur h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 1.2rem + 0.8vw, 1.85rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--breton);
+  margin: 0 0 0.6rem;
+}
+.valeur p {
+  font-size: 0.97rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin: 0;
+  max-width: 24rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ============================================================
+   Réalisations — grille 3×2 type "presse illustrée"
+   ============================================================ */
+
+.real-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem 1.5rem;
+}
+@media (min-width: 640px) { .real-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 980px) { .real-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.real {
+  margin: 0;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  padding: 10px 10px 14px;
+  display: flex;
+  flex-direction: column;
+}
+.real__media {
+  aspect-ratio: 4 / 3;
+  background: var(--bg-deep) center/cover no-repeat;
+  position: relative;
+  border: 1px solid var(--rule-soft);
+}
+.real--bw .real__media { filter: grayscale(1) contrast(1.05); }
+.real--sepia .real__media { filter: sepia(0.4) contrast(1.02) saturate(0.85); }
+.real__caption {
+  margin-top: 0.7rem;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+.real__city {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--breton);
+  font-weight: 600;
+}
+.real__title {
+  font-family: var(--font-display);
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.2;
+  margin: 0;
+}
+.real__type {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  margin-top: 2px;
+}
+
+/* ============================================================
+   Zone d'intervention
+   ============================================================ */
+
+.zone {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+@media (min-width: 880px) { .zone { grid-template-columns: 1fr 1.4fr; gap: 3rem; align-items: start; } }
+
+.zone__intro p { font-size: 1.02rem; color: var(--ink-soft); }
+.zone__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--rule-soft);
+  border-left: 1px solid var(--rule-soft);
+}
+@media (min-width: 560px) { .zone__list { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 980px) { .zone__list { grid-template-columns: repeat(4, 1fr); } }
+
+.zone__list li {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--ink);
+  padding: 0.6rem 0.9rem;
+  border-right: 1px solid var(--rule-soft);
+  border-bottom: 1px solid var(--rule-soft);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.zone__list li svg { flex: none; color: var(--hermine); }
+.zone__list li.is-pri {
+  background: var(--breton);
+  color: var(--bg);
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-family: var(--font-body);
+}
+.zone__list li.is-pri svg { display: none; }
+
+/* ============================================================
+   Contact
+   ============================================================ */
+
+.contact {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+@media (min-width: 880px) { .contact { grid-template-columns: 1.1fr 1fr; gap: 3rem; align-items: start; } }
+
+.contact__card {
+  background: var(--surface);
+  border: var(--rule-thick) double var(--rule);
+  padding: clamp(1.4rem, 2.5vw, 2.2rem);
+}
+.contact__card h3 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  margin: 0 0 1rem;
+  color: var(--ink);
+  border-bottom: 1px solid var(--rule-soft);
+  padding-bottom: 0.6rem;
+}
+.contact__row {
+  display: grid;
+  grid-template-columns: 7rem 1fr;
+  gap: 0.6rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px dotted var(--rule-soft);
+  align-items: baseline;
+}
+.contact__row:last-of-type { border-bottom: 0; }
+.contact__label {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 600;
+}
+.contact__value {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--ink);
+  font-weight: 500;
+}
+.contact__value a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--rule-soft); }
+.contact__value a:hover { color: var(--hermine); border-bottom-color: var(--hermine); }
+
+.contact__form { display: flex; flex-direction: column; gap: 0.9rem; }
+.field { display: flex; flex-direction: column; gap: 0.3rem; }
+.field label {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--breton);
+  font-weight: 600;
+}
+.field input, .field select, .field textarea {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--ink);
+  background: var(--bg);
+  border: 0;
+  border-bottom: 1.5px solid var(--rule);
+  padding: 0.55rem 0;
+  border-radius: 0;
+  transition: border-color 180ms ease;
+}
+.field input:focus, .field select:focus, .field textarea:focus {
+  outline: 0;
+  border-bottom-color: var(--hermine);
+}
+.field textarea { min-height: 5.5rem; resize: vertical; }
+
+.contact__form-actions { display: flex; align-items: center; gap: 1rem; margin-top: 0.5rem; }
+.form-note {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-style: italic;
+}
+.form-status {
+  display: none;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--patina);
+  background: oklch(95% 0.04 130);
+  color: oklch(30% 0.08 145);
+  font-size: 0.9rem;
+}
+.form-status.is-on { display: block; }
+
+/* ============================================================
+   Footer
+   ============================================================ */
+
+.site-footer {
+  background: var(--ink);
+  color: oklch(88% 0.02 75);
+  border-top: var(--rule-thick) double var(--hermine);
+}
+.footer__inner {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 2.5rem var(--gutter) 1.4rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.8rem;
+}
+@media (min-width: 720px) { .footer__inner { grid-template-columns: 1.5fr 1fr 1fr; } }
+
+.footer h4 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: oklch(94% 0.018 75);
+  font-weight: 700;
+  margin: 0 0 0.6rem;
+  letter-spacing: 0.01em;
+  border-bottom: 1px solid oklch(40% 0.04 270);
+  padding-bottom: 0.4rem;
+}
+.footer p, .footer a, .footer li {
+  font-size: 0.92rem;
+  color: oklch(82% 0.015 75);
+  line-height: 1.6;
+}
+.footer a { color: oklch(94% 0.018 75); text-decoration: none; border-bottom: 1px solid oklch(45% 0.04 270); }
+.footer a:hover { color: var(--hermine); border-bottom-color: var(--hermine); }
+.footer ul { list-style: none; padding: 0; margin: 0; }
+.footer li { padding: 0.18rem 0; }
+
+.footer__base {
+  border-top: 1px solid oklch(40% 0.04 270);
+  padding: 1rem var(--gutter);
+  max-width: 72rem;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.78rem;
+  color: oklch(70% 0.015 75);
+  flex-wrap: wrap;
+}
+.footer__demo {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: oklch(88% 0.02 75);
+  letter-spacing: 0.04em;
+}
+.footer__demo strong { font-style: normal; font-weight: 700; color: oklch(94% 0.018 75); }
+
+/* ============================================================
+   Animations reveal
+   ============================================================ */
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 700ms ease, transform 700ms ease;
+}
+[data-reveal].is-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { opacity: 1; transform: none; transition: none; }
+}
+
+/* ============================================================
+   Focus visible — accessibilité
+   ============================================================ */
+
+:focus-visible {
+  outline: 2px solid var(--hermine);
+  outline-offset: 3px;
+}
+.btn:focus-visible, .header-phone:focus-visible {
+  outline-offset: 4px;
+}
+
+/* ============================================================
+   Utilitaires
+   ============================================================ */
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--ink);
+  color: var(--bg);
+  padding: 0.5rem 0.9rem;
+  z-index: 100;
+}
+.skip-link:focus { left: 0; }
+
+/* Selection */
+::selection { background: var(--hermine); color: var(--bg); }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#histoire">Aller au contenu</a>
+
+<!-- ========== HEADER ========== -->
+<header class="site-header" role="banner">
+  <div class="site-header__inner">
+    <a class="brand" href="#top" aria-label="SARL Rialland, retour à l'accueil">
+      <span class="brand__mark" aria-hidden="true">R</span>
+      <span class="brand__text">
+        <strong>SARL Rialland</strong>
+        <span>Charpentier · Brusvily</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Navigation principale">
+      <a href="#histoire">L'entreprise</a>
+      <a href="#savoir-faire">Savoir-faire</a>
+      <a href="#valeurs">Valeurs</a>
+      <a href="#realisations">Réalisations</a>
+      <a href="#zone">Zone</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="header-cta">
+      <a class="header-phone" href="tel:+33200000000" aria-label="Téléphone : 02 XX XX XX XX">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+        02 99 XX XX XX
+      </a>
+      <a class="btn" href="#contact" data-od-id="header-cta">Demander un devis</a>
+    </div>
+  </div>
+</header>
+
+<!-- ========== HERO ========== -->
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <div class="hero__photo" role="img" aria-label="Vue de Dinan et de la vallée de la Rance, Côtes-d'Armor"></div>
+  <div class="hero__overlay">
+    <div class="hero__panel">
+      <span class="kicker">Côtes-d'Armor · Bretagne</span>
+      <h1 id="hero-title">Sarl Rialland — <em>charpentier</em> depuis trois générations</h1>
+      <p class="hero__sub">Charpente traditionnelle, ossature bois et rénovation du patrimoine en pays de Dinan, de Saint-Malo et de la côte d'Émeraude.</p>
+      <div class="hero__ctas">
+        <a class="btn" href="#contact" data-od-id="hero-cta-primary">Demander un devis</a>
+        <a class="btn btn--ghost" href="#savoir-faire">Voir nos savoir-faire</a>
+      </div>
+    </div>
+  </div>
+  <span class="hero__credits">Dinan, Côtes-d'Armor · Carabas1, CC BY-SA</span>
+</section>
+
+<!-- ========== BANDEAU STATS ========== -->
+<section class="hero__stats" aria-label="L'entreprise en chiffres">
+  <div class="hero__stats-inner">
+    <div class="stat">
+      <div class="stat__num">3</div>
+      <div class="stat__label">Générations</div>
+    </div>
+    <div class="stat">
+      <div class="stat__num">35+</div>
+      <div class="stat__label">Années d'atelier</div>
+    </div>
+    <div class="stat">
+      <div class="stat__num">6</div>
+      <div class="stat__label">Savoir-faire</div>
+    </div>
+    <div class="stat">
+      <div class="stat__num">22</div>
+      <div class="stat__label">Côtes-d'Armor</div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== NOTRE HISTOIRE ========== -->
+<section class="section" id="histoire" aria-labelledby="h-histoire">
+  <div class="section-title">
+    <span class="num">I.</span>
+    <h2 id="h-histoire">Notre histoire</h2>
+    <span class="kicker">L'entreprise</span>
+  </div>
+  <div class="histoire">
+    <div class="histoire__text" data-reveal>
+      <p class="dropcap">Trois générations d'une même lignée de charpentiers ont posé leurs outils dans les Côtes-d'Armor. C'est dans cet héritage que s'inscrit la SARL Rialland, installée à Brusvily, à quelques encablures de Dinan. Anthony Rialland, aujourd'hui à la tête de l'atelier, a grandi dans les copeaux et l'odeur du chêne fraîchement débité.</p>
+      <p>Nous travaillons le bois comme on l'a toujours fait dans le Trégor : avec respect, patience, et le souci du geste juste. Chaque chantier est d'abord une histoire de confiance — entre le client et l'artisan, entre la maison et la matière, entre l'ancien et le neuf.</p>
+      <p>Notre atelier reste un lieu d'apprentissage. Nous formons chaque année des apprentis aux techniques de la charpente traditionnelle — assemblages à tenon et mortaise, tenons-moises, queues-de-cheval — pour que survive un métier que rien ne remplace.</p>
+      <p class="histoire__pull">Le bois ne triche pas. Il garde la marque du geste, et c'est pourquoi nous y tenons tant.</p>
+    </div>
+    <div class="histoire__media" data-reveal>
+      <figure>
+        <img src="assets/colombage-saint-brieuc.jpg" alt="Maison à colombages du XVIIe siècle, rue de la Quinquaine à Saint-Brieuc (Côtes-d'Armor)" loading="lazy" />
+        <figcaption>Saint-Brieuc, maison du XVIIe siècle · Ccloup, CC BY-SA</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SAVOIR-FAIRE ========== -->
+<section class="section section--alt" id="savoir-faire" aria-labelledby="h-savoirfaire">
+  <div class="section-inner">
+    <div class="section-title">
+      <span class="num">II.</span>
+      <h2 id="h-savoirfaire">Nos savoir-faire</h2>
+      <span class="kicker">Six métiers, un atelier</span>
+    </div>
+    <div class="savoirfaire">
+      <article class="skill" data-reveal>
+        <span class="skill__num">i</span>
+        <div class="skill__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10 12 3l9 7"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>
+        </div>
+        <h3>Charpente traditionnelle</h3>
+        <p>Assemblages à l'ancienne, tenons-mortaises, fermes, pannes et chevrons. Maisons neuves comme restauration à l'identique.</p>
+      </article>
+      <article class="skill" data-reveal>
+        <span class="skill__num">ii</span>
+        <div class="skill__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"/><path d="M5 20V8l7-4 7 4v12"/><path d="M9 20v-6h6v6"/><path d="M5 12h14"/></svg>
+        </div>
+        <h3>Ossature bois</h3>
+        <p>Murs à ossature bois, bardages, planchers. Construction sèche, performante, idéale pour extensions et bâtiments neufs.</p>
+      </article>
+      <article class="skill" data-reveal>
+        <span class="skill__num">iii</span>
+        <div class="skill__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M3 12h18"/><path d="M3 18h18"/><path d="M7 4v16"/><path d="M17 4v16"/></svg>
+        </div>
+        <h3>Bardage</h3>
+        <p>Essences locales — douglas, mélèze, châtaignier. Pose à clins, à recouvrement, en bardeaux ou en claire-voie pour un bâti qui vieillit bien.</p>
+      </article>
+      <article class="skill" data-reveal>
+        <span class="skill__num">iv</span>
+        <div class="skill__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 12h18"/><path d="M12 3v18"/></svg>
+        </div>
+        <h3>Menuiserie</h3>
+        <p>Fenêtres, portes, volets, parquets, escaliers sur mesure. Bois massifs travaillés à l'atelier, posés par notre équipe.</p>
+      </article>
+      <article class="skill" data-reveal>
+        <span class="skill__num">v</span>
+        <div class="skill__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18"/><path d="M3 6h18"/><path d="M3 18h18"/></svg>
+        </div>
+        <h3>Isolation par l'extérieur</h3>
+        <p>ITE en fibre de bois sur ossature ou maçonnerie. Confort d'été, performance d'hiver, bâti qui respire.</p>
+      </article>
+      <article class="skill" data-reveal>
+        <span class="skill__num">vi</span>
+        <div class="skill__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16"/><path d="M6 16V8l3-2 3 2v8"/><path d="M12 20V4l3 2 3-2v16"/><path d="M6 12h6"/><path d="M12 8h6"/></svg>
+        </div>
+        <h3>Rénovation</h3>
+        <p>Reprise de charpentes anciennes, traitement des bois, consolidation de colombages. Le patrimoine breton mérite qu'on le tienne debout.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ========== VALEURS ========== -->
+<section class="section" id="valeurs" aria-labelledby="h-valeurs">
+  <div class="section-title">
+    <span class="num">III.</span>
+    <h2 id="h-valeurs">Nos valeurs</h2>
+    <span class="kicker">Trois principes, aucun compromis</span>
+  </div>
+  <div class="valeurs">
+    <article class="valeur" data-reveal>
+      <div class="valeur__roman">I</div>
+      <h3>Le bois d'abord</h3>
+      <p>Essences sélectionnées en scieries locales, débitées et stockées longuement. Nous n'employons que des bois que nous savons vieillir.</p>
+    </article>
+    <article class="valeur" data-reveal>
+      <div class="valeur__roman">II</div>
+      <h3>Le geste juste</h3>
+      <p>Assemblages traditionnels, outils à main quand il le faut, machines quand elles servent le trait. Toujours l'homme, jamais l'à-peu-près.</p>
+    </article>
+    <article class="valeur" data-reveal>
+      <div class="valeur__roman">III</div>
+      <h3>La parole donnée</h3>
+      <p>Un devis tenu, un délai annoncé, un chantier laissé propre. La confiance d'un client se gagne une seule fois, elle se perd d'un coup.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ========== RÉALISATIONS ========== -->
+<section class="section section--alt" id="realisations" aria-labelledby="h-realis">
+  <div class="section-inner">
+    <div class="section-title">
+      <span class="num">IV.</span>
+      <h2 id="h-realis">Nos réalisations</h2>
+      <span class="kicker">Quelques chantiers récents</span>
+    </div>
+    <div class="real-grid">
+      <figure class="real" data-reveal>
+        <div class="real__media" style="background-image:url('assets/maison-rose-rouge-dol.jpg')" role="img" aria-label="Maison La Rose Rouge à Dol-de-Bretagne"></div>
+        <figcaption class="real__caption">
+          <div>
+            <div class="real__city">Dol-de-Bretagne · 35</div>
+            <h3 class="real__title">Maison La Rose Rouge</h3>
+            <div class="real__type">Restauration · colombage</div>
+          </div>
+        </figcaption>
+      </figure>
+      <figure class="real real--bw" data-reveal>
+        <div class="real__media" style="background-image:url('assets/colombage-vannes.jpg')" role="img" aria-label="Maisons à colombages place Henri IV, Vannes"></div>
+        <figcaption class="real__caption">
+          <div>
+            <div class="real__city">Vannes · 56</div>
+            <h3 class="real__title">Place Henri IV</h3>
+            <div class="real__type">Réhabilitation · pans de bois XVIe</div>
+          </div>
+        </figcaption>
+      </figure>
+      <figure class="real" data-reveal>
+        <div class="real__media" style="background-image:url('assets/colombage-quimper.jpg')" role="img" aria-label="Maison ancienne à colombages au centre-ville de Quimper"></div>
+        <figcaption class="real__caption">
+          <div>
+            <div class="real__city">Quimper · 29</div>
+            <h3 class="real__title">Centre historique</h3>
+            <div class="real__type">Reprise de structure · bois ancien</div>
+          </div>
+        </figcaption>
+      </figure>
+      <figure class="real real--sepia" data-reveal>
+        <div class="real__media" style="background-image:url('assets/colombage-auray.jpg')" role="img" aria-label="Vieille maison à pans de bois, rue du Belzic à Auray"></div>
+        <figcaption class="real__caption">
+          <div>
+            <div class="real__city">Auray · 56</div>
+            <h3 class="real__title">Rue du Belzic</h3>
+            <div class="real__type">Restauration · pans de bois</div>
+          </div>
+        </figcaption>
+      </figure>
+      <figure class="real" data-reveal>
+        <div class="real__media" style="background-image:url('assets/maison-treseneran-treguier.jpg')" role="img" aria-label="Maison natale d'Ernest Renan à Tréguier"></div>
+        <figcaption class="real__caption">
+          <div>
+            <div class="real__city">Tréguier · 22</div>
+            <h3 class="real__title">Maison d'Ernest Renan</h3>
+            <div class="real__type">Charpente · Monuments historiques</div>
+          </div>
+        </figcaption>
+      </figure>
+      <figure class="real real--bw" data-reveal>
+        <div class="real__media" style="background-image:url('assets/colombage-limoges.jpg')" role="img" aria-label="Maison à colombages à Limoges"></div>
+        <figcaption class="real__caption">
+          <div>
+            <div class="real__city">Limoges · 87</div>
+            <h3 class="real__title">Hôtel particulier</h3>
+            <div class="real__type">Ossature · colombage</div>
+          </div>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ZONE D'INTERVENTION ========== -->
+<section class="section" id="zone" aria-labelledby="h-zone">
+  <div class="section-title">
+    <span class="num">V.</span>
+    <h2 id="h-zone">Zone d'intervention</h2>
+    <span class="kicker">Côtes-d'Armor &amp; pays voisins</span>
+  </div>
+  <div class="zone">
+    <div class="zone__intro" data-reveal>
+      <p>Depuis notre atelier de Brusvily, nous intervenons dans toute la Bretagne nord, de la côte d'Émeraude au pays de Fougères. Pour les chantiers plus lointains, nous étudions chaque demande — n'hésitez pas à nous consulter.</p>
+      <p>Déplacements gratuits pour les devis dans un rayon de 30 km autour de Dinan.</p>
+    </div>
+    <ul class="zone__list" data-reveal>
+      <li class="is-pri">Bassin principal</li>
+      <li>Dinan</li>
+      <li>Dinard</li>
+      <li>Saint-Malo</li>
+      <li>Cancale</li>
+      <li>Saint-Brieuc</li>
+      <li>Lamballe</li>
+      <li>Plancoët</li>
+      <li>Broons</li>
+      <li>Caulnes</li>
+      <li>Combourg</li>
+      <li>Dol-de-Bretagne</li>
+      <li>Tréguier</li>
+      <li>Lannion</li>
+      <li>Paimpol</li>
+      <li>Matignon</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ========== CONTACT ========== -->
+<section class="section section--alt" id="contact" aria-labelledby="h-contact">
+  <div class="section-inner">
+    <div class="section-title">
+      <span class="num">VI.</span>
+      <h2 id="h-contact">Nous contacter</h2>
+      <span class="kicker">Devis, visite, conseil</span>
+    </div>
+    <div class="contact">
+      <div class="contact__card" data-reveal>
+        <h3>SARL Rialland</h3>
+        <div class="contact__row">
+          <div class="contact__label">Adresse</div>
+          <div class="contact__value">Brusvily, 22100<br/>Côtes-d'Armor, Bretagne</div>
+        </div>
+        <div class="contact__row">
+          <div class="contact__label">Téléphone</div>
+          <div class="contact__value"><a href="tel:+33200000000">02 99 XX XX XX</a></div>
+        </div>
+        <div class="contact__row">
+          <div class="contact__label">Courriel</div>
+          <div class="contact__value"><a href="mailto:contact@sarl-rialland.fr">contact@sarl-rialland.fr</a></div>
+        </div>
+        <div class="contact__row">
+          <div class="contact__label">Gérant</div>
+          <div class="contact__value">Anthony Rialland</div>
+        </div>
+        <div class="contact__row">
+          <div class="contact__label">Horaires</div>
+          <div class="contact__value">Lun – Ven · 8 h – 18 h<br/>Sur rendez-vous</div>
+        </div>
+      </div>
+
+      <form class="contact__form" data-reveal aria-label="Formulaire de demande de devis" novalidate>
+        <div class="field">
+          <label for="f-name">Nom et prénom</label>
+          <input id="f-name" name="name" type="text" required autocomplete="name" />
+        </div>
+        <div class="field">
+          <label for="f-contact">Téléphone ou courriel</label>
+          <input id="f-contact" name="contact" type="text" required autocomplete="email" />
+        </div>
+        <div class="field">
+          <label for="f-type">Nature du projet</label>
+          <select id="f-type" name="type" required>
+            <option value="">— Choisir —</option>
+            <option>Charpente traditionnelle</option>
+            <option>Ossature bois</option>
+            <option>Bardage</option>
+            <option>Menuiserie</option>
+            <option>Isolation par l'extérieur</option>
+            <option>Rénovation du patrimoine</option>
+            <option>Autre / conseil</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-msg">Décrivez votre projet</label>
+          <textarea id="f-msg" name="message" rows="4" required></textarea>
+        </div>
+        <div class="contact__form-actions">
+          <button class="btn" type="submit">Envoyer ma demande</button>
+          <span class="form-note">Réponse sous 48 h ouvrées.</span>
+        </div>
+        <div class="form-status" role="status" aria-live="polite">
+          Merci, votre demande a bien été enregistrée. Anthony vous recontacte sous 48 h.
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="site-footer" role="contentinfo">
+  <div class="footer__inner">
+    <div>
+      <h4>SARL Rialland</h4>
+      <p>Charpentier à Brusvily, près de Dinan. Charpente traditionnelle, ossature bois, bardage, menuiserie, isolation par l'extérieur, rénovation du patrimoine.</p>
+    </div>
+    <div>
+      <h4>Aller plus loin</h4>
+      <ul>
+        <li><a href="#histoire">Notre histoire</a></li>
+        <li><a href="#savoir-faire">Savoir-faire</a></li>
+        <li><a href="#realisations">Réalisations</a></li>
+        <li><a href="#zone">Zone d'intervention</a></li>
+        <li><a href="#contact">Demander un devis</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Atelier</h4>
+      <p>Brusvily · 22100<br/>Côtes-d'Armor<br/>Bretagne</p>
+    </div>
+  </div>
+  <div class="footer__base">
+    <div>© <span id="year"></span> SARL Rialland — Tous droits réservés</div>
+    <div class="footer__demo">Démo générée par <strong>Sixelasco</strong></div>
+  </div>
+</footer>
+
+<script>
+/* Année courante dans le footer */
+(function () {
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+})();
+
+/* Reveal on scroll via IntersectionObserver */
+(function () {
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('[data-reveal]').forEach(function (el) { el.classList.add('is-in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('[data-reveal]').forEach(function (el) { io.observe(el); });
+})();
+
+/* Formulaire : soumission fictive pour la démo */
+(function () {
+  var form = document.querySelector('.contact__form');
+  if (!form) return;
+  var status = form.querySelector('.form-status');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+    if (status) {
+      status.classList.add('is-on');
+      status.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    form.reset();
+  });
+})();
+
+/* Smooth scroll pour ancres (avec respect prefers-reduced-motion géré par CSS) */
+(function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var id = a.getAttribute('href');
+      if (id.length < 2) return;
+      var target = document.querySelector(id);
+      if (!target) return;
+      e.preventDefault();
+      var headerH = document.querySelector('.site-header').offsetHeight;
+      var top = target.getBoundingClientRect().top + window.pageYOffset - headerH - 8;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

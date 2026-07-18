@@ -1,0 +1,1225 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f1e6d3">
+  <title>Créa Cob — Construction en terre et bâti écologique en Bretagne</title>
+  <meta name="description" content="Yann Briend, artisan bâtisseur en terre, pisé, enduits chaux-chanvre et isolation naturelle. Quévert, près de Dinan — interventions Dinan, Saint-Malo, Rennes, Côtes-d'Armor.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='14' fill='%23b35a3a'/><path d='M8 17c0-4 4-7 8-7s8 3 8 7' fill='none' stroke='%23f6ecdc' stroke-width='2.2' stroke-linecap='round'/></svg>">
+
+  <style>
+    /* ============== Design tokens (Créa Cob — terre) ============== */
+    :root {
+      --bg:        oklch(95.5% 0.025 75);     /* warm sand */
+      --surface:   oklch(91% 0.030 68);       /* clay */
+      --surface-2: oklch(88% 0.035 65);       /* deeper clay */
+      --fg:        oklch(28% 0.045 45);       /* deep umber */
+      --fg-soft:   oklch(40% 0.040 50);       /* softer umber */
+      --muted:     oklch(52% 0.025 60);       /* taupe */
+      --border:    oklch(82% 0.030 65);       /* warm border */
+      --accent:    oklch(58% 0.150 38);       /* deep terracotta */
+      --accent-2:  oklch(56% 0.075 130);      /* sage olive */
+
+      --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+      --font-body:    "Work Sans", system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+
+      --radius: 4px;
+      --radius-lg: 8px;
+      --shadow-sm: 0 1px 2px oklch(28% 0.045 45 / 0.06), 0 2px 8px oklch(28% 0.045 45 / 0.04);
+      --shadow-md: 0 4px 12px oklch(28% 0.045 45 / 0.08), 0 12px 32px oklch(28% 0.045 45 / 0.06);
+
+      --container: 1200px;
+      --gutter: clamp(20px, 4vw, 48px);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg:        oklch(20% 0.020 50);
+        --surface:   oklch(25% 0.025 50);
+        --surface-2: oklch(30% 0.030 50);
+        --fg:        oklch(92% 0.020 75);
+        --fg-soft:   oklch(78% 0.025 70);
+        --muted:     oklch(60% 0.020 65);
+        --border:    oklch(38% 0.025 55);
+        --accent:    oklch(68% 0.140 38);
+        --accent-2:  oklch(70% 0.080 130);
+      }
+    }
+
+    /* ============== Base ============== */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: clamp(15px, 1.05vw + 0.55rem, 17px);
+      line-height: 1.65;
+      color: var(--fg);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: var(--accent); text-decoration: none; transition: color .2s ease; }
+    a:hover, a:focus-visible { color: var(--fg); }
+    h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 500; letter-spacing: -0.01em; color: var(--fg); margin: 0; }
+    p { margin: 0 0 1em; }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+
+    .container {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding-inline: var(--gutter);
+    }
+
+    .eyebrow {
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: currentColor;
+      display: inline-block;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 24px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      border-radius: var(--radius);
+      border: 1px solid transparent;
+      transition: transform .2s ease, background .2s ease, color .2s ease, border-color .2s ease;
+      cursor: pointer;
+    }
+    .btn--primary {
+      background: var(--accent);
+      color: oklch(98% 0.010 80);
+    }
+    .btn--primary:hover, .btn--primary:focus-visible {
+      background: oklch(52% 0.155 38);
+      color: oklch(98% 0.010 80);
+      transform: translateY(-1px);
+    }
+    .btn--ghost {
+      background: transparent;
+      color: var(--fg);
+      border-color: var(--border);
+    }
+    .btn--ghost:hover, .btn--ghost:focus-visible {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .btn .arrow {
+      width: 18px; height: 18px;
+      display: inline-block;
+      transition: transform .2s ease;
+    }
+    .btn:hover .arrow, .btn:focus-visible .arrow { transform: translateX(3px); }
+
+    /* ============== Header ============== */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: oklch(95.5% 0.025 75 / 0.85);
+      backdrop-filter: saturate(140%) blur(10px);
+      -webkit-backdrop-filter: saturate(140%) blur(10px);
+      border-bottom: 1px solid oklch(82% 0.030 65 / 0.6);
+    }
+    .site-header__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-block: 14px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--fg);
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 0.005em;
+    }
+    .brand:hover { color: var(--fg); }
+    .brand__mark {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: inline-flex; align-items: center; justify-content: center;
+      color: oklch(98% 0.010 80);
+    }
+    .brand__mark svg { width: 18px; height: 18px; }
+    .brand small {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+    .site-header__nav {
+      display: none;
+      gap: 28px;
+      align-items: center;
+    }
+    .site-header__nav a {
+      color: var(--fg-soft);
+      font-size: 14px;
+      font-weight: 400;
+      position: relative;
+    }
+    .site-header__nav a:hover, .site-header__nav a:focus-visible {
+      color: var(--accent);
+    }
+    .site-header__actions {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .site-header__phone {
+      display: none;
+      color: var(--fg);
+      font-size: 14px;
+      font-weight: 500;
+      gap: 8px;
+      align-items: center;
+    }
+    .site-header__phone svg { width: 16px; height: 16px; }
+    .site-header__phone:hover, .site-header__phone:focus-visible { color: var(--accent); }
+    .nav-toggle {
+      background: transparent;
+      border: 1px solid var(--border);
+      width: 42px; height: 42px;
+      border-radius: var(--radius);
+      display: inline-flex; align-items: center; justify-content: center;
+      color: var(--fg);
+      cursor: pointer;
+    }
+    .nav-toggle svg { width: 22px; height: 22px; }
+    .nav-toggle:hover, .nav-toggle:focus-visible { border-color: var(--accent); }
+
+    @media (min-width: 880px) {
+      .site-header__nav { display: inline-flex; }
+      .site-header__phone { display: inline-flex; }
+      .nav-toggle { display: none; }
+    }
+
+    /* mobile menu */
+    .mobile-menu {
+      display: none;
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 18px var(--gutter) 24px;
+    }
+    .mobile-menu.is-open { display: block; }
+    .mobile-menu a {
+      display: block;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      color: var(--fg);
+      font-size: 16px;
+    }
+    .mobile-menu a:last-of-type { border-bottom: 0; }
+    .mobile-menu__cta { margin-top: 16px; }
+
+    /* ============== Hero ============== */
+    .hero {
+      padding-block: clamp(48px, 8vw, 96px) clamp(56px, 9vw, 120px);
+      position: relative;
+    }
+    .hero__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: clamp(32px, 5vw, 64px);
+      align-items: center;
+    }
+    .hero__title {
+      font-size: clamp(2.4rem, 5.5vw, 4.6rem);
+      line-height: 1.04;
+      font-weight: 500;
+      letter-spacing: -0.018em;
+      margin-bottom: 24px;
+    }
+    .hero__title em {
+      font-style: italic;
+      color: var(--accent);
+      font-weight: 400;
+    }
+    .hero__lede {
+      font-size: clamp(1.05rem, 1.2vw, 1.18rem);
+      line-height: 1.6;
+      color: var(--fg-soft);
+      max-width: 52ch;
+      margin-bottom: 32px;
+    }
+    .hero__cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .hero__image {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--surface);
+      box-shadow: var(--shadow-md);
+    }
+    .hero__image img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .hero__image-caption {
+      position: absolute;
+      bottom: 18px; left: 18px;
+      background: oklch(95.5% 0.025 75 / 0.92);
+      backdrop-filter: blur(6px);
+      color: var(--fg);
+      font-size: 12px;
+      padding: 8px 14px;
+      border-radius: var(--radius);
+      letter-spacing: 0.04em;
+    }
+    .hero__signature {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 36px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+    .hero__signature .dot {
+      width: 8px; height: 8px; border-radius: 50%; background: var(--accent-2);
+    }
+    .hero__signature p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .hero__signature strong { color: var(--fg); font-weight: 500; }
+
+    @media (min-width: 880px) {
+      .hero__grid { grid-template-columns: 1.05fr 1fr; gap: 80px; }
+    }
+
+    /* ============== Section primitives ============== */
+    section { padding-block: clamp(64px, 9vw, 120px); }
+    .section__head {
+      max-width: 720px;
+      margin-bottom: clamp(40px, 6vw, 72px);
+    }
+    .section__head h2 {
+      font-size: clamp(1.9rem, 3.5vw, 3rem);
+      line-height: 1.1;
+      margin: 14px 0 18px;
+      font-weight: 500;
+    }
+    .section__head p {
+      color: var(--fg-soft);
+      font-size: clamp(1rem, 1.1vw, 1.1rem);
+      max-width: 56ch;
+    }
+    .section--surface { background: var(--surface); }
+
+    /* ============== Services — alternating blocks ============== */
+    .services {
+      position: relative;
+    }
+    .service {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: clamp(24px, 4vw, 48px);
+      align-items: center;
+      margin-bottom: clamp(64px, 8vw, 100px);
+      position: relative;
+    }
+    .service:last-of-type { margin-bottom: 0; }
+    .service__num {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 5vw, 4.5rem);
+      font-weight: 500;
+      color: var(--accent);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+    .service__media {
+      aspect-ratio: 4 / 3;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+    }
+    .service__media img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .service__body h3 {
+      font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+      line-height: 1.15;
+      margin: 12px 0 16px;
+      font-weight: 500;
+    }
+    .service__body p {
+      color: var(--fg-soft);
+      font-size: 1.02rem;
+      margin-bottom: 18px;
+    }
+    .service__list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 8px;
+    }
+    .service__list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 15px;
+      color: var(--fg-soft);
+    }
+    .service__list li::before {
+      content: "";
+      width: 6px; height: 6px;
+      background: var(--accent-2);
+      border-radius: 50%;
+      margin-top: 9px;
+      flex-shrink: 0;
+    }
+
+    @media (min-width: 760px) {
+      .service { grid-template-columns: 1fr 1fr; gap: 80px; }
+      .service--reverse .service__media { order: 2; }
+      .service--reverse .service__body { order: 1; }
+    }
+
+    /* ============== Manifesto ============== */
+    .manifesto {
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .manifesto h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.12;
+      font-weight: 500;
+      margin-bottom: 36px;
+    }
+    .manifesto h2 em { color: var(--accent); font-style: italic; font-weight: 400; }
+    .manifesto p {
+      font-size: clamp(1.05rem, 1.2vw, 1.18rem);
+      line-height: 1.75;
+      color: var(--fg-soft);
+      margin-bottom: 1.4em;
+    }
+    .manifesto p:first-of-type::first-letter {
+      font-family: var(--font-display);
+      font-size: 4.2em;
+      float: left;
+      line-height: 0.85;
+      padding: 6px 14px 0 0;
+      color: var(--accent);
+      font-weight: 500;
+    }
+    .manifesto__sig {
+      margin-top: 40px;
+      font-family: var(--font-display);
+      font-style: italic;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    /* ============== Materials ============== */
+    .materials {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    .material {
+      background: oklch(95.5% 0.025 75);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    }
+    .material:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent);
+      box-shadow: var(--shadow-sm);
+    }
+    .material__swatch {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      margin-bottom: 6px;
+      border: 1px solid oklch(82% 0.030 65 / 0.5);
+    }
+    .material h3 {
+      font-size: 1.3rem;
+      font-weight: 500;
+      margin: 0;
+    }
+    .material p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--fg-soft);
+      margin: 0;
+    }
+
+    @media (min-width: 600px) {
+      .materials { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 980px) {
+      .materials { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    /* ============== Work grid ============== */
+    .work {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+    .work__item {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+      aspect-ratio: 4 / 3;
+    }
+    .work__item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform .8s ease;
+    }
+    .work__item:hover img { transform: scale(1.04); }
+    .work__item-label {
+      position: absolute;
+      inset: auto 14px 14px 14px;
+      background: oklch(95.5% 0.025 75 / 0.94);
+      backdrop-filter: blur(8px);
+      padding: 10px 14px;
+      border-radius: var(--radius);
+      font-size: 13px;
+      color: var(--fg);
+      font-weight: 500;
+    }
+    .work__item-label small {
+      display: block;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+
+    @media (min-width: 600px)  { .work { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 980px)  { .work { grid-template-columns: repeat(3, 1fr); } }
+
+    /* ============== Zone ============== */
+    .zone {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    .zone__copy h2 {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      line-height: 1.15;
+      margin: 14px 0 18px;
+      font-weight: 500;
+    }
+    .zone__copy p { color: var(--fg-soft); }
+    .zone__list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: oklch(95.5% 0.025 75);
+      overflow: hidden;
+    }
+    .zone__list li {
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--border);
+      font-size: 15px;
+      color: var(--fg);
+    }
+    .zone__list li:not(:last-child) {
+      border-right: 1px solid var(--border);
+    }
+    @media (min-width: 760px) {
+      .zone { grid-template-columns: 1fr 1.2fr; gap: 64px; }
+    }
+
+    /* ============== Contact ============== */
+    .contact {
+      background: var(--surface-2);
+      border-radius: var(--radius-lg);
+      padding: clamp(36px, 6vw, 64px);
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .contact__info h2 {
+      font-size: clamp(1.9rem, 3.2vw, 2.6rem);
+      line-height: 1.15;
+      margin: 14px 0 18px;
+      font-weight: 500;
+    }
+    .contact__info p { color: var(--fg-soft); margin-bottom: 24px; }
+    .contact__lines { display: grid; gap: 14px; }
+    .contact__line {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 15px;
+    }
+    .contact__line .ico {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      background: oklch(95.5% 0.025 75);
+      display: inline-flex; align-items: center; justify-content: center;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+    .contact__line .ico svg { width: 16px; height: 16px; }
+    .contact__line small {
+      display: block;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+    .contact__line a, .contact__line span { color: var(--fg); }
+
+    .form {
+      background: oklch(95.5% 0.025 75);
+      border-radius: var(--radius-lg);
+      padding: clamp(24px, 4vw, 36px);
+      display: grid;
+      gap: 16px;
+    }
+    .form__row { display: grid; gap: 16px; }
+    @media (min-width: 600px) {
+      .form__row { grid-template-columns: 1fr 1fr; }
+    }
+    .form label {
+      display: block;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+    .form input, .form textarea, .form select {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: oklch(98% 0.010 80);
+      color: var(--fg);
+      font-family: inherit;
+      font-size: 15px;
+      transition: border-color .2s ease;
+    }
+    .form input:focus, .form textarea:focus, .form select:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    .form textarea { min-height: 120px; resize: vertical; }
+    .form__submit { margin-top: 8px; }
+    .form__notice {
+      font-size: 12px;
+      color: var(--muted);
+      margin: 0;
+    }
+    @media (min-width: 880px) {
+      .contact { grid-template-columns: 1fr 1.1fr; gap: 56px; align-items: start; }
+    }
+
+    /* ============== Footer ============== */
+    .site-footer {
+      padding-block: 40px 28px;
+      border-top: 1px solid var(--border);
+      margin-top: 80px;
+    }
+    .site-footer__row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .site-footer a { color: var(--fg-soft); }
+    .site-footer a:hover { color: var(--accent); }
+    .site-footer__credit {
+      font-family: var(--font-display);
+      font-style: italic;
+      color: var(--fg-soft);
+    }
+
+    /* ============== Reveal on scroll ============== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: none;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        transition-duration: 0.001ms !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+      html { scroll-behavior: auto; }
+    }
+
+    /* ============== Decorative timeline line ============== */
+    .services-decor {
+      position: absolute;
+      left: 50%;
+      top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(180deg, transparent, var(--border) 8%, var(--border) 92%, transparent);
+      transform: translateX(-50%);
+      z-index: 0;
+      display: none;
+    }
+    @media (min-width: 760px) {
+      .services { position: relative; }
+      .services-decor { display: block; }
+    }
+    .service { position: relative; z-index: 1; }
+  </style>
+</head>
+<body>
+
+  <!-- ============== Header ============== -->
+  <header class="site-header" data-od-id="site-header">
+    <div class="container site-header__inner">
+      <a href="#top" class="brand" data-od-id="brand">
+        <span class="brand__mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 12c2-3 5-5 9-5s7 2 9 5"/>
+            <path d="M5 17c2-2 4-3 7-3s5 1 7 3"/>
+          </svg>
+        </span>
+        <span>
+          Créa Cob
+          <small>Construction en terre</small>
+        </span>
+      </a>
+
+      <nav class="site-header__nav" aria-label="Navigation principale">
+        <a href="#savoir-faire">Savoir-faire</a>
+        <a href="#approche">Approche</a>
+        <a href="#materiaux">Matériaux</a>
+        <a href="#realisations">Réalisations</a>
+        <a href="#zone">Zone</a>
+      </nav>
+
+      <div class="site-header__actions">
+        <a class="site-header__phone" href="tel:+33200000000" data-od-id="phone-header">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          02 00 00 00 00
+        </a>
+        <a class="btn btn--primary" href="#contact" data-od-id="cta-header">
+          Prendre contact
+          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </a>
+        <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu" data-od-id="nav-toggle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobile-menu" id="mobile-menu" data-od-id="mobile-menu">
+      <a href="#savoir-faire">Savoir-faire</a>
+      <a href="#approche">Approche</a>
+      <a href="#materiaux">Matériaux</a>
+      <a href="#realisations">Réalisations</a>
+      <a href="#zone">Zone</a>
+      <a href="#contact" class="btn btn--primary mobile-menu__cta" style="width: 100%; justify-content: center;">Prendre contact</a>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============== Hero ============== -->
+    <section class="hero" data-od-id="hero">
+      <div class="container hero__grid">
+        <div class="reveal">
+          <span class="eyebrow">Quévert · Côtes-d'Armor</span>
+          <h1 class="hero__title">Bâtir en terre,<br><em>vivre en harmonie</em></h1>
+          <p class="hero__lede">
+            Artisan bâtisseur en construction écologique, je conçois et réalise des ouvrages en terre crue, pisé, enduits chaux-chanvre et isolation naturelle. Un habitat sain, durable, ancré dans le paysage breton.
+          </p>
+          <div class="hero__cta">
+            <a class="btn btn--primary" href="#contact" data-od-id="cta-hero">
+              Parler de votre projet
+              <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"/>
+                <polyline points="12 5 19 12 12 19"/>
+              </svg>
+            </a>
+            <a class="btn btn--ghost" href="#savoir-faire">Découvrir les savoir-faire</a>
+          </div>
+
+          <div class="hero__signature">
+            <span class="dot" aria-hidden="true"></span>
+            <p><strong>Yann Briend</strong> — fondateur de Créa Cob, artisan passionné depuis 2012</p>
+          </div>
+        </div>
+
+        <div class="hero__image reveal">
+          <img src="assets/hero-cob-construction.jpg"
+               alt="Mains d'une bâtisseuse travaillant un mur en cob, mélange d'argile, de sable et de paille"
+               width="800" height="1000" loading="eager" decoding="async" data-od-id="hero-image">
+          <span class="hero__image-caption">Argile · paille · eau · terre</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== Savoir-faire (4 services, alternating) ============== -->
+    <section class="section--surface" id="savoir-faire" data-od-id="savoir-faire">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="eyebrow">Nos savoir-faire</span>
+          <h2>Quatre gestes, un même langage&nbsp;: la terre crue</h2>
+          <p>Chaque technique répond à un usage et à un bâti. Je choisis avec vous la matière la plus juste, en cohérence avec votre maison, votre sol et votre climat.</p>
+        </div>
+
+        <div class="services">
+          <div class="services-decor" aria-hidden="true"></div>
+
+          <article class="service reveal" data-od-id="service-1">
+            <div class="service__media">
+              <img src="assets/service-pise.jpg"
+                   alt="Mur en pisé non stabilisé dans la vallée de la Saône — texture stratifiée ocre et terre"
+                   width="1200" height="900" loading="lazy" decoding="async">
+            </div>
+            <div class="service__body">
+              <span class="service__num">01</span>
+              <h3>Construction en terre &amp; pisé</h3>
+              <p>Murs porteurs, cloisons et petits ouvrages en terre crue, mis en œuvre par compaction manuelle (pisé) ou par levée de bauge. Une technique millénaire qui régule naturellement l'hygrométrie de votre maison.</p>
+              <ul class="service__list">
+                <li>Murs en pisé de 40 à 60 cm d'épaisseur, inertie thermique élevée</li>
+                <li>Bauge pour bâtiments annexes, abris, murs de jardin</li>
+                <li>Terre prélevée sur site ou à proximité quand c'est possible</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="service service--reverse reveal" data-od-id="service-2">
+            <div class="service__media">
+              <img src="assets/service-enduit.jpg"
+                   alt="Mur ancien en cob rejointoyé, sentier de campagne — texture d'enduit naturel patiné"
+                   width="1200" height="900" loading="lazy" decoding="async">
+            </div>
+            <div class="service__body">
+              <span class="service__num">02</span>
+              <h3>Enduits terre &amp; chaux</h3>
+              <p>Revêtements intérieurs et extérieurs respirants, formulés avec des argiles locales, de la chaux aérienne et des sables choisis. Ils laissent le mur respirer, régulent l'humidité et donnent une matière vivante aux volumes.</p>
+              <ul class="service__list">
+                <li>Enduits de corps, de finition, stucs et badigeons</li>
+                <li>Chaux-chanvre pour corriger les ponts thermiques</li>
+                <li>Teintes naturelles obtenues par pigments minéraux</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="service reveal" data-od-id="service-3">
+            <div class="service__media">
+              <img src="assets/service-isolation.jpg"
+                   alt="Mur en béton de chanvre projeté — texture fibreuse claire et régulière"
+                   width="1200" height="900" loading="lazy" decoding="async">
+            </div>
+            <div class="service__body">
+              <span class="service__num">03</span>
+              <h3>Isolation naturelle</h3>
+              <p>Isolation par l'intérieur ou l'extérieur en matériaux biosourcés&nbsp;: chanvre, fibre de bois, chaux-chanvre. Performances thermiques et acoustiques élevées, sans concession sur la qualité de l'air intérieur.</p>
+              <ul class="service__list">
+                <li>Chaux-chanvre projeté ou banché, perspirant</li>
+                <li>Fibre de bois en panneaux ou en vrac insufflé</li>
+                <li>Chanvre en rouleau pour cloisons et rampants</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="service service--reverse reveal" data-od-id="service-4">
+            <div class="service__media">
+              <img src="assets/service-renovation.jpg"
+                   alt="Mur en pisé épais du Eden Project, Cornouailles — couches de terre compactée ocre et chaude"
+                   width="1200" height="900" loading="lazy" decoding="async">
+            </div>
+            <div class="service__body">
+              <span class="service__num">04</span>
+              <h3>Rénovation écologique</h3>
+              <p>Remise en état de bâtis anciens, longères, granges et maisons en pierre. Rejointoiements à la chaux, reprises de murs en terre, isolation par l'intérieur sans étouffer la paroi. Le bâti respire, vous aussi.</p>
+              <ul class="service__list">
+                <li>Diagnostic du bâti existant, identification des pathologies</li>
+                <li>Rejointoiements chaux, réfection de colombages en torchis</li>
+                <li>Amélioration thermique compatible avec le bâti ancien</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== Approche / Manifesto ============== -->
+    <section id="approche" data-od-id="approche">
+      <div class="container">
+        <div class="manifesto reveal">
+          <span class="eyebrow">Notre approche</span>
+          <h2>Construire <em>avec</em> la terre,<br>pas contre elle.</h2>
+
+          <p>La terre est partout sous nos pieds. Elle est locale, recyclable à l'infini, et ne demande qu'un peu d'eau et d'huile de coude pour devenir mur, enduit ou isolant. Avant d'être un matériau, c'est une manière de penser le bâti&nbsp;: prendre le temps, écouter le sol, accepter que la maison vive avec son environnement.</p>
+
+          <p>Je travaille essentiellement la terre crue et la chaux aérienne — deux matières qui respirent. Elles régulent l'humidité, stockent la chaleur, n'émettent aucun composé organique volatil. Le confort hygrothermique qui en résulte est sans équivalent&nbsp;: frais en été, tempéré en hiver, une atmosphère saine en toute saison.</p>
+
+          <p>Chaque chantier est unique. Une longère près de Dinan n'a pas les mêmes besoins qu'une extension à Saint-Malo ou qu'une maison neuve du côté de Rennes. Avant de poser la truelle, je viens sur place, je regarde le sol, j'écoute le bâti, j'échange avec vous. C'est cette attention initiale qui garantit un ouvrage juste — et durable.</p>
+
+          <p>Enfin, je crois aux filières courtes. La terre vient du site ou d'une carrière voisine, le sable d'un carrier breton, la chaux d'un producteur français, le chanvre d'un chanvrier du Grand Ouest. Moins de transport, plus de sens, et un bâti qui raconte quelque chose de son territoire.</p>
+
+          <p class="manifesto__sig">— Yann Briend, Créa Cob</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== Matériaux ============== -->
+    <section class="section--surface" id="materiaux" data-od-id="materiaux">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="eyebrow">Matériaux</span>
+          <h2>Quatre matières brutes, travaillées à la main</h2>
+          <p>Des ressources locales, sans transformation industrielle lourde, qui conservent leurs qualités après la pose.</p>
+        </div>
+
+        <div class="materials">
+          <article class="material reveal" data-od-id="material-1">
+            <span class="material__swatch" style="background: oklch(58% 0.110 50);" aria-hidden="true"></span>
+            <h3>Terre crue</h3>
+            <p>Argile, limon, sable. Prélevée à proximité, elle structure murs et enduits. Stocke la chaleur, régule l'humidité, finit en poussière au démontage — jamais en déchet.</p>
+          </article>
+
+          <article class="material reveal" data-od-id="material-2">
+            <span class="material__swatch" style="background: oklch(85% 0.060 90);" aria-hidden="true"></span>
+            <h3>Chaux aérienne</h3>
+            <p>Cuite au bois, éteinte et mûrie plusieurs mois. Permet aux murs de continuer à respirer. Antibactérienne naturelle, elle assainit les volumes sans traitement chimique.</p>
+          </article>
+
+          <article class="material reveal" data-od-id="material-3">
+            <span class="material__swatch" style="background: oklch(78% 0.060 130);" aria-hidden="true"></span>
+            <h3>Chanvre &amp; fibre de bois</h3>
+            <p>Fibres végétales locales, légères, isolantes. Associées à la chaux, elles donnent un matériau perspirant aux excellentes performances thermiques et acoustiques.</p>
+          </article>
+
+          <article class="material reveal" data-od-id="material-4">
+            <span class="material__swatch" style="background: oklch(72% 0.080 65);" aria-hidden="true"></span>
+            <h3>Sable &amp; granulats</h3>
+            <p>Sables de carrierons bretons, granulats de schiste ou de brique pilée. Choisis pour leur granulométrie, ils donnent corps et tenue aux mortiers et bétons de terre.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== Réalisations ============== -->
+    <section id="realisations" data-od-id="realisations">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="eyebrow">Nos réalisations</span>
+          <h2>Quelques chantiers, en Bretagne et au-delà</h2>
+          <p>Une sélection de projets récents — longères, extensions, rénovations, murs de soutènement. Chaque ouvrage est le fruit d'un échange avec ses occupants et d'une lecture attentive du lieu.</p>
+        </div>
+
+        <div class="work">
+          <figure class="work__item reveal" data-od-id="work-1">
+            <img src="assets/work-cob-house.jpg"
+                 alt="Maison en cob construite à partir d'argile et de paille trouvées sur le site"
+                 width="1200" height="900" loading="lazy" decoding="async">
+            <figcaption class="work__item-label">
+              <small>2024 · Cob</small>
+              Maison en cob — Notre-Dame-des-Landes
+            </figcaption>
+          </figure>
+
+          <figure class="work__item reveal" data-od-id="work-2">
+            <img src="assets/work-maison-terre.jpg"
+                 alt="Maison en terre battue, Cameroun — texture ocre naturelle et bois local"
+                 width="1200" height="900" loading="lazy" decoding="async">
+            <figcaption class="work__item-label">
+              <small>2023 · Terre battue</small>
+              Habitat en terre — Cameroun
+            </figcaption>
+          </figure>
+
+          <figure class="work__item reveal" data-od-id="work-3">
+            <img src="assets/service-pise.jpg"
+                 alt="Mur en pisé non stabilisé — texture stratifiée ocre et beige"
+                 width="1200" height="900" loading="lazy" decoding="async">
+            <figcaption class="work__item-label">
+              <small>2024 · Pisé</small>
+              Mur de soutènement — vallée de la Saône
+            </figcaption>
+          </figure>
+
+          <figure class="work__item reveal" data-od-id="work-4">
+            <img src="assets/service-enduit.jpg"
+                 alt="Vieux mur en cob rejointoyé — sentier de campagne anglais"
+                 width="1200" height="900" loading="lazy" decoding="async">
+            <figcaption class="work__item-label">
+              <small>2023 · Enduit chaux</small>
+              Rejointoiement longère — Côtes-d'Armor
+            </figcaption>
+          </figure>
+
+          <figure class="work__item reveal" data-od-id="work-5">
+            <img src="assets/service-isolation.jpg"
+                 alt="Mur en béton de chanvre — texture fibreuse et claire"
+                 width="1200" height="900" loading="lazy" decoding="async">
+            <figcaption class="work__item-label">
+              <small>2024 · Chaux-chanvre</small>
+              Isolation par l'extérieur — Rennes
+            </figcaption>
+          </figure>
+
+          <figure class="work__item reveal" data-od-id="work-6">
+            <img src="assets/service-renovation.jpg"
+                 alt="Mur épais en pisé du Eden Project, Cornouailles"
+                 width="1200" height="900" loading="lazy" decoding="async">
+            <figcaption class="work__item-label">
+              <small>2023 · Rénovation</small>
+              Reprise de mur en pisé — Saint-Malo
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== Zone ============== -->
+    <section class="section--surface" id="zone" data-od-id="zone">
+      <div class="container">
+        <div class="zone">
+          <div class="zone__copy reveal">
+            <span class="eyebrow">Zone d'intervention</span>
+            <h2>Basé à Quévert, j'interviens partout en Côtes-d'Armor et au-delà</h2>
+            <p>Atelier et stockage situés à Quévert, près de Dinan. Déplacements réguliers dans tout le département, en Ille-et-Vilaine et sur le littoral breton. Pour les chantiers plus lointains, étude au cas par cas.</p>
+          </div>
+          <ul class="zone__list reveal">
+            <li>Dinan</li>
+            <li>Quévert</li>
+            <li>Saint-Malo</li>
+            <li>Rennes</li>
+            <li>Dinard</li>
+            <li>Lannion</li>
+            <li>Guingamp</li>
+            <li>Saint-Brieuc</li>
+            <li>Caen</li>
+            <li>Vannes</li>
+            <li>Lorient</li>
+            <li>Brest</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== Contact ============== -->
+    <section id="contact" data-od-id="contact">
+      <div class="container">
+        <div class="contact reveal">
+          <div class="contact__info">
+            <span class="eyebrow">Contact</span>
+            <h2>Parlez-moi de votre projet, en deux mots comme en détail</h2>
+            <p>Une longère à rénover, une extension à isoler, un mur en pisé à reconstruire&nbsp;? Décrivez-moi ce que vous avez en tête — je reviens vers vous sous 48&nbsp;heures pour en discuter, sur place si possible.</p>
+
+            <div class="contact__lines">
+              <div class="contact__line">
+                <span class="ico" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                  </svg>
+                </span>
+                <div>
+                  <small>Atelier</small>
+                  <span>Quévert, 22100 — près de Dinan</span>
+                </div>
+              </div>
+
+              <div class="contact__line">
+                <span class="ico" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                  </svg>
+                </span>
+                <div>
+                  <small>Téléphone</small>
+                  <a href="tel:+33200000000">02 00 00 00 00</a>
+                </div>
+              </div>
+
+              <div class="contact__line">
+                <span class="ico" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                  </svg>
+                </span>
+                <div>
+                  <small>Courriel</small>
+                  <a href="mailto:contact@creacob.fr">contact@creacob.fr</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <form class="form" data-od-id="contact-form" onsubmit="event.preventDefault(); this.querySelector('.form__success').hidden = false; this.querySelector('button[type=submit]').textContent = 'Envoyé — merci'; this.querySelector('button[type=submit]').disabled = true;">
+            <div class="form__row">
+              <div>
+                <label for="name">Votre nom</label>
+                <input id="name" name="name" type="text" autocomplete="name" required>
+              </div>
+              <div>
+                <label for="phone">Téléphone</label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel">
+              </div>
+            </div>
+            <div>
+              <label for="email">Courriel</label>
+              <input id="email" name="email" type="email" autocomplete="email" required>
+            </div>
+            <div>
+              <label for="subject">Nature du projet</label>
+              <select id="subject" name="subject">
+                <option>Construction neuve en terre / pisé</option>
+                <option>Enduits terre ou chaux</option>
+                <option>Isolation naturelle</option>
+                <option>Rénovation écologique</option>
+                <option>Autre / conseil</option>
+              </select>
+            </div>
+            <div>
+              <label for="message">Votre message</label>
+              <textarea id="message" name="message" required></textarea>
+            </div>
+            <button type="submit" class="btn btn--primary form__submit" data-od-id="cta-contact">
+              Envoyer ma demande
+              <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"/>
+                <polyline points="12 5 19 12 12 19"/>
+              </svg>
+            </button>
+            <p class="form__notice">Vos données restent confidentielles. Réponse sous 48&nbsp;heures.</p>
+            <p class="form__success" hidden style="color: var(--accent-2); font-weight: 500; font-size: 14px;">Merci, votre message a bien été envoyé. Je reviens vers vous très vite.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============== Footer ============== -->
+  <footer class="site-footer" data-od-id="site-footer">
+    <div class="container site-footer__row">
+      <div>
+        <strong style="color: var(--fg);">Créa Cob</strong> · Yann Briend · Quévert, Côtes-d'Armor
+      </div>
+      <div class="site-footer__credit">
+        Démo générée par <a href="https://sixelasco.fr" rel="noopener">Sixelasco</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    (function() {
+      var btn = document.querySelector('[data-od-id="nav-toggle"]');
+      var menu = document.getElementById('mobile-menu');
+      if (!btn || !menu) return;
+      btn.addEventListener('click', function() {
+        var open = menu.classList.toggle('is-open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      menu.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A') {
+          menu.classList.remove('is-open');
+          btn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    })();
+
+    // Reveal on scroll
+    (function() {
+      if (!('IntersectionObserver' in window)) {
+        document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('is-visible'); });
+        return;
+      }
+      var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+      document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
+    })();
+  </script>
+</body>
+</html>
