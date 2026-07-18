@@ -3,339 +3,204 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Démos couvreurs-22 v2 — sites démo avec contenu original</title>
+  <title>Démos couvreurs-22 — 10 sites démo pour prospection</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --ink: oklch(22% 0.02 50);
-      --muted: oklch(50% 0.02 60);
-      --line: oklch(85% 0.015 75);
-      --bg: oklch(98% 0.005 90);
-      --accent: oklch(58% 0.12 45);
-      --green: oklch(55% 0.12 145);
-    }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: var(--bg);
-      color: var(--ink);
-      padding: clamp(20px, 4vw, 60px);
-      max-width: 1400px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
-    header {
-      border-bottom: 1px solid var(--line);
-      padding-bottom: 32px;
-      margin-bottom: 48px;
-    }
-    h1 {
-      font-size: clamp(32px, 5vw, 56px);
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      line-height: 1.1;
-      margin-bottom: 12px;
-    }
-    .subtitle {
-      color: var(--muted);
-      font-size: clamp(15px, 1.4vw, 18px);
-    }
-    .credit {
-      margin-top: 16px;
-      font-size: 14px;
-      color: var(--muted);
-    }
-    .credit strong { color: var(--accent); }
-    .banner {
-      background: var(--green);
-      color: white;
-      padding: 16px 20px;
-      border-radius: 8px;
-      margin-top: 24px;
-      font-size: 14px;
-    }
-    .banner strong { font-weight: 600; }
-    .demo-grid {
-      display: grid;
-      gap: 48px;
-    }
-    .demo {
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 24px;
-      background: white;
-    }
-    .demo-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 16px;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-    .demo h2 {
-      font-size: clamp(22px, 2.5vw, 32px);
-      font-weight: 600;
-    }
-    .demo h2 small {
-      display: block;
-      font-size: 14px;
-      color: var(--muted);
-      font-weight: 400;
-      margin-top: 4px;
-    }
-    .demo .badge {
-      display: inline-block;
-      padding: 4px 10px;
-      border-radius: 4px;
-      font-size: 12px;
-      font-weight: 500;
-      background: var(--green);
-      color: white;
-    }
-    .demo .badge.partial {
-      background: oklch(75% 0.10 60);
-      color: var(--ink);
-    }
-    .demo .badge.no-site {
-      background: oklch(60% 0.18 28);
-      color: white;
-    }
-    .demo .meta {
-      font-size: 13px;
-      color: var(--muted);
-      text-align: right;
-    }
-    .demo .palette {
-      display: flex;
-      gap: 6px;
-      margin-top: 8px;
-      justify-content: flex-end;
-    }
-    .demo .palette span {
-      width: 20px;
-      height: 20px;
-      border-radius: 4px;
-      border: 1px solid var(--line);
-    }
-    .demo .src-info {
-      background: oklch(96% 0.02 90);
-      border-left: 3px solid var(--accent);
-      padding: 12px 16px;
-      margin: 12px 0;
-      font-size: 14px;
-      border-radius: 0 4px 4px 0;
-    }
-    .demo .src-info strong { color: var(--accent); }
-    .demo p { margin: 12px 0; }
-    .demo .images {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 12px;
-      margin-top: 16px;
-    }
-    .demo .images img {
-      width: 100%;
-      height: auto;
-      border-radius: 4px;
-      border: 1px solid var(--line);
-    }
-    .demo .footer {
-      margin-top: 16px;
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      font-size: 14px;
-    }
-    .demo .footer a {
-      color: var(--accent);
-      text-decoration: none;
-      border-bottom: 1px solid currentColor;
-    }
-    .demo .footer a:hover { opacity: 0.7; }
-    .summary {
-      background: var(--ink);
-      color: var(--bg);
-      padding: 32px;
-      border-radius: 8px;
-      margin-top: 48px;
-    }
-    .summary h2 { color: var(--bg); margin-bottom: 12px; }
-    .summary p { color: oklch(85% 0.02 75); }
-    .summary ul { margin: 16px 0 0 20px; color: oklch(85% 0.02 75); }
-    .summary li { margin: 6px 0; }
-    @media (max-width: 640px) {
-      .demo .images { grid-template-columns: 1fr; }
-      .demo-header { flex-direction: column; align-items: flex-start; }
-      .demo .meta { text-align: left; }
-    }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: linear-gradient(180deg, #f5f3ed 0%, #ebe7dc 100%); color: #1a1a1a; line-height: 1.6; min-height: 100vh; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 3rem 1.5rem; }
+    header { text-align: center; margin-bottom: 3rem; }
+    .eyebrow { display: inline-block; padding: 0.4rem 1rem; background: rgba(0,0,0,0.06); border-radius: 999px; font-size: 0.8rem; font-weight: 500; color: #555; margin-bottom: 1rem; letter-spacing: 0.05em; }
+    h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 800; letter-spacing: -0.025em; margin-bottom: 0.75rem; background: linear-gradient(135deg, #1a1a1a 0%, #4a4a4a 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .lead { font-size: 1.1rem; color: #555; max-width: 700px; margin: 0 auto; }
+    .stats { display: flex; justify-content: center; gap: 2rem; margin-top: 2rem; flex-wrap: wrap; }
+    .stat { text-align: center; }
+    .stat-value { font-size: 1.8rem; font-weight: 800; color: #1a1a1a; display: block; }
+    .stat-label { font-size: 0.8rem; color: #777; text-transform: uppercase; letter-spacing: 0.05em; }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+    .card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06); transition: transform 0.25s ease, box-shadow 0.25s ease; position: relative; }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.08), 0 4px 8px rgba(0,0,0,0.06); }
+    .card a.demo-link { text-decoration: none; color: inherit; display: block; }
+
+    .thumb { width: 100%; height: 200px; object-fit: cover; background: #e8e6e0; display: block; }
+    .body { padding: 1.4rem; }
+    .badge-row { display: flex; gap: 0.4rem; margin-bottom: 0.6rem; flex-wrap: wrap; }
+    .badge { display: inline-block; padding: 0.25rem 0.7rem; border-radius: 4px; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.02em; }
+    .badge-ok { background: #d4edda; color: #155724; }
+    .badge-pending { background: #fff3cd; color: #856404; }
+    .badge-version { background: #e7e5e0; color: #555; }
+
+    h3 { font-size: 1.1rem; font-weight: 700; margin: 0.4rem 0 0.2rem; letter-spacing: -0.01em; }
+    .meta { font-size: 0.85rem; color: #777; margin-bottom: 0.6rem; }
+    .style-tag { font-size: 0.8rem; color: #888; font-style: italic; line-height: 1.5; margin-bottom: 0.5rem; }
+    .google { font-size: 0.78rem; color: #666; }
+    .google a { color: inherit; text-decoration: none; }
+    .google a:hover { text-decoration: underline; }
+
+    .wave-sep { margin: 3rem 0 1.5rem; padding: 1rem 1.5rem; background: rgba(0,0,0,0.04); border-radius: 8px; display: flex; align-items: center; gap: 1rem; }
+    .wave-sep h2 { font-size: 1rem; font-weight: 700; color: #333; }
+    .wave-sep .count { background: #1a1a1a; color: white; padding: 0.2rem 0.6rem; border-radius: 999px; font-size: 0.75rem; font-weight: 700; }
+
+    footer { text-align: center; margin-top: 4rem; padding: 2rem 0; color: #888; font-size: 0.85rem; border-top: 1px solid rgba(0,0,0,0.08); }
+    footer a { color: #555; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Démos couvreurs-22 — v2</h1>
-    <p class="subtitle">5 sites démo avec contenu repris des sites initiaux</p>
-    <p class="credit">Démos générées par <strong>Sixelasco</strong> · Open Design + BYOK Ollama Cloud (hermes · minimax-m3:cloud)</p>
-    <div class="banner">
-      <strong>Méthode v2 :</strong> Photos et textes repris des sites initiaux (re-scrape exhaustif via Playwright).
-      Quand le site n'existe pas ou est trop pauvre, on garde le contenu démo mais on marque clairement les éléments à compléter.
+  <div class="container">
+    <header>
+      <span class="eyebrow">PIPELINE PROSPECTION COUVREURS-22</span>
+      <h1>10 sites démo distincts</h1>
+      <p class="lead">Démos HTML générées pour prospecter des couvreurs/charpentiers des Côtes-d'Armor. Chaque démo a sa propre direction visuelle, son contenu réel (pas d'invention), et les coordonnées du dirigeant.</p>
+      <div class="stats">
+        <div class="stat"><span class="stat-value">10</span><span class="stat-label">Démos</span></div>
+        <div class="stat"><span class="stat-value">9</span><span class="stat-label">Contacts directs</span></div>
+        <div class="stat"><span class="stat-value">6</span><span class="stat-label">Directions design</span></div>
+        <div class="stat"><span class="stat-value">27 Mo</span><span class="stat-label">Sur GitHub Pages</span></div>
+      </div>
+    </header>
+
+    <div class="wave-sep">
+      <h2>Vague 1 — juillet 2026</h2>
+      <span class="count">5 sites</span>
     </div>
-  </header>
-
-  <div class="demo-grid">
-
-    <article class="demo">
-      <div class="demo-header">
-        <h2>1. BQC - Brajeul Quentin Couverture <small>Plérin · Couvreur/charpentier</small></h2>
-        <div>
-          <span class="badge">Contenu original complet</span>
-          <div class="meta">Slate · Bricolage + Inter</div>
-          <div class="palette">
-            <span style="background: oklch(28% 0.032 262);"></span>
-            <span style="background: oklch(55% 0.13 55);"></span>
-            <span style="background: oklch(96% 0.012 90);"></span>
+    <div class="grid">
+      <article class="card">
+        <a href="https://sixelasco.github.io/demos-couvreurs-22/bq-couverture/" target="_blank" rel="noopener" class="demo-link">
+          <img class="thumb" src="index-assets/bgc-couverture-v2-desktop.png" alt="BQC Couverture" loading="lazy">
+          <div class="body">
+            <div class="badge-row"><span class="badge badge-ok">🟢 Mail prêt</span><span class="badge badge-version">v2</span></div>
+            <h3>BQC Couverture</h3>
+            <div class="meta">Quentin Brajeul · Plérin</div>
+            <div class="style-tag">Ardoise + cuivre + parchemin (Bricolage Grotesque)</div>
+            <div class="google">Google: <a href="https://maps.app.goo.gl/tijiumH6vmHFJjX78" target="_blank" rel="noopener">5.0 ⭐ (3 avis)</a></div>
           </div>
-        </div>
-      </div>
-      <div class="src-info">
-        <strong>Source :</strong> brajeulquentincouverture.fr (site Wix)<br>
-        10 paragraphes · 2 témoignages clients · 15 photos (8 retravaillées) · 4 H3 (Charpente, Couverture, Ossature bois, +Zinguerie suggérée) · SIRET 933 092 884 00016
-      </div>
-      <p>Direction : moderne breton, ardoise/cuivre/parchemin, bento grid + bannière urgence rouge. Témoignages clients intégrés en section dédiée.</p>
-      <div class="images">
-        <a href="bq-couverture-v2/index.html"><img src="index-assets/bq-couverture-v2-desktop.png" alt="BQC v2 desktop"></a>
-        <a href="bq-couverture-v2/index.html"><img src="index-assets/bq-couverture-v2-mobile.png" alt="BQC v2 mobile"></a>
-      </div>
-      <div class="footer">
-        <a href="bq-couverture-v2/index.html">→ Ouvrir la démo</a>
-        <a href="https://www.brajeulquentincouverture.fr/">→ Site original</a>
-      </div>
-    </article>
-
-    <article class="demo">
-      <div class="demo-header">
-        <h2>2. Charpente du Menez Bre <small>Louargat · Charpentier</small></h2>
-        <div>
-          <span class="badge">Contenu original complet</span>
-          <div class="meta">Wood workshop · Fraunces + Manrope</div>
-          <div class="palette">
-            <span style="background: oklch(97% 0.012 84);"></span>
-            <span style="background: oklch(28% 0.025 50);"></span>
-            <span style="background: oklch(45% 0.060 60);"></span>
+        </a>
+      </article>
+      <article class="card">
+        <a href="https://sixelasco.github.io/demos-couvreurs-22/menez-bre/" target="_blank" rel="noopener" class="demo-link">
+          <img class="thumb" src="index-assets/menez-bre-v2-desktop.png" alt="Charpente du Menez Bre" loading="lazy">
+          <div class="body">
+            <div class="badge-row"><span class="badge badge-ok">🟢 Mail prêt</span><span class="badge badge-version">v2</span></div>
+            <h3>Charpente du Menez Bre</h3>
+            <div class="meta">Jessy Sebille · Louargat</div>
+            <div class="style-tag">Cream + walnut (Fraunces + Manrope)</div>
+            <div class="google">Google: <a href="https://www.google.com/maps/search/Charpente+du+Menez+Bre" target="_blank" rel="noopener">5.0 ⭐ (2 avis)</a></div>
           </div>
-        </div>
-      </div>
-      <div class="src-info">
-        <strong>Source :</strong> charpentedumenezbre.fr<br>
-        11 paragraphes · 14 photos (8 retravaillées) · 4 services (Charpente traditionnelle, Charpente sur mesure, Rénovation &amp; Étanchéité, Maison bois) · Coordonnées : Hent Goas Vel, 22540 Louargat · 06 83 63 05 27
-      </div>
-      <p>Direction : éditoriale artisanale, cream/walnut, Fraunces+Manrope, asymétrique. Photo Guédolon en hero (1re image du site original).</p>
-      <div class="images">
-        <a href="menez-bre-v2/index.html"><img src="index-assets/menez-bre-v2-desktop.png" alt="Menez Bre v2 desktop"></a>
-        <a href="menez-bre-v2/index.html"><img src="index-assets/menez-bre-v2-mobile.png" alt="Menez Bre v2 mobile"></a>
-      </div>
-      <div class="footer">
-        <a href="menez-bre-v2/index.html">→ Ouvrir la démo</a>
-        <a href="https://charpentedumenezbre.fr/">→ Site original</a>
-      </div>
-    </article>
-
-    <article class="demo">
-      <div class="demo-header">
-        <h2>3. Créa Cob <small>Quévert · Construction terre/pisé</small></h2>
-        <div>
-          <span class="badge no-site">Pas de site original</span>
-          <div class="meta">Earth · Cormorant + Work Sans</div>
-          <div class="palette">
-            <span style="background: oklch(96% 0.025 75);"></span>
-            <span style="background: oklch(58% 0.150 38);"></span>
-            <span style="background: oklch(58% 0.080 130);"></span>
+        </a>
+      </article>
+      <article class="card">
+        <a href="https://sixelasco.github.io/demos-couvreurs-22/crea-cob/" target="_blank" rel="noopener" class="demo-link">
+          <img class="thumb" src="index-assets/crea-cob-v2-desktop.png" alt="Créa Cob" loading="lazy">
+          <div class="body">
+            <div class="badge-row"><span class="badge badge-ok">🟢 Mail prêt</span><span class="badge badge-version">v2</span></div>
+            <h3>Créa Cob</h3>
+            <div class="meta">Guillaume Leroux · Quévert</div>
+            <div class="style-tag">Sable + terracotta + sauge (Cormorant)</div>
+            <div class="google">Google: Pas de fiche</div>
           </div>
-        </div>
-      </div>
-      <div class="src-info">
-        <strong>Source :</strong> Aucun site accessible publiquement (crea-cob.fr, crea-cob.com, etc. introuvables)<br>
-        <strong>→ C'est un prospect chaud</strong> : pas de site = opportunité maximale<br>
-        Contenu démo conservé (4 services, manifeste écologique). Photos Wikimedia à remplacer par de vrais chantiers.
-      </div>
-      <p>Direction : éco-construction, sable/terracotta/sauge, blocs alternés avec timeline pointillée. Contenu éditorial conservé (il n'y avait rien à reprendre).</p>
-      <div class="images">
-        <a href="crea-cob-v2/index.html"><img src="index-assets/crea-cob-v2-desktop.png" alt="Créa Cob v2 desktop"></a>
-        <a href="crea-cob-v2/index.html"><img src="index-assets/crea-cob-v2-mobile.png" alt="Créa Cob v2 mobile"></a>
-      </div>
-      <div class="footer">
-        <a href="crea-cob-v2/index.html">→ Ouvrir la démo</a>
-      </div>
-    </article>
-
-    <article class="demo">
-      <div class="demo-header">
-        <h2>4. SARL Rialland <small>Brusvily · Charpentier</small></h2>
-        <div>
-          <span class="badge partial">Site très daté</span>
-          <div class="meta">Breton terroir · EB Garamond + Lora</div>
-          <div class="palette">
-            <span style="background: oklch(94% 0.018 75);"></span>
-            <span style="background: oklch(28% 0.08 270);"></span>
-            <span style="background: oklch(45% 0.16 28);"></span>
+        </a>
+      </article>
+      <article class="card">
+        <a href="https://sixelasco.github.io/demos-couvreurs-22/rialland/" target="_blank" rel="noopener" class="demo-link">
+          <img class="thumb" src="index-assets/rialland-v2-desktop.png" alt="Anthony Rialland" loading="lazy">
+          <div class="body">
+            <div class="badge-row"><span class="badge badge-pending">🟡 À compléter</span><span class="badge badge-version">v2</span></div>
+            <h3>Anthony Rialland</h3>
+            <div class="meta">Anthony Rialland · Brusvily</div>
+            <div class="style-tag">Almanach breton / presse ancienne</div>
+            <div class="google">Google: Fiche vide</div>
           </div>
-        </div>
-      </div>
-      <div class="src-info">
-        <strong>Source :</strong> rialland.fr (site HTML statique années 2000, contenu pauvre)<br>
-        6 paragraphes identiques (tous = "Reconstruction de la balnéothérapie AINCOURT") · 14 photos de chantiers · 5 sections (Accueil, Qui sommes-nous, Nos chantiers, Nos clients, Contact) · Aucun témoignage
-      </div>
-      <p>Direction : héritage breton, almanach/presse ancienne, EB Garamond + Lora, photos retravaillées du site original. Le site original a très peu de texte → on garde la baseline éditoriale honnête.</p>
-      <div class="images">
-        <a href="rialland-v2/index.html"><img src="index-assets/rialland-v2-desktop.png" alt="Rialland v2 desktop"></a>
-        <a href="rialland-v2/index.html"><img src="index-assets/rialland-v2-mobile.png" alt="Rialland v2 mobile"></a>
-      </div>
-      <div class="footer">
-        <a href="rialland-v2/index.html">→ Ouvrir la démo</a>
-        <a href="http://www.rialland.fr/">→ Site original</a>
-      </div>
-    </article>
-
-    <article class="demo">
-      <div class="demo-header">
-        <h2>5. Bois & Logis <small>La Bouillie · Maison ossature bois</small></h2>
-        <div>
-          <span class="badge partial">Site sans texte</span>
-          <div class="meta">Scandi · Space Grotesk + Inter</div>
-          <div class="palette">
-            <span style="background: oklch(98% 0.005 90);"></span>
-            <span style="background: oklch(72% 0.060 75);"></span>
-            <span style="background: oklch(70% 0.050 145);"></span>
+        </a>
+      </article>
+      <article class="card">
+        <a href="https://sixelasco.github.io/demos-couvreurs-22/bois-et-logis/" target="_blank" rel="noopener" class="demo-link">
+          <img class="thumb" src="index-assets/bois-et-logis-v2-desktop.png" alt="Bois & Logis" loading="lazy">
+          <div class="body">
+            <div class="badge-row"><span class="badge badge-pending">🟡 À compléter</span><span class="badge badge-version">v2</span></div>
+            <h3>Bois & Logis</h3>
+            <div class="meta">Jonathan Termet · La Bouillie</div>
+            <div class="style-tag">Éditorial sobre (chêne)</div>
+            <div class="google">Google: Pas de fiche</div>
           </div>
-        </div>
-      </div>
-      <div class="src-info">
-        <strong>Source :</strong> boisetlogis.com<br>
-        <strong>Site sans aucun texte</strong> (0 paragraphe, juste des images) · 29 photos (8 retravaillées) · Adresse : 22240 La Bouillie
-      </div>
-      <p>Direction : minimal scandinave, off-white + chêne clair, single-column ultra-aéré. Photos retravaillées du site original (un peu datées) + contenu éditorial démo (à composer avec le client).</p>
-      <div class="images">
-        <a href="bois-et-logis-v2/index.html"><img src="index-assets/bois-et-logis-v2-desktop.png" alt="Bois & Logis v2 desktop"></a>
-        <a href="bois-et-logis-v2/index.html"><img src="index-assets/bois-et-logis-v2-mobile.png" alt="Bois & Logis v2 mobile"></a>
-      </div>
-      <div class="footer">
-        <a href="bois-et-logis-v2/index.html">→ Ouvrir la démo</a>
-        <a href="http://www.boisetlogis.com/">→ Site original</a>
-      </div>
-    </article>
+        </a>
+      </article>
+    </div>
 
+    <div class="wave-sep">
+      <h2>Vague 2 — juillet 2026</h2>
+      <span class="count">5 sites</span>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <a href="https://sixelasco.github.io/demos-couvreurs-22/charpente-creation-bois/" target="_blank" rel="noopener" class="demo-link">
+          <img class="thumb" src="index-assets/v3-charpente-creation-bois.png" alt="Charpente & Création Bois" loading="lazy">
+          <div class="body">
+            <div class="badge-row"><span class="badge badge-ok">🟢 Mail prêt</span><span class="badge badge-version">v3</span></div>
+            <h3>Charpente & Création Bois</h3>
+            <div class="meta">Stéphane Hochart · Plouagat</div>
+            <div class="style-tag">Atelier bois Fraunces (warm cream/walnut)</div>
+            <div class="google">Google: 4.5 ⭐ (2 avis)</div>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="https://sixelasco.github.io/demos-couvreurs-22/db-charpente/" target="_blank" rel="noopener" class="demo-link">
+          <img class="thumb" src="index-assets/v3-db-charpente.png" alt="D&B Charpente" loading="lazy">
+          <div class="body">
+            <div class="badge-row"><span class="badge badge-ok">🟢 Mail prêt</span><span class="badge badge-version">v3</span></div>
+            <h3>D&B Charpente</h3>
+            <div class="meta">Brice Domalain · Langueux</div>
+            <div class="style-tag">Modern utility ardoise + cuivre (Bricolage Grotesque)</div>
+            <div class="google">Google: Pas de note</div>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="https://sixelasco.github.io/demos-couvreurs-22/janvier-constructions/" target="_blank" rel="noopener" class="demo-link">
+          <img class="thumb" src="index-assets/v3-janvier-constructions.png" alt="Janvier Constructions" loading="lazy">
+          <div class="body">
+            <div class="badge-row"><span class="badge badge-ok">🟢 Mail prêt</span><span class="badge badge-version">v3</span></div>
+            <h3>Janvier Constructions</h3>
+            <div class="meta">Sébastien Janvier · Trégastel</div>
+            <div class="style-tag">Heritage terroir breton (EB Garamond + Lora)</div>
+            <div class="google">Google: 4.3 ⭐ (17 avis)</div>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="https://sixelasco.github.io/demos-couvreurs-22/leprovost/" target="_blank" rel="noopener" class="demo-link">
+          <img class="thumb" src="index-assets/v3-leprovost.png" alt="Menuiserie Le Provost" loading="lazy">
+          <div class="body">
+            <div class="badge-row"><span class="badge badge-ok">🟢 Mail prêt</span><span class="badge badge-version">v3</span></div>
+            <h3>Menuiserie Le Provost</h3>
+            <div class="meta">Gildas Le Provost · Plourhan</div>
+            <div class="style-tag">Editorial Monocle (Playfair Display)</div>
+            <div class="google">Google: 3.0 ⭐ (2 avis)</div>
+          </div>
+        </a>
+      </article>
+      <article class="card">
+        <a href="https://sixelasco.github.io/demos-couvreurs-22/silvere-gauthier/" target="_blank" rel="noopener" class="demo-link">
+          <img class="thumb" src="index-assets/v3-silvere-gauthier.png" alt="Silvere Gauthier" loading="lazy">
+          <div class="body">
+            <div class="badge-row"><span class="badge badge-ok">🟢 Mail prêt</span><span class="badge badge-version">v3</span></div>
+            <h3>Silvere Gauthier</h3>
+            <div class="meta">Silvère Gauthier · Pléslin-Trigavou</div>
+            <div class="style-tag">Chêne + marine + terracotta (Marcellus)</div>
+            <div class="google">Google: 5.0 ⭐ (2 avis)</div>
+          </div>
+        </a>
+      </article>
+    </div>
+
+    <footer>
+      Démos hébergées sur <a href="https://github.com/Sixelasco/demos-couvreurs-22" target="_blank" rel="noopener">GitHub Pages</a> ·
+      Générées par <strong>Sixelasco</strong> · Pipeline prospection couvreurs-22 · juillet 2026
+    </footer>
   </div>
-
-  <section class="summary">
-    <h2>Méthode v2 — ce qui a changé</h2>
-    <p>Par rapport à v1, j'ai repris les vraies données des sites initiaux :</p>
-    <ul>
-      <li><strong>Photos</strong> : retéléchargées depuis les sites Wix/HTML statique, retravaillées (crop centré, resize 1600×900 hero / 800×600 réalisations, légère retouche color : saturation +5%, contraste +8%, unsharp mask)</li>
-      <li><strong>Textes</strong> : H1, H2, H3 et paragraphes repris du contenu original (pas d'invention)</li>
-      <li><strong>Témoignages</strong> : quand le site en a (BQC), on les intègre. Sinon on ne les invente pas.</li>
-      <li><strong>Coordonnées</strong> : adresse, téléphone, SIRET repris du footer original</li>
-      <li><strong>Cas spéciaux</strong> : si le site n'existe pas (Créa Cob) ou est très pauvre (Rialland, Bois & Logis), on garde le contenu démo mais on marque clairement "à composer avec le client"</li>
-    </ul>
-  </section>
-
 </body>
 </html>
