@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Silvère Gauthier — Charpentier couvreur · Bresse & Dombes</title>
+  <meta name="description" content="Atelier de charpente traditionnelle, industrielle, ossature bois et couverture-zinguerie. Savoir-faire artisanal au service de vos projets en Bresse, Dombes et Val de Saône." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      /* Palette : chêne clair + bleu marine + terracotta */
+      --bg:#f3ecdf;            /* chêne clair — fond */
+      --surface:#ece2cf;       /* chêne clair slightly deeper */
+      --fg:#0e2240;            /* bleu marine — texte principal */
+      --fg-soft:#1f3354;       /* bleu marine assoupli */
+      --muted:#6b6557;         /* beige taupe */
+      --border:#c8b89a;        /* chêne ombré */
+      --accent:#c0532a;        /* terracotta — accent vif */
+      --accent-soft:#e07a4f;   /* terracotta hover */
+      --paper:#fbf7ee;         /* papier presque blanc */
+      --ink:#0a1a33;           /* bleu marine très profond */
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Inter',system-ui,-apple-system,Segoe UI,Helvetica,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--fg);
+      line-height:1.6;
+      font-weight:400;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+    h1,h2,h3,h4{
+      font-family:'Marcellus',Georgia,'Times New Roman',serif;
+      font-weight:400;
+      letter-spacing:.005em;
+      line-height:1.12;
+      color:var(--ink);
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block;height:auto}
+    .container{max-width:1240px;margin:0 auto;padding:0 32px}
+
+    /* ─── Top bar ────────────────────────────────────── */
+    .topbar{
+      position:sticky;top:0;z-index:50;
+      background:rgba(243,236,223,.86);
+      backdrop-filter:saturate(1.2) blur(10px);
+      -webkit-backdrop-filter:saturate(1.2) blur(10px);
+      border-bottom:1px solid var(--border);
+    }
+    .topbar-inner{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:18px 32px;max-width:1240px;margin:0 auto;
+    }
+    .brand{
+      display:flex;align-items:center;gap:14px;
+      font-family:'Marcellus',serif;font-size:22px;letter-spacing:.04em;
+    }
+    .brand-mark{
+      width:38px;height:38px;border-radius:50%;
+      background:var(--ink);color:var(--bg);
+      display:grid;place-items:center;
+      font-family:'Marcellus',serif;font-size:20px;
+    }
+    .nav{display:flex;gap:34px;align-items:center}
+    .nav a{
+      font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+      color:var(--fg-soft);font-weight:500;
+      position:relative;padding:6px 0;
+    }
+    .nav a:hover{color:var(--accent)}
+    .nav-cta{
+      background:var(--ink);color:var(--bg);
+      padding:11px 22px;border-radius:999px;
+      font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;
+      transition:background .2s ease;
+    }
+    .nav-cta:hover{background:var(--accent)}
+
+    /* ─── Hero ───────────────────────────────────────── */
+    .hero{
+      position:relative;
+      min-height:min(88vh,780px);
+      display:grid;grid-template-columns:1.15fr 1fr;
+      gap:0;
+      background:var(--paper);
+      overflow:hidden;
+    }
+    .hero-photo{
+      position:relative;overflow:hidden;
+    }
+    .hero-photo img{
+      width:100%;height:100%;object-fit:cover;
+      filter:saturate(1.02) contrast(1.03);
+    }
+    .hero-photo::after{
+      content:"";position:absolute;inset:0;
+      background:linear-gradient(100deg,transparent 60%,rgba(243,236,223,.18) 100%);
+      pointer-events:none;
+    }
+    .hero-content{
+      padding:88px 72px 80px 80px;
+      display:flex;flex-direction:column;justify-content:center;
+      background:var(--bg);
+    }
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:14px;
+      font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+      color:var(--accent);font-weight:600;
+      margin-bottom:28px;
+    }
+    .eyebrow::before{
+      content:"";width:36px;height:1px;background:var(--accent);
+    }
+    .hero h1{
+      font-size:clamp(40px,4.6vw,68px);
+      margin-bottom:28px;
+    }
+    .hero h1 em{
+      font-style:italic;color:var(--accent);
+    }
+    .hero-lede{
+      font-size:18px;color:var(--fg-soft);max-width:52ch;margin-bottom:40px;
+    }
+    .hero-meta{
+      display:flex;gap:36px;flex-wrap:wrap;
+      padding-top:32px;border-top:1px solid var(--border);
+    }
+    .hero-meta-item .num{
+      font-family:'Marcellus',serif;font-size:34px;color:var(--ink);line-height:1;
+    }
+    .hero-meta-item .lab{
+      font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+      color:var(--muted);margin-top:8px;
+    }
+
+    /* ─── Sections communes ──────────────────────────── */
+    section{padding:120px 0}
+    .section-head{
+      display:grid;grid-template-columns:1fr 1.4fr;gap:80px;
+      align-items:end;margin-bottom:72px;
+    }
+    .section-head .lab{
+      font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+      color:var(--accent);font-weight:600;
+      display:flex;align-items:center;gap:14px;margin-bottom:14px;
+    }
+    .section-head .lab::before{content:"";width:28px;height:1px;background:var(--accent)}
+    .section-head h2{
+      font-size:clamp(32px,3.4vw,52px);
+    }
+    .section-head p{
+      font-size:17px;color:var(--fg-soft);max-width:60ch;
+    }
+
+    /* ─── About ─────────────────────────────────────── */
+    .about{background:var(--bg)}
+    .about-grid{
+      display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px;
+    }
+    .about-card{
+      background:var(--paper);padding:36px 32px;
+      border:1px solid var(--border);border-radius:4px;
+      position:relative;
+    }
+    .about-card .num{
+      font-family:'Marcellus',serif;font-size:48px;color:var(--accent);
+      line-height:1;margin-bottom:20px;
+    }
+    .about-card h3{
+      font-size:22px;margin-bottom:12px;
+    }
+    .about-card p{font-size:15px;color:var(--fg-soft)}
+
+    /* ─── Services ─────────────────────────────────── */
+    .services{background:var(--surface)}
+    .services-grid{
+      display:grid;grid-template-columns:repeat(2,1fr);gap:0;
+      border:1px solid var(--border);background:var(--paper);
+    }
+    .service{
+      padding:48px 44px;
+      border-right:1px solid var(--border);
+      border-bottom:1px solid var(--border);
+      display:flex;flex-direction:column;gap:18px;
+      transition:background .25s ease;
+    }
+    .service:hover{background:var(--bg)}
+    .service:nth-child(2n){border-right:none}
+    .service:nth-last-child(-n+2){border-bottom:none}
+    .service-num{
+      font-family:'Marcellus',serif;font-size:14px;
+      color:var(--accent);letter-spacing:.18em;
+    }
+    .service h3{
+      font-size:28px;
+    }
+    .service p{
+      color:var(--fg-soft);font-size:15px;max-width:46ch;
+    }
+    .service ul{
+      list-style:none;margin-top:8px;display:grid;gap:6px;
+    }
+    .service li{
+      font-size:13px;letter-spacing:.04em;color:var(--fg-soft);
+      padding-left:18px;position:relative;
+    }
+    .service li::before{
+      content:"";position:absolute;left:0;top:10px;
+      width:8px;height:1px;background:var(--accent);
+    }
+
+    /* ─── Galerie ──────────────────────────────────── */
+    .gallery{background:var(--bg)}
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      grid-auto-rows:160px;gap:18px;
+    }
+    .gallery-item{
+      position:relative;overflow:hidden;border-radius:4px;
+      background:var(--ink);
+    }
+    .gallery-item img{
+      width:100%;height:100%;object-fit:cover;
+      transition:transform .8s cubic-bezier(.2,.7,.2,1);
+    }
+    .gallery-item:hover img{transform:scale(1.05)}
+    .gallery-item .cap{
+      position:absolute;left:18px;bottom:16px;
+      color:#fbf7ee;font-family:'Marcellus',serif;font-size:15px;
+      letter-spacing:.04em;
+      text-shadow:0 1px 12px rgba(0,0,0,.45);
+    }
+    /* Composition asymétrique */
+    .g-1{grid-column:span 7;grid-row:span 3}
+    .g-2{grid-column:span 5;grid-row:span 2}
+    .g-3{grid-column:span 5;grid-row:span 2}
+    .g-4{grid-column:span 6;grid-row:span 2}
+    .g-5{grid-column:span 6;grid-row:span 2}
+
+    /* ─── Contact ─────────────────────────────────── */
+    .contact{
+      background:var(--ink);color:var(--bg);
+      position:relative;overflow:hidden;
+    }
+    .contact h2{color:var(--bg)}
+    .contact .section-head .lab{color:var(--accent-soft)}
+    .contact .section-head .lab::before{background:var(--accent-soft)}
+    .contact .section-head p{color:rgba(243,236,223,.78)}
+    .contact-grid{
+      display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:start;
+    }
+    .contact-card{
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(243,236,223,.18);
+      padding:44px 40px;border-radius:4px;
+    }
+    .contact-row{
+      display:flex;align-items:center;gap:20px;
+      padding:22px 0;border-bottom:1px solid rgba(243,236,223,.12);
+    }
+    .contact-row:last-child{border-bottom:none}
+    .contact-row .ico{
+      width:46px;height:46px;border-radius:50%;
+      background:var(--accent);color:var(--paper);
+      display:grid;place-items:center;flex-shrink:0;
+      font-family:'Marcellus',serif;font-size:18px;
+    }
+    .contact-row .lab{
+      font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+      color:rgba(243,236,223,.6);margin-bottom:4px;
+    }
+    .contact-row .val{
+      font-family:'Marcellus',serif;font-size:22px;color:var(--bg);
+    }
+    .contact-row a.val:hover{color:var(--accent-soft)}
+    .contact-zone{
+      padding:8px 0;
+    }
+    .contact-zone .lab{
+      font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+      color:rgba(243,236,223,.6);margin-bottom:14px;
+    }
+    .contact-zone p{
+      font-size:18px;color:var(--bg);font-family:'Marcellus',serif;line-height:1.5;
+    }
+
+    /* ─── Footer ──────────────────────────────────── */
+    footer{
+      background:var(--ink);color:rgba(243,236,223,.7);
+      border-top:1px solid rgba(243,236,223,.12);
+      padding:36px 0;
+    }
+    .foot-inner{
+      display:flex;align-items:center;justify-content:space-between;gap:24px;
+      flex-wrap:wrap;
+    }
+    .foot-credit{
+      font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+      color:rgba(243,236,223,.55);
+    }
+    .foot-credit a{
+      color:var(--accent-soft);font-weight:600;
+    }
+    .foot-brand{
+      font-family:'Marcellus',serif;color:var(--bg);font-size:18px;
+      letter-spacing:.06em;
+    }
+
+    /* ─── Responsive ──────────────────────────────── */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr;min-height:auto}
+      .hero-photo{height:62vw;max-height:520px}
+      .hero-content{padding:56px 32px}
+      .section-head{grid-template-columns:1fr;gap:24px;margin-bottom:48px}
+      section{padding:80px 0}
+      .about-grid{grid-template-columns:1fr;gap:18px}
+      .services-grid{grid-template-columns:1fr}
+      .service{border-right:none !important;border-bottom:1px solid var(--border) !important}
+      .service:last-child{border-bottom:none !important}
+      .gallery-grid{grid-auto-rows:140px}
+      .g-1,.g-2,.g-3,.g-4,.g-5{grid-column:span 12;grid-row:span 2}
+      .contact-grid{grid-template-columns:1fr;gap:36px}
+      .nav{display:none}
+    }
+    @media (max-width:600px){
+      .container{padding:0 22px}
+      .topbar-inner{padding:14px 22px}
+      .hero h1{font-size:38px}
+      .hero-content{padding:48px 24px}
+      .contact-card{padding:32px 24px}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── Top bar ────────────────────────────────────── -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#top">
+        <span class="brand-mark">S</span>
+        <span>Silvère Gauthier</span>
+      </a>
+      <nav class="nav" aria-label="Navigation principale">
+        <a href="#atelier">L'atelier</a>
+        <a href="#services">Savoir-faire</a>
+        <a href="#realisations">Réalisations</a>
+        <a href="#contact" class="nav-cta">Nous contacter</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ─── Hero ───────────────────────────────────────── -->
+  <section class="hero" id="top">
+    <div class="hero-photo">
+      <img src="assets/charpente-moderne.jpg" alt="Charpente moderne réalisée par l'atelier Silvère Gauthier" />
+    </div>
+    <div class="hero-content">
+      <span class="eyebrow">Charpentier · Couvreur · Zingueur</span>
+      <h1>Le bois, le fer,<br/>et le geste juste<br/>depuis <em>1998</em>.</h1>
+      <p class="hero-lede">
+        De la charpente traditionnelle à l'ossature bois contemporaine, l'atelier Silvère Gauthier
+        conçoit et réalise vos ouvrages en Bresse, Dombes et Val de Saône — avec la même exigence
+        artisanale qu'au premier jour.
+      </p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <div class="num">25+</div>
+          <div class="lab">Années d'atelier</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="num">4</div>
+          <div class="lab">Corps d'état</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="num">100%</div>
+          <div class="lab">Fait main en atelier</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Atelier ────────────────────────────────────── -->
+  <section class="about" id="atelier">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="lab">L'atelier</div>
+          <h2>Un métier,<br/>une lignée.</h2>
+        </div>
+        <p>
+          Charpentier de père en fils, Silvère Gauthier a fondé son atelier en 1998 après un
+          tour de France et l'obtention de son CAP chez les Compagnons. Aujourd'hui, une équipe
+          de six compagnons travaille le bois massif français — douglas, chêne, châtaignier —
+          dans le respect des traditions de trait et des techniques modernes d'assemblage.
+        </p>
+      </div>
+
+      <div class="about-grid">
+        <article class="about-card">
+          <div class="num">01</div>
+          <h3>Le trait avant tout</h3>
+          <p>Chaque ouvrage est dessiné à la main, à l'échelle, sur le plancher de l'atelier —
+            comme dans les règles de l'art du compagnonnage.</p>
+        </article>
+        <article class="about-card">
+          <div class="num">02</div>
+          <h3>Bois local certifié</h3>
+          <p>Douglas du Beaujolais, chêne de Bresse, châtaignier d'Ardèche : nous travaillons
+            en circuit court avec les scieries de la région.</p>
+        </article>
+        <article class="about-card">
+          <div class="num">03</div>
+          <h3>De la ferme au loft</h3>
+          <p>Granges centenaires à rénover, longères à agrandir, constructions neuves ossature
+            bois : nous parlons tous les dialectes du bâti.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Services ───────────────────────────────────── -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="lab">Savoir-faire</div>
+          <h2>Quatre métiers,<br/>une signature.</h2>
+        </div>
+        <p>
+          Charpente, ossature, couverture, zinguerie : nos quatre corps d'état se répondent et
+          se complètent pour livrer des ouvrages cohérents, durables, et conçus dans un seul
+          élan — du premier coup de crayon au dernier raccord de gouttière.
+        </p>
+      </div>
+
+      <div class="services-grid">
+
+        <article class="service">
+          <span class="service-num">— 01</span>
+          <h3>Charpente traditionnelle</h3>
+          <p>Taillée, levée, assemblée sur site. Pannes, chevrons, entraits, poinçons : la
+            charpente à l'ancienne, dans le respect du trait et des assemblages tenon-mortaise.</p>
+          <ul>
+            <li>Granges, fermes, longères bressanes</li>
+            <li>Réhabilitation de toitures anciennes</li>
+            <li>Lucarnes, coyaux, débords de toit</li>
+          </ul>
+        </article>
+
+        <article class="service">
+          <span class="service-num">— 02</span>
+          <h3>Charpente industrielle</h3>
+          <p>Fabrication de fermettes et de charpentes standardisées pour les constructions
+            neuves, avec le même soin dans le calcul et le levage que pour nos ouvrages
+            traditionnels.</p>
+          <ul>
+            <li>Fermettes sur mesure</li>
+            <li>Pavillons, extensions, garages</li>
+            <li>Calculs de charges et plans EXE</li>
+          </ul>
+        </article>
+
+        <article class="service">
+          <span class="service-num">— 03</span>
+          <h3>Ossature bois</h3>
+          <p>Murs à ossature bois, planchers, bardages : la construction sèche, performante
+            thermiquement, rapide à monter. Idéale pour les extensions et les maisons neuves
+            bioclimatiques.</p>
+          <ul>
+            <li>Murs ossature bois (MOB)</li>
+            <li>Extensions et surélévations</li>
+            <li>Bardages douglas, mélèze, red cedar</li>
+          </ul>
+        </article>
+
+        <article class="service">
+          <span class="service-num">— 04</span>
+          <h3>Couverture &amp; zinguerie</h3>
+          <p>Tuiles plates, mécaniques, ardoises, bac acier, zinc, cuivre. Nos couvreurs
+            zingueurs assurent l'étanchéité de vos toits avec la précision que demande
+            l'ouvrage fini.</p>
+          <ul>
+            <li>Tuiles plates &amp; mécaniques</li>
+            <li>Zinguerie sur mesure (gouttières, chéneaux)</li>
+            <li>Réparation après tempête, isolation sarking</li>
+          </ul>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Galerie ────────────────────────────────────── -->
+  <section class="gallery" id="realisations">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="lab">Réalisations</div>
+          <h2>Quelques chantiers,<br/>beaucoup de bois.</h2>
+        </div>
+        <p>
+          Un échantillon de ce que l'atelier taille, lève et couvre chaque saison. Du colombage
+          millénaire à la maison bois contemporaine, la main reste la même.
+        </p>
+      </div>
+
+      <div class="gallery-grid">
+        <figure class="gallery-item g-1">
+          <img src="assets/charpente-moderne.jpg" alt="Charpente moderne d'une grande halle" />
+          <figcaption class="cap">Halle agricole — Dombes, 2024</figcaption>
+        </figure>
+        <figure class="gallery-item g-2">
+          <img src="assets/ossature-bois.jpg" alt="Construction ossature bois en cours de levage" />
+          <figcaption class="cap">Ossature bois — Val de Saône</figcaption>
+        </figure>
+        <figure class="gallery-item g-3">
+          <img src="assets/charpentier-1.jpg" alt="Compagnon au travail dans l'atelier" />
+          <figcaption class="cap">Taille en atelier</figcaption>
+        </figure>
+        <figure class="gallery-item g-4">
+          <img src="assets/charpente-traditionnelle.jpg" alt="Charpente traditionnelle d'une grange bressane" />
+          <figcaption class="cap">Charpente traditionnelle — ferme bressane</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Contact ────────────────────────────────────── -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="lab">Contact</div>
+          <h2>Parlons de<br/>votre projet.</h2>
+        </div>
+        <p>
+          Une grange à reprendre, une extension à concevoir, une toiture à refaire ?
+          Passez à l'atelier — le devis est gratuit et le café est chaud.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-row">
+            <span class="ico">@</span>
+            <div>
+              <div class="lab">Courriel</div>
+              <a class="val" href="mailto:gauthier.charpente@outlook.fr">gauthier.charpente@outlook.fr</a>
+            </div>
+          </div>
+          <div class="contact-row">
+            <span class="ico">☏</span>
+            <div>
+              <div class="lab">Téléphone</div>
+              <a class="val" href="tel:+33662410037">06 62 41 00 37</a>
+            </div>
+          </div>
+          <div class="contact-row">
+            <span class="ico">⌂</span>
+            <div>
+              <div class="lab">Atelier</div>
+              <div class="val" style="font-size:18px;line-height:1.5">Sur rendez-vous<br/>Bresse · Dombes · Val de Saône</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-zone">
+          <div class="lab">Zone d'intervention</div>
+          <p>
+            Bresse, Dombes, Val de Saône, Doux pays. Déplacements possibles sur
+            l'Ain, le Rhône, la Saône-et-Loire pour les chantiers de charpente
+            traditionnelle et d'ossature bois.
+          </p>
+
+          <div class="lab" style="margin-top:36px">Disponibilités</div>
+          <p>
+            Atelier ouvert du lundi au vendredi, 8 h — 18 h. Réponse sous 48 h
+            ouvrées à tout message reçu par courriel.
+          </p>
+
+          <a class="nav-cta" href="mailto:gauthier.charpente@outlook.fr?subject=Demande%20de%20devis"
+             style="display:inline-flex;margin-top:36px;background:var(--accent)">
+            Demander un devis
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Footer ────────────────────────────────────── -->
+  <footer>
+    <div class="container foot-inner">
+      <div class="foot-brand">Silvère Gauthier · Charpentier couvreur</div>
+      <div class="foot-credit">
+        Démo générée par <a href="#">Sixelasco</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
