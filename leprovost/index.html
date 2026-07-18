@@ -1,0 +1,830 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Menuiserie Le Provost — Atelier familial à Plourhan, depuis 1976</title>
+<meta name="description" content="Atelier familial de menuiserie et charpente à Plourhan, Côtes-d'Armor. Depuis 1976, ossature bois, charpente traditionnelle et menuiseries extérieures. Membre RGE." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  /* ---------- Tokens — Editorial Breton ---------- */
+  :root{
+    --ink:        #0E2A47;   /* deep breton navy — headlines, primary */
+    --cream:      #F5F0E6;   /* warm cream — secondary background */
+    --parchment:  #FBF8F2;   /* parchment white — main background */
+    --fog:        #D4D0C5;   /* lines, dividers */
+    --brume:      #8FA0AE;   /* muted text */
+    --hermine:    #C8462C;   /* rare accent — numbers, key CTAs */
+
+    --display:    "Playfair Display", "GT Sectra", "EB Garamond", Georgia, serif;
+    --serif:      "Source Serif 4", "Lora", Georgia, "Times New Roman", serif;
+    --mono:       "IBM Plex Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+
+    --maxw: 1280px;
+    --gutter: clamp(20px, 4vw, 56px);
+  }
+
+  *{ box-sizing: border-box; }
+  html, body{ margin:0; padding:0; }
+  html{ -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  body{
+    background: var(--parchment);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.6;
+    font-weight: 400;
+    font-feature-settings: "kern" 1, "liga" 1, "onum" 1;
+  }
+  img{ display:block; max-width:100%; height:auto; }
+  a{ color: inherit; text-decoration: none; }
+  ::selection{ background: var(--ink); color: var(--parchment); }
+
+  /* ---------- Type ---------- */
+  .eyebrow{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brume);
+    font-weight: 500;
+  }
+  .eyebrow.hermine{ color: var(--hermine); }
+  .eyebrow.ink{ color: var(--ink); }
+
+  h1, h2, h3, h4{ font-family: var(--display); color: var(--ink); margin: 0; line-height: 1.05; letter-spacing: -0.01em; }
+  h1{ font-weight: 600; font-size: clamp(44px, 7vw, 92px); }
+  h2{ font-weight: 600; font-size: clamp(34px, 4.6vw, 58px); letter-spacing: -0.015em; }
+  h3{ font-weight: 600; font-size: clamp(22px, 2.4vw, 30px); }
+  p{ margin: 0 0 1em; }
+
+  .lede{ font-size: clamp(18px, 1.4vw, 22px); line-height: 1.55; color: var(--ink); }
+  .smallcaps{ font-variant: small-caps; letter-spacing: 0.08em; }
+
+  .dropcap::first-letter{
+    font-family: var(--display);
+    float: left;
+    font-size: 5.4em;
+    line-height: 0.86;
+    padding: 0.08em 0.12em 0 0;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  /* ---------- Layout helpers ---------- */
+  .container{ max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter); }
+  .rule{ height: 1px; background: var(--fog); border: 0; margin: 0; }
+  .num{ font-family: var(--mono); color: var(--hermine); font-weight: 500; }
+
+  /* ---------- 01 — Masthead ---------- */
+  .masthead{
+    position: sticky; top: 0; z-index: 50;
+    background: var(--parchment);
+    border-bottom: 1px solid var(--fog);
+  }
+  .masthead .inner{
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 24px;
+    padding: 18px var(--gutter);
+    max-width: var(--maxw);
+    margin: 0 auto;
+  }
+  .wordmark{
+    font-family: var(--display);
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .wordmark .dot{ color: var(--hermine); }
+  nav.primary{
+    display: flex; gap: 28px; justify-content: center;
+    font-family: var(--serif); font-size: 14px;
+  }
+  nav.primary a{ color: var(--ink); padding: 4px 0; border-bottom: 1px solid transparent; transition: border-color .2s ease; }
+  nav.primary a:hover{ border-color: var(--ink); }
+  .masthead .phone{
+    justify-self: end;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink);
+    letter-spacing: 0.02em;
+  }
+  .masthead .phone .label{ color: var(--brume); margin-right: 8px; }
+  .menu-btn{ display:none; background:none; border:0; padding: 8px; cursor: pointer; }
+  .menu-btn span{ display:block; width: 22px; height: 1px; background: var(--ink); margin: 5px 0; }
+
+  /* ---------- 02 — Hero ---------- */
+  .hero{ position: relative; min-height: 88vh; display: grid; }
+  .hero .bg{
+    position: absolute; inset: 0;
+    background-image: url("assets/chantier/menuiserie-1.jpg");
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+  }
+  .hero .bg::after{
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(14,42,71,0.10) 0%, rgba(14,42,71,0.25) 45%, rgba(14,42,71,0.78) 100%);
+  }
+  .hero .content{
+    position: relative; z-index: 1;
+    align-self: end;
+    width: 100%;
+    padding: 0 var(--gutter) clamp(40px, 8vw, 90px);
+    color: #FBF8F2;
+  }
+  .hero .content .inner{ max-width: var(--maxw); margin: 0 auto; }
+  .hero h1{ color: #FBF8F2; max-width: 14ch; }
+  .hero .eyebrow-light{ color: rgba(251,248,242,0.85); margin-bottom: 20px; }
+  .hero .dek{
+    font-size: clamp(16px, 1.3vw, 19px);
+    line-height: 1.55;
+    max-width: 56ch;
+    margin: 24px 0 32px;
+    color: #F5F0E6;
+    opacity: 0.95;
+  }
+  .cta-row{ display: flex; align-items: baseline; gap: 28px; flex-wrap: wrap; }
+  .cta-primary{
+    font-family: var(--display);
+    font-size: 18px;
+    color: #FBF8F2;
+    padding: 0 0 6px;
+    border-bottom: 1px solid var(--hermine);
+    transition: padding .2s ease;
+  }
+  .cta-primary:hover{ padding-bottom: 9px; }
+  .cta-secondary{
+    font-family: var(--mono);
+    font-size: 13px;
+    color: #F5F0E6;
+    border-bottom: 1px solid rgba(245,240,230,0.4);
+    padding-bottom: 2px;
+  }
+  .hero .caption{
+    position: absolute; left: var(--gutter); bottom: 18px; z-index: 1;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em;
+    color: rgba(251,248,242,0.75);
+    text-transform: uppercase;
+  }
+
+  /* ---------- Generic section frame ---------- */
+  section{ padding: clamp(64px, 9vw, 120px) 0; }
+  .sec-head{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 48px;
+    align-items: end;
+    margin-bottom: clamp(40px, 5vw, 64px);
+  }
+  .sec-head .label{ padding-bottom: 8px; border-bottom: 1px solid var(--fog); }
+  .sec-head h2{ max-width: 18ch; }
+
+  /* ---------- 03 — L'atelier ---------- */
+  .atelier{ background: var(--parchment); }
+  .atelier-grid{
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: clamp(32px, 5vw, 80px);
+    align-items: start;
+  }
+  .atelier .photo{
+    aspect-ratio: 4/5;
+    background-image: url("assets/chantier/atelier.jpg");
+    background-size: cover;
+    background-position: center;
+  }
+  .atelier .copy{ padding-top: 8px; }
+  .atelier .copy p{ font-size: clamp(17px, 1.25vw, 19px); line-height: 1.65; }
+  .atelier .quote{
+    margin: 32px 0 0;
+    padding: 24px 0 0;
+    border-top: 1px solid var(--fog);
+    font-family: var(--display);
+    font-style: italic;
+    font-size: clamp(20px, 1.6vw, 24px);
+    line-height: 1.4;
+    color: var(--ink);
+  }
+  .atelier .quote cite{
+    display: block;
+    margin-top: 10px;
+    font-family: var(--mono);
+    font-style: normal;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: var(--brume);
+  }
+
+  /* ---------- 04 — Trois savoir-faire ---------- */
+  .savoir{ background: var(--parchment); }
+  .savoir-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+  }
+  .pillar{
+    padding: 0 clamp(20px, 2.4vw, 36px);
+    border-left: 1px solid var(--fog);
+  }
+  .pillar:first-child{ border-left: 0; padding-left: 0; }
+  .pillar:last-child{ padding-right: 0; }
+  .pillar .num{
+    display: block;
+    font-size: 14px;
+    letter-spacing: 0.18em;
+    margin-bottom: 28px;
+  }
+  .pillar h3{ margin-bottom: 16px; max-width: 12ch; }
+  .pillar p{ color: var(--ink); font-size: 16px; line-height: 1.6; margin-bottom: 24px; }
+  .pillar .image{
+    aspect-ratio: 4/3;
+    background-size: cover;
+    background-position: center;
+    margin-top: 8px;
+  }
+  .pillar .img-ossature{ background-image: url("assets/chantier/ossature-1.jpg"); }
+  .pillar .img-charpente{ background-image: url("assets/chantier/charpente-1.jpg"); }
+  .pillar .img-menus{ background-image: url("assets/chantier/real-3.jpg"); }
+  .pillar .tag{
+    margin-top: 16px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--brume);
+  }
+
+  /* ---------- 05 — Nos autres savoir-faire ---------- */
+  .autres{ background: var(--cream); }
+  .autres .list{
+    column-count: 3; column-gap: 48px;
+  }
+  .autres .list .item{
+    break-inside: avoid;
+    display: block;
+    padding: 18px 0;
+    border-top: 1px solid var(--fog);
+  }
+  .autres .item .n{
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--hermine);
+    margin-right: 10px;
+    letter-spacing: 0.05em;
+  }
+  .autres .item .label{
+    font-family: var(--display);
+    font-size: 20px;
+    color: var(--ink);
+  }
+
+  /* ---------- 06 — Réalisations ---------- */
+  .reals{ background: var(--parchment); }
+  .reals-grid{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: 12px;
+    gap: 24px;
+  }
+  .reals .cell{ position: relative; overflow: hidden; }
+  .reals .cell .img{
+    position: absolute; inset: 0;
+    background-size: cover; background-position: center;
+    transition: transform .6s ease;
+  }
+  .reals .cell:hover .img{ transform: scale(1.03); }
+  .reals .cell .cap{
+    position: absolute; left: 14px; bottom: 12px; z-index: 2;
+    background: rgba(251,248,242,0.92);
+    backdrop-filter: blur(2px);
+    padding: 6px 10px;
+    font-family: var(--serif);
+    font-size: 12px;
+    color: var(--ink);
+    display: flex; gap: 8px; align-items: baseline;
+  }
+  .reals .cell .cap .where{ font-style: italic; }
+  .reals .cell .cap .when{ font-family: var(--mono); font-size: 11px; color: var(--brume); }
+
+  /* asymmetric layout: mix of wide/tall/square */
+  .reals .c-1{ grid-column: span 7; grid-row: span 28; }
+  .reals .c-2{ grid-column: span 5; grid-row: span 22; }
+  .reals .c-3{ grid-column: span 5; grid-row: span 20; }
+  .reals .c-4{ grid-column: span 4; grid-row: span 18; }
+  .reals .c-5{ grid-column: span 3; grid-row: span 18; }
+  .reals .c-6{ grid-column: span 7; grid-row: span 22; }
+
+  .reals .c-1 .img{ background-image: url("assets/chantier/portrieux.jpg"); }
+  .reals .c-2 .img{ background-image: url("assets/chantier/langueux.jpg"); }
+  .reals .c-3 .img{ background-image: url("assets/chantier/binic.jpg"); }
+  .reals .c-4 .img{ background-image: url("assets/chantier/minco-interieur.jpg"); }
+  .reals .c-5 .img{ background-image: url("assets/chantier/garage-bardage.jpg"); }
+  .reals .c-6 .img{ background-image: url("assets/chantier/glazig.jpg"); }
+
+  /* ---------- 07 — Journal ---------- */
+  .journal{ background: var(--cream); }
+  .journal .encadre{
+    border-top: 1px solid var(--fog);
+    border-bottom: 1px solid var(--fog);
+    padding: 28px 0 8px;
+  }
+  .journal details{ }
+  .journal details > summary{
+    list-style: none;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 0 24px;
+    font-family: var(--display);
+    font-size: 22px;
+    color: var(--ink);
+  }
+  .journal details > summary::-webkit-details-marker{ display:none; }
+  .journal details > summary .marker{
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--brume);
+    letter-spacing: 0.1em;
+  }
+  .journal details[open] > summary .marker::after{ content: " –"; }
+  .journal details:not([open]) > summary .marker::after{ content: " +"; }
+  .journal .timeline{
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 0;
+  }
+  .journal .row{
+    display: contents;
+  }
+  .journal .row .year{
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--hermine);
+    padding: 16px 0;
+    border-top: 1px solid var(--fog);
+  }
+  .journal .row .text{
+    padding: 16px 0 16px 24px;
+    border-top: 1px solid var(--fog);
+    font-size: 16px;
+    color: var(--ink);
+  }
+  .journal .row:first-child .year,
+  .journal .row:first-child .text{ border-top: 0; }
+  .journal .row .text em{
+    font-family: var(--mono);
+    font-style: normal;
+    font-size: 11px;
+    color: var(--brume);
+    margin-left: 8px;
+    letter-spacing: 0.05em;
+  }
+
+  /* ---------- 08 — Zone d'intervention ---------- */
+  .zone{ background: var(--parchment); }
+  .zone-grid{
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: clamp(32px, 5vw, 80px);
+    align-items: start;
+  }
+  .zone .cities{
+    display: flex; flex-wrap: wrap; gap: 0 0;
+    font-family: var(--display);
+    font-size: clamp(22px, 2.2vw, 32px);
+    line-height: 1.5;
+    color: var(--ink);
+  }
+  .zone .cities span{
+    padding: 0 18px 0 0;
+    margin: 0 18px 12px 0;
+    border-right: 1px solid var(--fog);
+  }
+  .zone .cities span:last-child{ border-right: 0; }
+  .zone .note{
+    font-size: 15px;
+    color: var(--ink);
+    opacity: 0.85;
+    margin-top: 28px;
+  }
+  .zone .note .pin{ color: var(--hermine); margin-right: 6px; }
+
+  /* ---------- 09 — Contact (dark) ---------- */
+  .contact{
+    background: var(--ink);
+    color: #F5F0E6;
+    padding: clamp(80px, 11vw, 140px) 0;
+  }
+  .contact h2{ color: #FBF8F2; max-width: 14ch; margin-bottom: 48px; }
+  .contact .ctas{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-top: 1px solid rgba(212,208,197,0.25);
+    border-bottom: 1px solid rgba(212,208,197,0.25);
+  }
+  .contact .cta{
+    padding: 36px 0;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .contact .cta:first-child{ border-right: 1px solid rgba(212,208,197,0.25); padding-right: 36px; }
+  .contact .cta:last-child{ padding-left: 36px; }
+  .contact .cta .k{ font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #8FA0AE; }
+  .contact .cta .v{
+    font-family: var(--display);
+    font-size: clamp(24px, 2.4vw, 34px);
+    color: #FBF8F2;
+    border-bottom: 1px solid var(--hermine);
+    padding-bottom: 4px;
+    align-self: start;
+  }
+  .contact .address{
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    margin-top: 56px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #F5F0E6;
+  }
+  .contact .address .k{
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em;
+    text-transform: uppercase; color: #8FA0AE; margin-bottom: 10px; display: block;
+  }
+  .contact .address .hours-detail{
+    color: #8FA0AE; font-family: var(--mono); font-size: 12px; letter-spacing: 0.04em;
+  }
+  .contact .trust{
+    margin-top: 56px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(212,208,197,0.25);
+    display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em;
+    color: #D4D0C5;
+  }
+  .contact .trust .badge{
+    display: inline-flex; align-items: center; gap: 10px;
+    border: 1px solid var(--hermine);
+    color: #FBF8F2;
+    padding: 8px 12px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em;
+  }
+  .contact .trust .badge::before{
+    content: ""; width: 6px; height: 6px; background: var(--hermine); display: inline-block;
+  }
+
+  /* ---------- 10 — Footer ---------- */
+  footer{
+    background: var(--parchment);
+    border-top: 1px solid var(--fog);
+    padding: 36px 0 28px;
+  }
+  footer .row{
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 24px;
+  }
+  footer .wordmark{ font-size: 18px; }
+  footer .center{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--brume);
+    text-align: center;
+  }
+  footer .right{
+    justify-self: end;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--brume);
+    text-align: right;
+  }
+  footer .sixelasco{
+    display: block;
+    margin-top: 4px;
+    color: var(--ink);
+  }
+  footer .sub{
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--fog);
+    display: flex; justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--brume);
+    letter-spacing: 0.06em;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 980px){
+    .masthead .inner{ grid-template-columns: auto 1fr auto; }
+    nav.primary{ display: none; }
+    .menu-btn{ display:block; justify-self: end; }
+    .masthead .phone .label{ display:none; }
+    .sec-head{ grid-template-columns: 1fr; gap: 20px; }
+    .atelier-grid{ grid-template-columns: 1fr; }
+    .atelier .photo{ aspect-ratio: 4/3; }
+    .savoir-grid{ grid-template-columns: 1fr; gap: 0; }
+    .pillar{ border-left: 0; border-top: 1px solid var(--fog); padding: 32px 0 !important; }
+    .pillar:first-child{ border-top: 0; padding-top: 0 !important; }
+    .autres .list{ column-count: 2; }
+    .zone-grid{ grid-template-columns: 1fr; }
+    .contact .ctas{ grid-template-columns: 1fr; }
+    .contact .cta:first-child{ border-right: 0; border-bottom: 1px solid rgba(212,208,197,0.25); padding: 28px 0; }
+    .contact .cta:last-child{ padding: 28px 0 0; }
+    .contact .address{ grid-template-columns: 1fr; gap: 28px; }
+    .reals-grid{ grid-template-columns: repeat(6, 1fr); grid-auto-rows: 10px; }
+    .reals .c-1, .reals .c-2, .reals .c-3, .reals .c-4, .reals .c-5, .reals .c-6{
+      grid-column: span 6; grid-row: span 24;
+    }
+    .hero{ min-height: 78vh; }
+  }
+  @media (max-width: 560px){
+    .autres .list{ column-count: 1; }
+    footer .row{ grid-template-columns: 1fr; text-align: left; gap: 12px; }
+    footer .right{ justify-self: start; text-align: left; }
+    footer .center{ text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============== 01 — Masthead ============== -->
+<header class="masthead" data-od-id="masthead">
+  <div class="inner">
+    <a href="#top" class="wordmark">Le Provost<span class="dot">.</span></a>
+    <nav class="primary" aria-label="Navigation principale">
+      <a href="#savoir-faire">Savoir-faire</a>
+      <a href="#atelier">L'atelier</a>
+      <a href="#realisations">Réalisations</a>
+      <a href="#journal">Sur-mesure</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="phone">
+      <span class="label">Atelier</span><a href="tel:+33296719014">02 96 71 90 14</a>
+    </div>
+    <button class="menu-btn" aria-label="Menu" onclick="document.querySelector('nav.primary').classList.toggle('open');this.parentElement.querySelector('nav.primary').style.display=this.parentElement.querySelector('nav.primary').style.display==='flex'?'none':'flex'"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============== 02 — Hero ============== -->
+<section class="hero" data-od-id="hero" aria-label="Atelier de menuiserie à Plourhan">
+  <div class="bg" role="img" aria-label="Vue intérieure de l'atelier — charpente et mezzanine en bois"></div>
+  <div class="caption">Atelier de Plourhan — 2025</div>
+  <div class="content">
+    <div class="inner">
+      <div class="eyebrow eyebrow-light">Plourhan, Côtes-d'Armor — depuis 1976</div>
+      <h1>Vos idées,<br/>nous les réalisons.</h1>
+      <p class="dek">Cinquante ans d'un même atelier, transmis de père en fils. Six collaborateurs, une matière, le geste juste. Entre terre et mer, nous dessinons et construisons l'ossature, la charpente et la menuiserie de votre maison.</p>
+      <div class="cta-row">
+        <a class="cta-primary" href="#contact">Demander un devis</a>
+        <a class="cta-secondary" href="tel:+33296719014">02 96 71 90 14</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 03 — L'atelier ============== -->
+<section class="atelier" id="atelier" data-od-id="atelier">
+  <div class="container">
+    <div class="sec-head">
+      <div class="label">
+        <div class="eyebrow ink">N° 01 — L'atelier</div>
+      </div>
+      <h2>Le geste juste,<br/>le bois qui parle.</h2>
+    </div>
+    <div class="atelier-grid">
+      <div class="photo" role="img" aria-label="L'atelier de Plourhan — espace de travail et matière"></div>
+      <div class="copy">
+        <p class="lede dropcap">Patrick Le Provost pose la première pierre de l'atelier en 1976, au Carrefour de Plourhan. Cinquante ans plus tard, son fils Gildas — seize ans d'ancienneté — conduit la même maison, avec cinq compagnons. Ici, le bois arrive brut, et repart travaillé à la main : ossature, charpente, menuiseries extérieures. Nous travaillons pour les particuliers du Goëlo et aux côtés d'architectes et de maîtres d'œuvre.</p>
+        <blockquote class="quote">
+          « Le geste juste, le bois qui parle. »
+          <cite>— Patrick Le Provost, fondateur</cite>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 04 — Trois savoir-faire ============== -->
+<section class="savoir" id="savoir-faire" data-od-id="savoir-faire">
+  <div class="container">
+    <div class="sec-head">
+      <div class="label">
+        <div class="eyebrow ink">N° 02 — Savoir-faire</div>
+      </div>
+      <h2>Trois matières,<br/>une seule main.</h2>
+    </div>
+    <div class="savoir-grid">
+      <article class="pillar">
+        <span class="num">01 / Ossature bois</span>
+        <h3>Construire l'enveloppe.</h3>
+        <p>Extensions, surélévations, maisons neuves. Nous travaillons le bois en structure porteuse, sec et durable, dans le respect des performances thermiques actuelles. Chaque chantier s'étudie en amont avec vous — et, lorsque vous en avez un, avec votre architecte.</p>
+        <div class="image img-ossature" role="img" aria-label="Chantier ossature bois"></div>
+        <div class="tag">Extensions · Surélévations · Neuf</div>
+      </article>
+      <article class="pillar">
+        <span class="num">02 / Charpente</span>
+        <h3>Traditionnelle et moderne.</h3>
+        <p>Charpente traditionnelle pour les restaurations de caractère, charpente moderne pour les volumes contemporains. Taillée, levée, posée. Le dessin précède la coupe — chaque assemblage est repéré, vérifié, ajusté sur place.</p>
+        <div class="image img-charpente" role="img" aria-label="Charpente sur chantier"></div>
+        <div class="tag">Tradition · Moderne · Restauration</div>
+      </article>
+      <article class="pillar">
+        <span class="num">03 / Menuiseries extérieures</span>
+        <h3>La maison face au vent.</h3>
+        <p>Portes, fenêtres, baies, volets. Nous fabriquons et posons les menuiseries qui ferment et ouvrent la maison sur la côte — avec la précision qu'exigent le sel, le vent d'ouest et les longs hivers du Goëlo.</p>
+        <div class="image img-menus" role="img" aria-label="Menuiseries et escalier intérieur"></div>
+        <div class="tag">Portes · Fenêtres · Baies · Volets</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 05 — Nos autres savoir-faire ============== -->
+<section class="autres" data-od-id="autres">
+  <div class="container">
+    <div class="sec-head">
+      <div class="label">
+        <div class="eyebrow ink">N° 03 — Le reste du métier</div>
+      </div>
+      <h2>Et tout ce qui s'y rattache.</h2>
+    </div>
+    <div class="list">
+      <div class="item"><span class="n">i.</span><span class="label">Extension ossature bois</span></div>
+      <div class="item"><span class="n">ii.</span><span class="label">Plancher bois</span></div>
+      <div class="item"><span class="n">iii.</span><span class="label">Terrasse bois</span></div>
+      <div class="item"><span class="n">iv.</span><span class="label">ITE finition bardage</span></div>
+      <div class="item"><span class="n">v.</span><span class="label">Escalier sur mesure</span></div>
+      <div class="item"><span class="n">vi.</span><span class="label">Porte de garage</span></div>
+      <div class="item"><span class="n">vii.</span><span class="label">Portail</span></div>
+      <div class="item"><span class="n">viii.</span><span class="label">Parquet</span></div>
+      <div class="item"><span class="n">ix.</span><span class="label">Portes intérieures</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 06 — Réalisations récentes ============== -->
+<section class="reals" id="realisations" data-od-id="realisations">
+  <div class="container">
+    <div class="sec-head">
+      <div class="label">
+        <div class="eyebrow ink">N° 04 — Sur le terrain</div>
+      </div>
+      <h2>Réalisations<br/>récentes.</h2>
+    </div>
+    <div class="reals-grid">
+      <figure class="cell c-1">
+        <div class="img" role="img" aria-label="Chantier à Saint-Quay-Portrieux"></div>
+        <figcaption class="cap"><span class="where">Saint-Quay-Portrieux</span><span class="when">— 2025</span></figcaption>
+      </figure>
+      <figure class="cell c-2">
+        <div class="img" role="img" aria-label="Chantier à Langueux"></div>
+        <figcaption class="cap"><span class="where">Langueux</span><span class="when">— 2025</span></figcaption>
+      </figure>
+      <figure class="cell c-3">
+        <div class="img" role="img" aria-label="Chantier à Binic"></div>
+        <figcaption class="cap"><span class="where">Binic</span><span class="when">— 2025</span></figcaption>
+      </figure>
+      <figure class="cell c-4">
+        <div class="img" role="img" aria-label="Vue intérieure de l'atelier"></div>
+        <figcaption class="cap"><span class="where">Atelier Plourhan</span><span class="when">— intérieur</span></figcaption>
+      </figure>
+      <figure class="cell c-5">
+        <div class="img" role="img" aria-label="Garage avec bardage bois"></div>
+        <figcaption class="cap"><span class="where">Pléneuf-Val-André</span><span class="when">— bardage</span></figcaption>
+      </figure>
+      <figure class="cell c-6">
+        <div class="img" role="img" aria-label="Trail Glazig 2026 — engagement local"></div>
+        <figcaption class="cap"><span class="where">Glazig 2026</span><span class="when">— engagement local</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 07 — Journal ============== -->
+<section class="journal" id="journal" data-od-id="journal">
+  <div class="container">
+    <div class="sec-head">
+      <div class="label">
+        <div class="eyebrow ink">N° 05 — Encadré</div>
+      </div>
+      <h2>Le journal de l'atelier.</h2>
+    </div>
+    <div class="encadre">
+      <details open>
+        <summary>
+          <span>Encadré — Le journal</span>
+          <span class="marker">Fil conducteur</span>
+        </summary>
+        <div class="timeline">
+          <div class="row"><div class="year">1976</div><div class="text">Patrick Le Provost fonde l'atelier au Carrefour de Plourhan.<em>— fondation</em></div></div>
+          <div class="row"><div class="year">1985</div><div class="text">Premiers chantiers d'ossature bois dans le Goëlo.<em>— transmission</em></div></div>
+          <div class="row"><div class="year">1995</div><div class="text">Gildas Le Provost entre à l'atelier.<em>— relève</em></div></div>
+          <div class="row"><div class="year">2005</div><div class="text">Développement des menuiseries extérieures sur mesure.<em>— métier</em></div></div>
+          <div class="row"><div class="year">2015</div><div class="text">Obtention de la qualification RGE.<em>— reconnaissance</em></div></div>
+          <div class="row"><div class="year">2025</div><div class="text">Six collaborateurs, mêmes murs, même métier.<em>— aujourd'hui</em></div></div>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 08 — Zone d'intervention ============== -->
+<section class="zone" data-od-id="zone">
+  <div class="container">
+    <div class="sec-head">
+      <div class="label">
+        <div class="eyebrow ink">N° 06 — Zone d'intervention</div>
+      </div>
+      <h2>Le Goëlo,<br/>la côte du nord.</h2>
+    </div>
+    <div class="zone-grid">
+      <div>
+        <p class="lede" style="margin-top:0;">Nous intervenons principalement sur la côte du Goëlo et ses environs immédiats, autour de l'atelier.</p>
+        <p class="note"><span class="pin">◆</span>Atelier au Carrefour, 22410 Plourhan — interventions dans tout le Goëlo.</p>
+      </div>
+      <div class="cities" aria-label="Villes d'intervention">
+        <span>Plourhan</span><span>Saint-Quay-Portrieux</span><span>Binic</span><span>Langueux</span><span>Pléneuf-Val-André</span><span>Paimpol</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 09 — Contact (dark) ============== -->
+<section class="contact" id="contact" data-od-id="contact">
+  <div class="container">
+    <div class="eyebrow hermine" style="margin-bottom: 28px;">N° 07 — Parlons</div>
+    <h2>Parlons de<br/>votre projet.</h2>
+    <div class="ctas">
+      <a class="cta" href="tel:+33296719014">
+        <span class="k">Par téléphone — atelier</span>
+        <span class="v">02 96 71 90 14</span>
+      </a>
+      <a class="cta" href="mailto:menuiserie.leprovost@wanadoo.fr">
+        <span class="k">Par écrit</span>
+        <span class="v">menuiserie.leprovost@wanadoo.fr</span>
+      </a>
+    </div>
+    <div class="address">
+      <div>
+        <span class="k">Atelier</span>
+        SARL Menuiserie Le Provost<br/>
+        Le Carrefour<br/>
+        22410 Plourhan — Côtes-d'Armor
+      </div>
+      <div>
+        <span class="k">Ouverture</span>
+        Du lundi au vendredi — sur rendez-vous<br/>
+        <span class="hours-detail">Visites de l'atelier sur demande</span>
+      </div>
+    </div>
+    <div class="trust">
+      <span class="badge">Membre RGE</span>
+      <span>Devis gratuit sous 7 jours · Conseils sans engagement</span>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============== 10 — Footer ============== -->
+<footer data-od-id="footer">
+  <div class="container">
+    <div class="row">
+      <div class="wordmark">Le Provost<span class="dot" style="color:var(--hermine);">.</span></div>
+      <div class="center">SARL Menuiserie Le Provost — SIRET à compléter</div>
+      <div class="right">
+        <a href="mailto:menuiserie.leprovost@wanadoo.fr">menuiserie.leprovost@wanadoo.fr</a>
+        <span class="sixelasco">Démo générée par Sixelasco</span>
+      </div>
+    </div>
+    <div class="sub">
+      <span>© 2025 — Tous droits réservés</span>
+      <span>Plourhan · Côtes-d'Armor · Bretagne</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Sticky shadow on scroll for the masthead
+  const m = document.querySelector('.masthead');
+  const onScroll = () => {
+    if(window.scrollY > 4){ m.style.boxShadow = '0 1px 0 rgba(14,42,71,0.04)'; }
+    else { m.style.boxShadow = 'none'; }
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+</script>
+
+</body>
+</html>

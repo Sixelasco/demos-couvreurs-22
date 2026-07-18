@@ -1,0 +1,1485 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Charpente &amp; Création Bois — Stéphane Hochart, charpentier en Côtes-d'Armor</title>
+<meta name="description" content="Atelier de charpente traditionnelle et moderne à Châtelaudren-Plouagat. Stéphane Hochart conçoit et assemble ossatures bois, charpentes sur mesure, extensions et aménagements dans un rayon de 60 km autour de Saint-Brieuc.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ============================================
+     Charpente & Création Bois — design tokens
+     Palette : crème papier / espresso / noyer / mousse
+     ============================================ */
+  :root {
+    /* Couleurs */
+    --bg:        oklch(97% 0.012 80);    /* crème papier */
+    --surface:   oklch(94% 0.015 75);    /* surface élevée */
+    --surface-2: oklch(91% 0.018 72);    /* surface plus appuyée */
+    --fg:        oklch(22% 0.03 50);     /* espresso — texte */
+    --fg-soft:   oklch(32% 0.025 55);    /* espresso adouci */
+    --muted:     oklch(48% 0.02 60);     /* gris chaud */
+    --border:    oklch(85% 0.015 75);    /* trait fin */
+    --border-2:  oklch(78% 0.02 70);     /* trait appuyé */
+    --accent:        oklch(42% 0.10 45); /* noyer / rouille — CTA, focus */
+    --accent-deep:   oklch(35% 0.11 42); /* noyer foncé — hover */
+    --accent-soft:   oklch(92% 0.04 55); /* fond noyer léger */
+    --accent-second: oklch(55% 0.08 145); /* mousse / lichen */
+
+    /* Typo */
+    --display: 'Fraunces', ui-serif, Georgia, 'Times New Roman', serif;
+    --body:    'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+    /* Échelle (clamp pour fluidité) */
+    --step--1: clamp(0.85rem, 0.78rem + 0.3vw, 0.95rem);
+    --step-0:  clamp(1rem, 0.92rem + 0.4vw, 1.1rem);
+    --step-1:  clamp(1.15rem, 1.05rem + 0.5vw, 1.3rem);
+    --step-2:  clamp(1.4rem, 1.2rem + 1vw, 1.7rem);
+    --step-3:  clamp(1.9rem, 1.5rem + 2vw, 2.6rem);
+    --step-4:  clamp(2.5rem, 1.8rem + 3.5vw, 4rem);
+    --step-5:  clamp(3.2rem, 2.2rem + 5vw, 5.5rem);
+
+    /* Espaces (grille 8) */
+    --s-1: 4px;  --s-2: 8px;  --s-3: 12px; --s-4: 16px;
+    --s-5: 24px; --s-6: 32px; --s-7: 48px; --s-8: 64px;
+    --s-9: 96px; --s-10: 128px;
+
+    /* Coins */
+    --r-sm: 4px;
+    --r:    8px;
+    --r-lg: 14px;
+
+    /* Conteneur */
+    --container: 1240px;
+    --gutter: clamp(20px, 4vw, 48px);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--body);
+    font-size: var(--step-0);
+    line-height: 1.55;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  img { max-width: 100%; display: block; height: auto; }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; cursor: pointer; }
+  ::selection { background: var(--accent); color: var(--bg); }
+
+  /* Accessibilité : focus visible */
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+
+  /* ============================================
+     Layout helpers
+     ============================================ */
+  .container {
+    width: 100%;
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+  }
+  .eyebrow {
+    font-family: var(--body);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 28px;
+    height: 1px;
+    background: var(--accent);
+  }
+  .h-display {
+    font-family: var(--display);
+    font-weight: 500;
+    line-height: 1.04;
+    letter-spacing: -0.015em;
+    font-variation-settings: "opsz" 96;
+  }
+  .h-italic {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 500;
+  }
+  .lead {
+    font-size: var(--step-1);
+    line-height: 1.5;
+    color: var(--fg-soft);
+    max-width: 56ch;
+  }
+  .muted { color: var(--muted); }
+
+  /* ============================================
+     Boutons
+     ============================================ */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 22px;
+    border-radius: var(--r);
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.01em;
+    border: 1px solid transparent;
+    transition: background 160ms ease, color 160ms ease, border-color 160ms ease, transform 160ms ease;
+    white-space: nowrap;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: oklch(98% 0.01 80);
+  }
+  .btn-primary:hover { background: var(--accent-deep); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--fg);
+    border-color: var(--border-2);
+  }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+  .btn .arrow {
+    width: 14px; height: 14px;
+    transition: transform 180ms ease;
+  }
+  .btn:hover .arrow { transform: translateX(3px); }
+
+  /* ============================================
+     Top bar
+     ============================================ */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: color-mix(in oklch, var(--bg) 88%, transparent);
+    backdrop-filter: saturate(140%) blur(10px);
+    -webkit-backdrop-filter: saturate(140%) blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  .topbar__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s-5);
+    padding: 16px 0;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--fg);
+  }
+  .brand__mark {
+    width: 38px; height: 38px;
+    border: 1.5px solid var(--fg);
+    border-radius: 50%;
+    display: grid; place-items: center;
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.05rem;
+    letter-spacing: -0.02em;
+  }
+  .brand__name {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+  .brand__name strong {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 1.05rem;
+    letter-spacing: -0.01em;
+  }
+  .brand__name span {
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+  .nav a {
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--fg-soft);
+    position: relative;
+    padding: 4px 0;
+  }
+  .nav a:hover { color: var(--accent); }
+  .nav a::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: -2px;
+    height: 1px; background: var(--accent);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 200ms ease;
+  }
+  .nav a:hover::after { transform: scaleX(1); }
+  .topbar__cta { display: flex; gap: 10px; align-items: center; }
+
+  /* mobile nav toggle */
+  .nav-toggle { display: none; }
+
+  @media (max-width: 880px) {
+    .nav, .topbar__cta .btn-ghost { display: none; }
+    .nav-toggle {
+      display: inline-flex;
+      align-items: center; justify-content: center;
+      width: 42px; height: 42px;
+      background: transparent;
+      border: 1px solid var(--border-2);
+      border-radius: var(--r);
+      color: var(--fg);
+    }
+    .nav-toggle svg { width: 18px; height: 18px; }
+  }
+
+  /* ============================================
+     HERO
+     ============================================ */
+  .hero {
+    position: relative;
+    padding: clamp(40px, 6vw, 80px) 0 clamp(48px, 7vw, 96px);
+  }
+  .hero__grid {
+    display: grid;
+    grid-template-columns: 1.55fr 1fr;
+    gap: clamp(24px, 4vw, 64px);
+    align-items: end;
+  }
+  .hero__media {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    background: var(--surface-2);
+    box-shadow: 0 1px 0 var(--border), 0 30px 60px -40px oklch(20% 0.04 50 / 0.4);
+  }
+  .hero__media img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+  }
+  .hero__caption {
+    position: absolute;
+    left: 20px; bottom: 20px;
+    background: oklch(98% 0.01 80 / 0.92);
+    backdrop-filter: blur(6px);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 10px 14px;
+    font-size: 0.78rem;
+    color: var(--fg-soft);
+    max-width: 80%;
+  }
+  .hero__caption strong {
+    display: block;
+    color: var(--fg);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .hero__panel {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-5);
+    padding-bottom: 8px;
+  }
+  .hero__title {
+    font-size: var(--step-5);
+    margin: 0;
+  }
+  .hero__title em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .hero__lede {
+    font-size: var(--step-1);
+    color: var(--fg-soft);
+    line-height: 1.5;
+    max-width: 38ch;
+    margin: 0;
+  }
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: var(--s-2);
+  }
+  .hero__meta {
+    display: flex;
+    gap: 28px;
+    margin-top: var(--s-4);
+    padding-top: var(--s-5);
+    border-top: 1px solid var(--border);
+  }
+  .hero__meta div {
+    display: flex; flex-direction: column; gap: 2px;
+  }
+  .hero__meta dt {
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0;
+  }
+  .hero__meta dd {
+    margin: 0;
+    font-family: var(--display);
+    font-size: 1.05rem;
+    color: var(--fg);
+  }
+
+  @media (max-width: 880px) {
+    .hero__grid { grid-template-columns: 1fr; }
+    .hero__media { aspect-ratio: 4 / 3; order: -1; }
+  }
+
+  /* ============================================
+     BANDEAU CHIFFRES
+     ============================================ */
+  .strip {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .strip__inner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--s-5);
+    padding: clamp(28px, 4vw, 44px) 0;
+  }
+  .stat__num {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(2rem, 1.4rem + 2vw, 2.6rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--fg);
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+  }
+  .stat__num em {
+    font-style: italic;
+    color: var(--accent);
+    font-size: 0.7em;
+  }
+  .stat__label {
+    margin-top: 8px;
+    font-size: 0.88rem;
+    color: var(--muted);
+    max-width: 28ch;
+    line-height: 1.4;
+  }
+  @media (max-width: 720px) {
+    .strip__inner { grid-template-columns: repeat(2, 1fr); gap: 28px 20px; }
+  }
+
+  /* ============================================
+     SECTIONS GÉNÉRIQUES
+     ============================================ */
+  section { padding: clamp(64px, 8vw, 112px) 0; }
+  .section-head {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: clamp(24px, 4vw, 64px);
+    align-items: end;
+    margin-bottom: clamp(40px, 5vw, 64px);
+  }
+  .section-head__title {
+    font-size: var(--step-4);
+    margin: 12px 0 0;
+  }
+  .section-head__title em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .section-head__intro {
+    font-size: var(--step-1);
+    color: var(--fg-soft);
+    line-height: 1.55;
+    margin: 0;
+    max-width: 52ch;
+  }
+  @media (max-width: 760px) {
+    .section-head { grid-template-columns: 1fr; align-items: start; }
+  }
+
+  /* ============================================
+     PRESTATIONS — grille asymétrique
+     ============================================ */
+  .services {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+  }
+  .service {
+    position: relative;
+    padding: var(--s-6);
+    border-radius: var(--r-lg);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    min-height: 260px;
+    transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+  }
+  .service:hover {
+    transform: translateY(-2px);
+    border-color: var(--border-2);
+    box-shadow: 0 12px 32px -20px oklch(20% 0.04 50 / 0.25);
+  }
+  .service__num {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--accent);
+    font-size: 1rem;
+    letter-spacing: 0.04em;
+  }
+  .service__title {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: var(--step-2);
+    line-height: 1.15;
+    margin: 14px 0 10px;
+    letter-spacing: -0.01em;
+  }
+  .service__body {
+    color: var(--fg-soft);
+    font-size: 0.96rem;
+    line-height: 1.55;
+    margin: 0 0 auto;
+  }
+  .service__foot {
+    margin-top: var(--s-5);
+    padding-top: var(--s-4);
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+  .service__foot strong { color: var(--fg); font-weight: 600; }
+  .service--feat { grid-column: span 7; background: var(--accent-soft); border-color: oklch(80% 0.04 55); }
+  .service--feat .service__title { font-size: var(--step-3); }
+  .service--med  { grid-column: span 5; }
+  .service--half { grid-column: span 6; }
+  @media (max-width: 980px) {
+    .service--feat, .service--med, .service--half { grid-column: span 12; }
+  }
+
+  /* ============================================
+     BANDEAU ATELIER (image pleine)
+     ============================================ */
+  .feature-band {
+    position: relative;
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    isolation: isolate;
+    min-height: 420px;
+    display: flex;
+    align-items: flex-end;
+  }
+  .feature-band img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+  .feature-band::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg,
+      oklch(20% 0.03 50 / 0.05) 0%,
+      oklch(20% 0.03 50 / 0.35) 60%,
+      oklch(20% 0.03 50 / 0.78) 100%);
+    z-index: -1;
+  }
+  .feature-band__content {
+    color: oklch(98% 0.01 80);
+    padding: clamp(32px, 5vw, 56px);
+    max-width: 620px;
+  }
+  .feature-band__content .eyebrow { color: oklch(82% 0.06 80); }
+  .feature-band__content .eyebrow::before { background: oklch(82% 0.06 80); }
+  .feature-band__title {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(1.8rem, 1.4rem + 2vw, 2.8rem);
+    line-height: 1.1;
+    margin: 16px 0 12px;
+    letter-spacing: -0.01em;
+  }
+  .feature-band__title em { font-style: italic; }
+  .feature-band__body {
+    font-size: 1.02rem;
+    line-height: 1.55;
+    color: oklch(92% 0.01 80);
+    max-width: 52ch;
+    margin: 0;
+  }
+
+  /* ============================================
+     RÉALISATIONS — masonry léger
+     ============================================ */
+  .works {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+  }
+  .work {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--r-lg);
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+  }
+  .work__media {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+  }
+  .work__media img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .work:hover .work__media img { transform: scale(1.04); }
+  .work__caption {
+    padding: 16px 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .work__title {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 1.15rem;
+    color: var(--fg);
+    letter-spacing: -0.01em;
+  }
+  .work__meta {
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+  .work--wide { grid-column: span 7; }
+  .work--wide .work__media { aspect-ratio: 16 / 9; }
+  .work--half { grid-column: span 5; }
+  .work--third { grid-column: span 4; }
+  .work--third .work__media { aspect-ratio: 1 / 1; }
+  @media (max-width: 880px) {
+    .work--wide, .work--half, .work--third { grid-column: span 12; }
+    .work--third .work__media { aspect-ratio: 4 / 3; }
+  }
+
+  /* ============================================
+     PROCESS — timeline horizontale
+     ============================================ */
+  .process {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .process__steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--s-5);
+    margin-top: clamp(40px, 5vw, 56px);
+    position: relative;
+  }
+  .step {
+    position: relative;
+    padding-top: 24px;
+  }
+  .step::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 24px;
+    height: 1px;
+    background: var(--border-2);
+  }
+  .step__num {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--accent);
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 12px;
+  }
+  .step__title {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 1.2rem;
+    line-height: 1.2;
+    margin: 0 0 8px;
+    letter-spacing: -0.01em;
+  }
+  .step__body {
+    font-size: 0.92rem;
+    color: var(--fg-soft);
+    line-height: 1.5;
+    margin: 0;
+  }
+  @media (max-width: 860px) {
+    .process__steps { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 520px) {
+    .process__steps { grid-template-columns: 1fr; }
+  }
+
+  /* ============================================
+     À PROPOS — 2 colonnes
+     ============================================ */
+  .about {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: clamp(32px, 5vw, 80px);
+    align-items: start;
+  }
+  .about__title {
+    font-size: var(--step-4);
+    line-height: 1.05;
+    margin: 12px 0 24px;
+  }
+  .about__title em { font-style: italic; color: var(--accent); font-weight: 500; }
+  .about__body p {
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: var(--fg-soft);
+    margin: 0 0 18px;
+  }
+  .about__body p:last-child { margin-bottom: 0; }
+  .about__sign {
+    margin-top: 28px;
+    font-family: var(--display);
+    font-style: italic;
+    color: var(--fg);
+    font-size: 1.1rem;
+  }
+  .about__sign span {
+    display: block;
+    font-style: normal;
+    font-family: var(--body);
+    font-size: 0.8rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+  .about__side {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .quote {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    padding: var(--s-6);
+  }
+  .quote p {
+    margin: 0;
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 1.15rem;
+    line-height: 1.45;
+    color: var(--fg);
+  }
+  .quote cite {
+    display: block;
+    margin-top: 12px;
+    font-style: normal;
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+  .guarantee-list {
+    list-style: none;
+    margin: 0; padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .guarantee-list li {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 14px 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    font-size: 0.92rem;
+    line-height: 1.4;
+  }
+  .guarantee-list li::before {
+    content: "";
+    flex: none;
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: var(--accent-second);
+    background-image: radial-gradient(circle at center, var(--bg) 0 3px, transparent 4px);
+    margin-top: 1px;
+  }
+  @media (max-width: 860px) {
+    .about { grid-template-columns: 1fr; }
+    .guarantee-list { grid-template-columns: 1fr; }
+  }
+
+  /* ============================================
+     CONTACT
+     ============================================ */
+  .contact {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+  }
+  .contact__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(32px, 5vw, 64px);
+  }
+  .contact h2 {
+    font-size: var(--step-4);
+    line-height: 1.05;
+    margin: 12px 0 18px;
+  }
+  .contact h2 em { font-style: italic; color: var(--accent); font-weight: 500; }
+  .contact__intro {
+    color: var(--fg-soft);
+    font-size: 1.02rem;
+    line-height: 1.55;
+    max-width: 44ch;
+    margin: 0 0 28px;
+  }
+  .contact__details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 24px;
+  }
+  .detail {
+    padding: 16px 18px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+  }
+  .detail__label {
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 4px;
+  }
+  .detail__value {
+    font-family: var(--display);
+    font-size: 1.02rem;
+    color: var(--fg);
+    margin: 0;
+  }
+  .detail a:hover { color: var(--accent); }
+
+  .form {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    padding: clamp(24px, 3vw, 36px);
+  }
+  .form__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+  .field label {
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .field input,
+  .field select,
+  .field textarea {
+    font: inherit;
+    color: var(--fg);
+    background: var(--bg);
+    border: 1px solid var(--border-2);
+    border-radius: var(--r);
+    padding: 12px 14px;
+    transition: border-color 160ms ease, background 160ms ease;
+  }
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: var(--surface);
+  }
+  .field textarea { resize: vertical; min-height: 110px; }
+  .form__submit { margin-top: 10px; display: flex; gap: 12px; align-items: center; }
+  .form__note { font-size: 0.78rem; color: var(--muted); }
+  @media (max-width: 760px) {
+    .contact__grid { grid-template-columns: 1fr; }
+    .form__row { grid-template-columns: 1fr; }
+    .contact__details { grid-template-columns: 1fr; }
+  }
+
+  /* ============================================
+     FOOTER
+     ============================================ */
+  .footer {
+    padding: 56px 0 32px;
+    border-top: 1px solid var(--border);
+    background: var(--bg);
+  }
+  .footer__inner {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  .footer__brand p {
+    color: var(--fg-soft);
+    font-size: 0.95rem;
+    line-height: 1.55;
+    max-width: 36ch;
+    margin: 12px 0 0;
+  }
+  .footer h4 {
+    font-family: var(--body);
+    font-size: 0.74rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 4px 0 14px;
+    font-weight: 600;
+  }
+  .footer ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+  .footer ul a {
+    color: var(--fg-soft);
+    font-size: 0.92rem;
+  }
+  .footer ul a:hover { color: var(--accent); }
+  .footer__legal {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+  .footer__legal a:hover { color: var(--accent); }
+  .demo-tag {
+    color: var(--muted);
+    font-style: italic;
+  }
+  @media (max-width: 760px) {
+    .footer__inner { grid-template-columns: 1fr; gap: 28px; }
+  }
+
+  /* ============================================
+     Reduced motion
+     ============================================ */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================
+     TOP BAR
+     ============================================ -->
+<header class="topbar" data-od-id="topbar">
+  <div class="container topbar__inner">
+    <a class="brand" href="#top" data-od-id="brand">
+      <span class="brand__mark" aria-hidden="true">C</span>
+      <span class="brand__name">
+        <strong>Charpente &amp; Création Bois</strong>
+        <span>Stéphane Hochart · Côtes-d'Armor</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Navigation principale">
+      <a href="#prestations">Prestations</a>
+      <a href="#realisations">Réalisations</a>
+      <a href="#atelier">L'atelier</a>
+      <a href="#apropos">À propos</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="topbar__cta">
+      <a class="btn btn-ghost" href="tel:+33000000000" data-od-id="nav-phone">
+        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+        06 00 00 00 00
+      </a>
+      <a class="btn btn-primary" href="#contact" data-od-id="nav-cta">
+        Demander un devis
+        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <button class="nav-toggle" type="button" aria-label="Ouvrir le menu" data-od-id="nav-toggle">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============================================
+       HERO
+       ============================================ -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="container">
+      <div class="hero__grid">
+        <figure class="hero__media" data-od-id="hero-media">
+          <img src="assets/hero-chantier.jpg" alt="Charpente en cours de montage — ossature bois sur chantier" loading="eager" fetchpriority="high" width="1920" height="1080">
+          <figcaption class="hero__caption">
+            <strong>Chantier en cours — Côtes-d'Armor</strong>
+            Ossature bois levée sur site, assemblage traditionnel
+          </figcaption>
+        </figure>
+        <div class="hero__panel" data-od-id="hero-panel">
+          <span class="eyebrow">Atelier de charpente · Bretagne</span>
+          <h1 class="h-display hero__title" id="hero-title">
+            Le bois,<br>
+            travaillé <em>à l'ancienne</em>,<br>
+            pensé pour aujourd'hui.
+          </h1>
+          <p class="hero__lede">
+            Charpente traditionnelle, ossature bois, extensions et aménagements sur mesure.
+            Depuis plus de 20 ans, Stéphane Hochart conçoit et assemble des structures durables
+            dans un rayon de 60 km autour de Châtelaudren-Plouagat.
+          </p>
+          <div class="hero__actions">
+            <a class="btn btn-primary" href="#contact" data-od-id="hero-cta-primary">
+              Parler de votre projet
+              <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <a class="btn btn-ghost" href="#realisations" data-od-id="hero-cta-secondary">
+              Voir les réalisations
+            </a>
+          </div>
+          <dl class="hero__meta">
+            <div>
+              <dt>Implanté à</dt>
+              <dd>Châtelaudren-Plouagat (22)</dd>
+            </div>
+            <div>
+              <dt>Rayon d'intervention</dt>
+              <dd>~ 60 km · Bretagne Nord</dd>
+            </div>
+            <div>
+              <dt>Essences locales</dt>
+              <dd>Chêne, douglas, châtaignier</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       BANDEAU CHIFFRES
+       ============================================ -->
+  <div class="strip" aria-label="L'atelier en chiffres">
+    <div class="container">
+      <div class="strip__inner">
+        <div class="stat">
+          <p class="stat__num">+20<em>ans</em></p>
+          <p class="stat__label">d'expérience en charpente et ossature bois</p>
+        </div>
+        <div class="stat">
+          <p class="stat__num">~60<em>km</em></p>
+          <p class="stat__label">rayon d'intervention autour de l'atelier</p>
+        </div>
+        <div class="stat">
+          <p class="stat__num">100<em>%</em></p>
+          <p class="stat__label">conception et fabrication dans l'atelier de Plouagat</p>
+        </div>
+        <div class="stat">
+          <p class="stat__num">5<em>essences</em></p>
+          <p class="stat__label">travaillées régulièrement, dont trois locales</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       PRESTATIONS
+       ============================================ -->
+  <section id="prestations" aria-labelledby="prestations-title">
+    <div class="container">
+      <header class="section-head">
+        <div>
+          <span class="eyebrow">Prestations</span>
+          <h2 class="section-head__title h-display" id="prestations-title">
+            Quatre métiers,<br>
+            un même <em>souci du geste</em>.
+          </h2>
+        </div>
+        <p class="section-head__intro">
+          De la ferme traditionnelle levée à la main à l'extension contemporaine en ossature bois,
+          chaque projet est étudié dans l'atelier avant d'être taillé, assemblé puis monté sur site.
+          Les essences sont choisies avec vous, en fonction de la structure, du budget et de la durée de vie recherchée.
+        </p>
+      </header>
+
+      <div class="services">
+        <article class="service service--feat" data-od-id="service-traditionnelle">
+          <span class="service__num">01 — Charpente traditionnelle</span>
+          <h3 class="service__title">Ferme, panne, arbalétrier&nbsp;: la charpente à l'ancienne.</h3>
+          <p class="service__body">
+            Taille à la main, tenons-mortaises, chevilles bois. Nous levons des charpentes
+            traditionnelles sur bâtiments neufs comme en rénovation, en adaptant les sections
+            et les assemblages à votre projet. Bois massif local, finition brute ou prête à recevoir la couverture.
+          </p>
+          <div class="service__foot">
+            <span><strong>Pour</strong> · maisons, longères, granges, édifices patrimoniaux</span>
+            <span>~ 4 à 12 semaines</span>
+          </div>
+        </article>
+
+        <article class="service service--med" data-od-id="service-ossature">
+          <span class="service__num">02 — Ossature bois</span>
+          <h3 class="service__title">Murs, planchers, toitures&nbsp;: l'ossature contemporaine.</h3>
+          <p class="service__body">
+            Fabrication de panneaux ossature bois en atelier, levage rapide sur site.
+            Solution performante pour extensions, surélévations et constructions neuves.
+          </p>
+          <div class="service__foot">
+            <span><strong>Pour</strong> · extensions, maisons passives</span>
+            <span>~ 3 à 8 semaines</span>
+          </div>
+        </article>
+
+        <article class="service service--half" data-od-id="service-extension">
+          <span class="service__num">03 — Extension &amp; surélévation</span>
+          <h3 class="service__title">Agrandir sans tout démolir.</h3>
+          <p class="service__body">
+            Nous étudions la faisabilité structurelle de votre agrandissement et concevons
+            une extension qui dialogue avec l'existant — pierre, parpaing, brique.
+          </p>
+          <div class="service__foot">
+            <span><strong>Pour</strong> · pièces de vie, garages, studios</span>
+            <span>Étude préalable incluse</span>
+          </div>
+        </article>
+
+        <article class="service service--half" data-od-id="service-amenagement">
+          <span class="service__num">04 — Aménagement intérieur</span>
+          <h3 class="service__title">Le bois dans la maison.</h3>
+          <p class="service__body">
+            Escaliers, habillages, cloisons, dressings, bibliothèques, mezzanines.
+            Menuiserie brute ou finie, intégrée à l'architecture existante.
+          </p>
+          <div class="service__foot">
+            <span><strong>Pour</strong> · pièces de vie, combles, entrées</span>
+            <span>~ 1 à 4 semaines</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       BANDEAU ATELIER
+       ============================================ -->
+  <section id="atelier" aria-labelledby="atelier-title" style="padding-top: 0;">
+    <div class="container">
+      <div class="feature-band" data-od-id="atelier-band">
+        <img src="assets/atelier-01.jpg" alt="L'atelier de Châtelaudren-Plouagat — débit et taille de pièces de charpente" loading="lazy" width="1920" height="1280">
+        <div class="feature-band__content">
+          <span class="eyebrow">L'atelier</span>
+          <h2 class="feature-band__title" id="atelier-title">
+            Un atelier à taille humaine,<br>
+            où chaque pièce passe <em>entre les mêmes mains</em>.
+          </h2>
+          <p class="feature-band__body">
+            Le bois arrive brut, repart taillé. Entre les deux&nbsp;: traçage, corroyage, tenonnage,
+            assemblages. Pas de sous-traitance cachée. Vous savez qui a fait quoi, et pourquoi.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       RÉALISATIONS
+       ============================================ -->
+  <section id="realisations" aria-labelledby="realisations-title">
+    <div class="container">
+      <header class="section-head">
+        <div>
+          <span class="eyebrow">Réalisations</span>
+          <h2 class="section-head__title h-display" id="realisations-title">
+            Quelques <em>chantiers</em> récents.
+          </h2>
+        </div>
+        <p class="section-head__intro">
+          Une sélection de projets menés ces dernières années dans les Côtes-d'Armor et au-delà.
+          Chaque chantier est documenté en photo et remis au client en fin de chantier.
+        </p>
+      </header>
+
+      <div class="works">
+        <article class="work work--wide" data-od-id="work-1">
+          <div class="work__media">
+            <img src="assets/charpente-traditionnelle.jpg" alt="Charpente traditionnelle en cours de levage" loading="lazy" width="1920" height="1080">
+          </div>
+          <div class="work__caption">
+            <h3 class="work__title">Charpente traditionnelle — longère rénovée</h3>
+            <p class="work__meta">Côtes-d'Armor · 2024 · ferme et pannes en chêne local</p>
+          </div>
+        </article>
+
+        <article class="work work--half" data-od-id="work-2">
+          <div class="work__media">
+            <img src="assets/detail-assemblage.jpg" alt="Détail d'assemblage tenon-mortaise" loading="lazy" width="1920" height="1440">
+          </div>
+          <div class="work__caption">
+            <h3 class="work__title">Détail d'assemblage</h3>
+            <p class="work__meta">Tenon-mortaise chevillé · finition brute</p>
+          </div>
+        </article>
+
+        <article class="work work--third" data-od-id="work-3">
+          <div class="work__media">
+            <img src="assets/atelier-01.jpg" alt="Pièces de charpente dans l'atelier" loading="lazy" width="1920" height="1280">
+          </div>
+          <div class="work__caption">
+            <h3 class="work__title">Taille en atelier</h3>
+            <p class="work__meta">Pièces d'ossature avant levage</p>
+          </div>
+        </article>
+
+        <article class="work work--third" data-od-id="work-4">
+          <div class="work__media">
+            <img src="assets/hero-chantier.jpg" alt="Ossature bois en cours de levage sur chantier" loading="lazy" width="1920" height="1080">
+          </div>
+          <div class="work__caption">
+            <h3 class="work__title">Ossature sur chantier</h3>
+            <p class="work__meta">Levage en deux jours · finition bardage</p>
+          </div>
+        </article>
+
+        <article class="work work--third" data-od-id="work-5">
+          <div class="work__media">
+            <img src="assets/charpente-traditionnelle.jpg" alt="Vue d'ensemble d'une charpente" loading="lazy" width="1920" height="1080">
+          </div>
+          <div class="work__caption">
+            <h3 class="work__title">Rénovation de toiture</h3>
+            <p class="work__meta">Reprise complète · arêtiers et noues</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       PROCESS
+       ============================================ -->
+  <section class="process" aria-labelledby="process-title">
+    <div class="container">
+      <header class="section-head">
+        <div>
+          <span class="eyebrow">Méthode</span>
+          <h2 class="section-head__title h-display" id="process-title">
+            Quatre étapes,<br>
+            de la <em>première visite</em> au levage.
+          </h2>
+        </div>
+        <p class="section-head__intro">
+          Pas de surprise en cours de chantier. Tout est défini en amont — plans, sections,
+          délais — et confirmé par écrit avant la taille.
+        </p>
+      </header>
+
+      <ol class="process__steps" data-od-id="process-steps">
+        <li class="step">
+          <span class="step__num">Étape 01</span>
+          <h3 class="step__title">Visite &amp; échange</h3>
+          <p class="step__body">
+            Sur place pour comprendre le bâti, vos usages, vos contraintes.
+            Premier chiffrage sous 7 à 10 jours.
+          </p>
+        </li>
+        <li class="step">
+          <span class="step__num">Étape 02</span>
+          <h3 class="step__title">Conception &amp; devis</h3>
+          <p class="step__body">
+            Plans, coupes, choix d'essence et de finition. Devis détaillé,
+            planning, conditions de paiement.
+          </p>
+        </li>
+        <li class="step">
+          <span class="step__num">Étape 03</span>
+          <h3 class="step__title">Taille en atelier</h3>
+          <p class="step__body">
+            Traçage, corroyage, assemblages. Vous pouvez passer voir l'avancement
+            à tout moment.
+          </p>
+        </li>
+        <li class="step">
+          <span class="step__num">Étape 04</span>
+          <h3 class="step__title">Pose &amp; livraison</h3>
+          <p class="step__body">
+            Levage sur site, fixation, vérification structurelle.
+            Remise des plans d'exécution et des fiches d'entretien.
+          </p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============================================
+       À PROPOS
+       ============================================ -->
+  <section id="apropos" aria-labelledby="apropos-title">
+    <div class="container">
+      <div class="about">
+        <div>
+          <span class="eyebrow">À propos</span>
+          <h2 class="about__title h-display" id="apropos-title">
+            Stéphane Hochart,<br>
+            charpentier de <em>père en fils</em>.
+          </h2>
+          <div class="about__body">
+            <p>
+              Originaire du Trégor, Stéphane Hochart a grandi dans les copeaux.
+              Formé sur le terrain auprès de charpentiers couvreurs avant de reprendre
+              son propre atelier à Châtelaudren-Plouagat, il travaille aujourd'hui avec une équipe restreinte
+              pour rester présent à chaque étape — du devis au levage.
+            </p>
+            <p>
+              La maison aime les projets qui durent&nbsp;: charpentes qui reprendront trois générations,
+              extensions qui se fondent dans l'existant, aménagements qu'on ne remarque plus tant ils sont à leur place.
+              C'est ce qui guide chaque décision technique.
+            </p>
+          </div>
+          <p class="about__sign">
+            Stéphane Hochart
+            <span>Chef d'atelier · charpentier</span>
+          </p>
+        </div>
+
+        <aside class="about__side">
+          <figure class="quote">
+            <p>«&nbsp;On ne vend pas du bois, on vend une structure qui doit tenir cent ans. Tout le reste en découle.&nbsp;»</p>
+            <cite>— Stéphane, à propos des choix d'essence</cite>
+          </figure>
+
+          <ul class="guarantee-list">
+            <li>Devis écrit, détaillé, sans surprise</li>
+            <li>Plans d'exécution remis au client</li>
+            <li>Essences locales privilégiées</li>
+            <li>Assurances décennale &amp; RC Pro</li>
+            <li>Visite préalable toujours offerte</li>
+            <li>Garantie sur les assemblages</li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       CONTACT
+       ============================================ -->
+  <section id="contact" class="contact" aria-labelledby="contact-title">
+    <div class="container">
+      <div class="contact__grid">
+        <div>
+          <span class="eyebrow">Contact</span>
+          <h2 class="h-display" id="contact-title">
+            Parlons de votre <em>projet</em>.
+          </h2>
+          <p class="contact__intro">
+            Décrivez votre projet en quelques lignes — type de bâtiment, surface approximative,
+            localisation, délais souhaités. Réponse sous 48&nbsp;h ouvrées, et visite gratuite
+            pour tout devis.
+          </p>
+
+          <div class="contact__details">
+            <div class="detail">
+              <p class="detail__label">Téléphone</p>
+              <p class="detail__value">
+                <a href="tel:+33000000000">06 00 00 00 00</a>
+              </p>
+            </div>
+            <div class="detail">
+              <p class="detail__label">Courriel</p>
+              <p class="detail__value">
+                <a href="mailto:contact@charpente-creation-bois.fr">contact@charpente-creation-bois.fr</a>
+              </p>
+            </div>
+            <div class="detail">
+              <p class="detail__label">Atelier</p>
+              <p class="detail__value">Zone artisanale<br>22170 Châtelaudren-Plouagat</p>
+            </div>
+            <div class="detail">
+              <p class="detail__label">Horaires</p>
+              <p class="detail__value">Lun — Ven · 8h-12h / 14h-18h<br>Sur rendez-vous le samedi</p>
+            </div>
+          </div>
+        </div>
+
+        <form class="form" data-od-id="contact-form" action="#" method="post" novalidate>
+          <div class="form__row">
+            <div class="field">
+              <label for="f-nom">Nom</label>
+              <input id="f-nom" name="nom" type="text" required autocomplete="name">
+            </div>
+            <div class="field">
+              <label for="f-tel">Téléphone</label>
+              <input id="f-tel" name="tel" type="tel" autocomplete="tel">
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-email">Courriel</label>
+            <input id="f-email" name="email" type="email" required autocomplete="email">
+          </div>
+          <div class="field">
+            <label for="f-projet">Type de projet</label>
+            <select id="f-projet" name="projet">
+              <option value="">Choisir…</option>
+              <option>Charpente traditionnelle</option>
+              <option>Ossature bois / extension</option>
+              <option>Rénovation de toiture</option>
+              <option>Aménagement intérieur</option>
+              <option>Autre / pas encore défini</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-msg">Décrivez votre projet</label>
+            <textarea id="f-msg" name="message" required placeholder="Localisation, surface, délais, contraintes…"></textarea>
+          </div>
+          <div class="form__submit">
+            <button class="btn btn-primary" type="submit" data-od-id="form-submit">
+              Envoyer ma demande
+              <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+            <span class="form__note">Réponse sous 48 h ouvrées.</span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================================
+     FOOTER
+     ============================================ -->
+<footer class="footer" data-od-id="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="#top">
+        <span class="brand__mark" aria-hidden="true">C</span>
+        <span class="brand__name">
+          <strong>Charpente &amp; Création Bois</strong>
+          <span>Stéphane Hochart</span>
+        </span>
+      </a>
+      <p>
+        Atelier de charpente et ossature bois à Châtelaudren-Plouagat.
+        Interventions dans les Côtes-d'Armor et au-delà, dans un rayon de 60 km.
+      </p>
+    </div>
+
+    <div>
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="#prestations">Prestations</a></li>
+        <li><a href="#realisations">Réalisations</a></li>
+        <li><a href="#atelier">L'atelier</a></li>
+        <li><a href="#apropos">À propos</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4>Contact direct</h4>
+      <ul>
+        <li><a href="tel:+33000000000">06 00 00 00 00</a></li>
+        <li><a href="mailto:contact@charpente-creation-bois.fr">contact@charpente-creation-bois.fr</a></li>
+        <li>22170 Châtelaudren-Plouagat</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container footer__legal">
+    <span>© 2025 Charpente &amp; Création Bois · Stéphane Hochart · SIRET en cours d'attribution</span>
+    <span class="demo-tag">Démo générée par Sixelasco</span>
+  </div>
+</footer>
+
+<script>
+  // Toggle menu mobile (simple)
+  const toggle = document.querySelector('.nav-toggle');
+  const nav = document.querySelector('.nav');
+  if (toggle && nav) {
+    toggle.addEventListener('click', () => {
+      const isOpen = nav.style.display === 'flex';
+      nav.style.display = isOpen ? '' : 'flex';
+      nav.style.position = isOpen ? '' : 'absolute';
+      nav.style.top = isOpen ? '' : '64px';
+      nav.style.right = isOpen ? '' : '16px';
+      nav.style.left = isOpen ? '' : '16px';
+      nav.style.background = isOpen ? '' : 'var(--bg)';
+      nav.style.padding = isOpen ? '' : '20px';
+      nav.style.borderRadius = isOpen ? '' : 'var(--r-lg)';
+      nav.style.border = isOpen ? '' : '1px solid var(--border)';
+      nav.style.flexDirection = isOpen ? '' : 'column';
+      nav.style.alignItems = isOpen ? '' : 'flex-start';
+      nav.style.boxShadow = isOpen ? '' : '0 12px 32px -20px oklch(20% 0.04 50 / 0.4)';
+      nav.style.zIndex = isOpen ? '' : '60';
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+    });
+  }
+
+  // Form : soumission factice (démo) — pas d'envoi serveur
+  const form = document.querySelector('[data-od-id="contact-form"]');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const submit = form.querySelector('[data-od-id="form-submit"]');
+      const note = form.querySelector('.form__note');
+      if (submit && note) {
+        submit.disabled = true;
+        submit.firstChild.textContent = 'Demande envoyée — ';
+        note.textContent = 'Merci, nous revenons vers vous sous 48 h.';
+      }
+    });
+  }
+</script>
+
+</body>
+</html>

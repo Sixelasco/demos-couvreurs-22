@@ -1,0 +1,1804 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#3b4252" />
+  <title>D&amp;B Charpente — Couvreur-charpentier à Langueux (22)</title>
+  <meta name="description" content="D&amp;B Charpente, couvreur-charpentier à Langueux près de Saint-Brieuc. Quatre associés, +17 ans d'expérience, +100 réalisations. RGE &amp; Qualibat. Ardoise, charpente, ossature, étanchéité, zinguerie." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       DESIGN TOKENS — Modern utility · couvreur
+       Palette OKLch pure (zéro hex dans le reste du fichier)
+       ============================================================ */
+    :root {
+      /* Couleurs */
+      --bg:          oklch(0.968 0.012 90);    /* parchment off-white */
+      --surface:     oklch(0.94 0.010 240);    /* light slate */
+      --ink:         oklch(0.28 0.032 262);    /* deep slate-blue (ardoise) */
+      --muted:       oklch(0.55 0.015 240);
+      --border:      oklch(0.885 0.012 240);
+      --accent:      oklch(0.55 0.13 55);      /* weathered copper */
+      --accent-ink:  oklch(0.32 0.08 50);      /* copper ink pour hover */
+      --urgence:     oklch(0.50 0.185 28);     /* urgence red — sparingly */
+      --urgence-ink: oklch(0.34 0.13 25);
+      --white:       oklch(0.99 0.005 90);
+
+      /* Type */
+      --font-display: 'Bricolage Grotesque', system-ui, -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      --font-body:    'Inter', system-ui, -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+
+      /* Espaces (grille 8px) */
+      --s-1: 4px;
+      --s-2: 8px;
+      --s-3: 12px;
+      --s-4: 16px;
+      --s-5: 24px;
+      --s-6: 32px;
+      --s-7: 48px;
+      --s-8: 64px;
+      --s-9: 96px;
+      --s-10: 128px;
+
+      /* Rayons / bordures */
+      --r-sm: 4px;
+      --r-md: 8px;
+      --r-lg: 14px;
+      --r-xl: 22px;
+      --bw: 1px;
+    }
+
+    /* ============================================================
+       RESET / BASE
+       ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.55;
+      color: var(--ink);
+      background: var(--bg);
+      font-feature-settings: "ss01" on, "cv11" on;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    img, svg { max-width: 100%; display: block; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; }
+    h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 800; letter-spacing: -0.02em; line-height: 1.05; margin: 0; color: var(--ink); }
+    p { margin: 0; }
+    ul { margin: 0; padding: 0; list-style: none; }
+
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: var(--r-sm); }
+
+    /* ============================================================
+       UTILITIES
+       ============================================================ */
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding-inline: var(--s-5);
+    }
+    @media (min-width: 768px) { .container { padding-inline: var(--s-6); } }
+    @media (min-width: 1024px) { .container { padding-inline: var(--s-7); } }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--s-2);
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .eyebrow::before {
+      content: "";
+      width: 24px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--s-2);
+      padding: 14px 22px;
+      min-height: 48px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: -0.005em;
+      border-radius: var(--r-md);
+      border: var(--bw) solid transparent;
+      transition: transform .15s ease, background .2s ease, color .2s ease, border-color .2s ease;
+      text-align: center;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--white);
+      border-color: var(--accent);
+    }
+    .btn-primary:hover { background: var(--accent-ink); border-color: var(--accent-ink); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--ink);
+      border-color: var(--ink);
+    }
+    .btn-outline:hover { background: var(--ink); color: var(--white); }
+
+    .btn-ghost {
+      background: var(--surface);
+      color: var(--ink);
+      border-color: var(--border);
+    }
+    .btn-ghost:hover { background: var(--border); }
+
+    .divider {
+      height: 1px;
+      background: var(--border);
+      border: 0;
+      margin: 0;
+    }
+
+    /* ============================================================
+       HEADER — sticky · fond parchment + blur au scroll
+       ============================================================ */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: oklch(0.968 0.012 90 / 0.86);
+      backdrop-filter: saturate(140%) blur(10px);
+      -webkit-backdrop-filter: saturate(140%) blur(10px);
+      border-bottom: var(--bw) solid transparent;
+      transition: border-color .25s ease, background .25s ease;
+    }
+    .site-header.is-scrolled {
+      border-bottom-color: var(--border);
+      background: oklch(0.968 0.012 90 / 0.94);
+    }
+    .header-row {
+      display: flex;
+      align-items: center;
+      gap: var(--s-4);
+      padding-block: var(--s-3);
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--s-3);
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+    }
+    .brand-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--r-md);
+      background: var(--ink);
+      color: var(--bg);
+      display: grid;
+      place-items: center;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 15px;
+      letter-spacing: -0.04em;
+    }
+    .brand small {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+    .brand-note { display: none; }
+    @media (min-width: 1024px) {
+      .brand-note {
+        display: inline-block;
+        font-family: var(--font-body);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        color: var(--muted);
+        padding: 4px 8px;
+        border: var(--bw) dashed var(--border);
+        border-radius: var(--r-sm);
+        margin-left: var(--s-2);
+      }
+    }
+
+    .nav-desktop {
+      display: none;
+      align-items: center;
+      gap: var(--s-5);
+      margin-left: auto;
+    }
+    .nav-desktop a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink);
+      padding: 6px 2px;
+      border-bottom: 2px solid transparent;
+      transition: border-color .2s ease, color .2s ease;
+    }
+    .nav-desktop a:hover { border-bottom-color: var(--accent); }
+
+    .urgence-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--s-2);
+      padding: 9px 14px;
+      background: var(--urgence);
+      color: var(--white);
+      border-radius: var(--r-md);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: -0.005em;
+      border: var(--bw) solid var(--urgence-ink);
+      box-shadow: 0 1px 0 var(--urgence-ink), 0 6px 18px -10px var(--urgence);
+      transition: background .2s ease, transform .15s ease;
+      white-space: nowrap;
+    }
+    .urgence-badge:hover { background: var(--urgence-ink); transform: translateY(-1px); }
+    .urgence-badge .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--white);
+      box-shadow: 0 0 0 0 oklch(1 0 0 / 0.7);
+      animation: pulse 2s ease-out infinite;
+    }
+    @keyframes pulse {
+      0%   { box-shadow: 0 0 0 0 oklch(1 0 0 / 0.7); }
+      70%  { box-shadow: 0 0 0 8px oklch(1 0 0 / 0); }
+      100% { box-shadow: 0 0 0 0 oklch(1 0 0 / 0); }
+    }
+    .urgence-badge .label-strong { font-weight: 700; }
+
+    @media (min-width: 768px) {
+      .nav-desktop { display: inline-flex; }
+    }
+    .menu-toggle {
+      display: inline-grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border-radius: var(--r-md);
+      border: var(--bw) solid var(--border);
+      background: var(--bg);
+      color: var(--ink);
+    }
+    @media (min-width: 768px) { .menu-toggle { display: none; } }
+
+    /* Drawer mobile */
+    .mobile-drawer {
+      position: fixed;
+      inset: 64px 0 0 0;
+      background: var(--bg);
+      padding: var(--s-6) var(--s-5) var(--s-7);
+      transform: translateY(-12px);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform .25s ease, opacity .25s ease;
+      z-index: 40;
+      border-top: var(--bw) solid var(--border);
+    }
+    .mobile-drawer.is-open {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .mobile-drawer nav {
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-2);
+    }
+    .mobile-drawer nav a {
+      display: block;
+      padding: 14px 16px;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 22px;
+      border-bottom: var(--bw) solid var(--border);
+    }
+    .mobile-drawer .urgence-badge { margin-top: var(--s-5); width: 100%; justify-content: center; padding: 14px; font-size: 15px; }
+
+    /* ============================================================
+       HERO
+       ============================================================ */
+    .hero {
+      position: relative;
+      padding-block: var(--s-7) var(--s-8);
+      overflow: hidden;
+    }
+    @media (min-width: 768px) { .hero { padding-block: var(--s-8) var(--s-9); } }
+    .hero-grid {
+      display: grid;
+      gap: var(--s-7);
+      grid-template-columns: 1fr;
+      align-items: center;
+    }
+    @media (min-width: 1024px) {
+      .hero-grid { grid-template-columns: 1.05fr 0.95fr; gap: var(--s-8); }
+    }
+    .hero-copy h1 {
+      font-size: clamp(36px, 5.4vw, 64px);
+      line-height: 1.02;
+      letter-spacing: -0.025em;
+      max-width: 16ch;
+    }
+    .hero-copy h1 .accent { color: var(--accent); }
+    .hero-sub {
+      margin-top: var(--s-5);
+      font-size: clamp(16px, 1.4vw, 18px);
+      line-height: 1.55;
+      color: var(--muted);
+      max-width: 52ch;
+    }
+    .hero-sub strong { color: var(--ink); font-weight: 600; }
+    .hero-ctas {
+      margin-top: var(--s-6);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--s-3);
+    }
+    .hero-meta {
+      margin-top: var(--s-7);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--s-5) var(--s-7);
+      padding-top: var(--s-5);
+      border-top: var(--bw) solid var(--border);
+    }
+    .hero-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .hero-meta-item .num {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 28px;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+    .hero-meta-item .lbl {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    .hero-photo {
+      position: relative;
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      box-shadow: 0 30px 60px -30px oklch(0.28 0.032 262 / 0.25);
+    }
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero-photo .chip {
+      position: absolute;
+      left: var(--s-4);
+      bottom: var(--s-4);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--s-2);
+      padding: 8px 12px;
+      background: oklch(0.968 0.012 90 / 0.94);
+      border: var(--bw) solid var(--border);
+      border-radius: var(--r-md);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--ink);
+      backdrop-filter: blur(6px);
+    }
+    .hero-photo .chip svg { color: var(--accent); }
+    .hero-photo .corner-tag {
+      position: absolute;
+      right: var(--s-4);
+      top: var(--s-4);
+      padding: 6px 10px;
+      background: var(--ink);
+      color: var(--bg);
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: var(--r-sm);
+    }
+
+    /* ============================================================
+       SECTIONS — generic
+       ============================================================ */
+    section { padding-block: var(--s-9); }
+    .section-head {
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-4);
+      margin-bottom: var(--s-7);
+      max-width: 760px;
+    }
+    .section-head h2 {
+      font-size: clamp(28px, 3.4vw, 44px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+    .section-head p {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 60ch;
+    }
+    @media (min-width: 768px) {
+      .section-head { flex-direction: row; align-items: flex-end; justify-content: space-between; gap: var(--s-7); }
+    }
+
+    .surface-band { background: var(--surface); }
+
+    /* ============================================================
+       POURQUOI — bento 4 (1 large + 3)
+       ============================================================ */
+    .pourquoi-grid {
+      display: grid;
+      gap: var(--s-4);
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 640px)  { .pourquoi-grid { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 1024px) {
+      .pourquoi-grid {
+        grid-template-columns: 1.4fr 1fr 1fr;
+        grid-template-rows: auto auto;
+      }
+      .pourquoi-card.feature { grid-row: span 2; }
+    }
+    .pourquoi-card {
+      position: relative;
+      padding: var(--s-6);
+      background: var(--bg);
+      border: var(--bw) solid var(--border);
+      border-radius: var(--r-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-3);
+      min-height: 200px;
+    }
+    .pourquoi-card.feature {
+      background: var(--ink);
+      color: var(--bg);
+      border-color: var(--ink);
+    }
+    .pourquoi-card.feature .pourquoi-num { color: var(--accent); }
+    .pourquoi-card.feature p { color: oklch(0.85 0.01 240); }
+    .pourquoi-num {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(40px, 5vw, 64px);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      color: var(--ink);
+    }
+    .pourquoi-card h3 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 20px;
+      letter-spacing: -0.015em;
+    }
+    .pourquoi-card p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .pourquoi-card .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--s-2);
+      padding: 6px 10px;
+      background: var(--surface);
+      color: var(--ink);
+      border-radius: var(--r-sm);
+      font-size: 12px;
+      font-weight: 600;
+      width: fit-content;
+    }
+    .pourquoi-card.feature .badge {
+      background: oklch(1 0 0 / 0.08);
+      color: var(--bg);
+      border: var(--bw) solid oklch(1 0 0 / 0.18);
+    }
+
+    /* ============================================================
+       SAVOIR-FAIRE — bento 2 large + 2 small
+       ============================================================ */
+    .services-grid {
+      display: grid;
+      gap: var(--s-4);
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 768px) {
+      .services-grid {
+        grid-template-columns: 1.2fr 0.8fr 0.8fr;
+        grid-template-rows: auto auto;
+      }
+      .service-card.size-1 { grid-column: span 1; grid-row: span 2; }
+      .service-card.size-2 { grid-column: span 2; }
+    }
+    .service-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      background: var(--bg);
+      border: var(--bw) solid var(--border);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      min-height: 280px;
+      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--ink);
+      box-shadow: 0 16px 36px -20px oklch(0.28 0.032 262 / 0.25);
+    }
+    .service-card .media {
+      aspect-ratio: 16/10;
+      overflow: hidden;
+      position: relative;
+    }
+    .service-card.size-1 .media { aspect-ratio: 4/3; }
+    .service-card .media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .6s ease;
+    }
+    .service-card:hover .media img { transform: scale(1.04); }
+    .service-card .body {
+      padding: var(--s-5) var(--s-5) var(--s-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-3);
+      flex: 1;
+    }
+    .service-card h3 {
+      font-size: 22px;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+    .service-card p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+    .service-card ul {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: auto;
+      padding-top: var(--s-3);
+      border-top: var(--bw) solid var(--border);
+    }
+    .service-card li {
+      display: flex;
+      align-items: center;
+      gap: var(--s-2);
+      font-size: 13px;
+      color: var(--ink);
+    }
+    .service-card li::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 1px;
+      flex-shrink: 0;
+    }
+    .service-card .num {
+      position: absolute;
+      top: var(--s-4);
+      left: var(--s-4);
+      z-index: 2;
+      padding: 4px 8px;
+      background: oklch(0.968 0.012 90 / 0.92);
+      border-radius: var(--r-sm);
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+    }
+
+    /* ============================================================
+       RÉALISATIONS — 6 photos grid
+       ============================================================ */
+    .real-grid {
+      display: grid;
+      gap: var(--s-3);
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 640px)  { .real-grid { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 1024px) { .real-grid { grid-template-columns: repeat(3, 1fr); gap: var(--s-4); } }
+    .real-card {
+      position: relative;
+      border-radius: var(--r-md);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: var(--surface);
+      border: var(--bw) solid var(--border);
+    }
+    .real-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .6s ease;
+    }
+    .real-card:hover img { transform: scale(1.05); }
+    .real-card .label {
+      position: absolute;
+      left: var(--s-3);
+      bottom: var(--s-3);
+      padding: 6px 10px;
+      background: oklch(0.968 0.012 90 / 0.95);
+      border-radius: var(--r-sm);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--ink);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--s-2);
+    }
+    .real-card .label .tag {
+      padding: 2px 6px;
+      background: var(--surface);
+      border-radius: var(--r-sm);
+      font-size: 10px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .real-card .index {
+      position: absolute;
+      top: var(--s-3);
+      right: var(--s-3);
+      padding: 4px 8px;
+      background: oklch(0.28 0.032 262 / 0.78);
+      color: var(--bg);
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      border-radius: var(--r-sm);
+      backdrop-filter: blur(4px);
+    }
+
+    .real-note {
+      margin-top: var(--s-5);
+      font-size: 12px;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--s-2);
+      padding: 8px 12px;
+      border: var(--bw) dashed var(--border);
+      border-radius: var(--r-sm);
+    }
+
+    /* ============================================================
+       CERTIFICATIONS
+       ============================================================ */
+    .cert-grid {
+      display: grid;
+      gap: var(--s-4);
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 768px) { .cert-grid { grid-template-columns: 1fr 1fr; gap: var(--s-5); } }
+    .cert-card {
+      padding: var(--s-6);
+      background: var(--bg);
+      border: var(--bw) solid var(--border);
+      border-radius: var(--r-lg);
+      display: grid;
+      grid-template-columns: 96px 1fr;
+      gap: var(--s-5);
+      align-items: center;
+    }
+    .cert-mark {
+      width: 96px;
+      height: 96px;
+      border-radius: var(--r-md);
+      background: var(--ink);
+      color: var(--bg);
+      display: grid;
+      place-items: center;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: 0.04em;
+      text-align: center;
+      line-height: 1;
+    }
+    .cert-mark.qualibat { background: var(--accent); color: var(--white); }
+    .cert-card h3 {
+      font-size: 20px;
+      letter-spacing: -0.015em;
+      margin-bottom: 6px;
+    }
+    .cert-card p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .cert-card .placeholder-tag {
+      display: inline-block;
+      margin-top: var(--s-2);
+      padding: 3px 8px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: var(--surface);
+      border-radius: var(--r-sm);
+    }
+
+    /* ============================================================
+       ZONE D'INTERVENTION
+       ============================================================ */
+    .zone-grid {
+      display: grid;
+      gap: var(--s-6);
+      grid-template-columns: 1fr;
+      align-items: center;
+    }
+    @media (min-width: 1024px) { .zone-grid { grid-template-columns: 1fr 1.2fr; gap: var(--s-8); } }
+    .zone-map {
+      background: var(--ink);
+      color: var(--bg);
+      border-radius: var(--r-lg);
+      padding: var(--s-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-4);
+    }
+    .zone-map svg { width: 100%; height: auto; }
+    .zone-map .map-foot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: oklch(0.75 0.015 240);
+      border-top: var(--bw) solid oklch(1 0 0 / 0.12);
+      padding-top: var(--s-3);
+    }
+    .zone-list h3 {
+      font-size: clamp(24px, 2.4vw, 32px);
+      letter-spacing: -0.02em;
+      margin-bottom: var(--s-4);
+    }
+    .communes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--s-2);
+    }
+    .communes li {
+      padding: 8px 14px;
+      background: var(--surface);
+      border: var(--bw) solid var(--border);
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink);
+    }
+    .communes li.head {
+      background: var(--ink);
+      color: var(--bg);
+      border-color: var(--ink);
+    }
+    .zone-list p {
+      margin-top: var(--s-4);
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    /* ============================================================
+       CONTACT
+       ============================================================ */
+    .contact-grid {
+      display: grid;
+      gap: var(--s-6);
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 1024px) { .contact-grid { grid-template-columns: 1fr 1fr; gap: var(--s-8); } }
+    .contact-card {
+      padding: var(--s-7);
+      background: var(--ink);
+      color: var(--bg);
+      border-radius: var(--r-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-5);
+    }
+    .contact-card .eyebrow { color: oklch(0.75 0.015 240); }
+    .contact-card .eyebrow::before { background: var(--accent); }
+    .contact-card h2 {
+      color: var(--bg);
+      font-size: clamp(28px, 3vw, 40px);
+      line-height: 1.05;
+    }
+    .contact-card h2 .accent { color: var(--accent); }
+    .contact-cta {
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-3);
+    }
+    .contact-cta .big-phone {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--s-3);
+      padding: 16px 20px;
+      background: var(--accent);
+      color: var(--white);
+      border-radius: var(--r-md);
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 22px;
+      letter-spacing: -0.01em;
+      transition: background .2s ease, transform .15s ease;
+    }
+    .contact-cta .big-phone:hover { background: var(--accent-ink); transform: translateY(-1px); }
+    .contact-cta .placeholder-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--s-2);
+      padding: 5px 10px;
+      background: oklch(1 0 0 / 0.08);
+      border: var(--bw) solid oklch(1 0 0 / 0.18);
+      border-radius: var(--r-sm);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: oklch(0.85 0.01 240);
+      width: fit-content;
+    }
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-3);
+      padding-top: var(--s-4);
+      border-top: var(--bw) solid oklch(1 0 0 / 0.12);
+    }
+    .contact-info .row {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--s-3);
+      font-size: 14px;
+      color: oklch(0.85 0.01 240);
+    }
+    .contact-info .row svg { color: var(--accent); flex-shrink: 0; margin-top: 2px; }
+    .contact-info .row .placeholder-tag { margin-top: 6px; }
+
+    /* Form */
+    .contact-form {
+      padding: var(--s-7);
+      background: var(--surface);
+      border: var(--bw) solid var(--border);
+      border-radius: var(--r-lg);
+    }
+    .contact-form h3 {
+      font-size: 22px;
+      letter-spacing: -0.015em;
+      margin-bottom: var(--s-2);
+    }
+    .contact-form .form-sub {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: var(--s-5);
+    }
+    .form-grid {
+      display: grid;
+      gap: var(--s-4);
+    }
+    @media (min-width: 640px) {
+      .form-grid { grid-template-columns: 1fr 1fr; }
+      .form-field.full { grid-column: 1 / -1; }
+    }
+    .form-field { display: flex; flex-direction: column; gap: 6px; }
+    .form-field label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .form-field input,
+    .form-field textarea,
+    .form-field select {
+      width: 100%;
+      padding: 14px 16px;
+      min-height: 48px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--ink);
+      background: var(--bg);
+      border: var(--bw) solid var(--border);
+      border-radius: var(--r-md);
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+    .form-field textarea { min-height: 140px; resize: vertical; }
+    .form-field input:focus,
+    .form-field textarea:focus,
+    .form-field select:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px oklch(0.55 0.13 55 / 0.18);
+    }
+    .form-field .help {
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .form-actions {
+      margin-top: var(--s-5);
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-3);
+    }
+    .form-actions .form-note {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    /* ============================================================
+       FOOTER
+       ============================================================ */
+    .site-footer {
+      background: var(--ink);
+      color: oklch(0.85 0.01 240);
+      padding-block: var(--s-8) var(--s-6);
+    }
+    .footer-grid {
+      display: grid;
+      gap: var(--s-6);
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 768px) { .footer-grid { grid-template-columns: 1.4fr 1fr 1fr; gap: var(--s-7); } }
+    .footer-brand .brand { color: var(--bg); }
+    .footer-brand .brand .brand-mark { background: var(--bg); color: var(--ink); }
+    .footer-brand p {
+      margin-top: var(--s-4);
+      font-size: 14px;
+      line-height: 1.5;
+      max-width: 36ch;
+    }
+    .footer-col h4 {
+      color: var(--bg);
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: var(--s-3);
+    }
+    .footer-col ul { display: flex; flex-direction: column; gap: var(--s-2); }
+    .footer-col li { font-size: 14px; }
+    .footer-col a:hover { color: var(--accent); }
+    .footer-col address {
+      font-style: normal;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .footer-bottom {
+      margin-top: var(--s-7);
+      padding-top: var(--s-5);
+      border-top: var(--bw) solid oklch(1 0 0 / 0.12);
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-3);
+      font-size: 12px;
+      color: oklch(0.65 0.015 240);
+    }
+    @media (min-width: 768px) {
+      .footer-bottom { flex-direction: row; justify-content: space-between; align-items: center; }
+    }
+    .footer-bottom a:hover { color: var(--accent); }
+
+    /* ============================================================
+       REDUCED MOTION
+       ============================================================ */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.001s !important;
+        transition-duration: 0.001s !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       HEADER
+       ============================================================ -->
+  <header class="site-header" data-od-id="site-header" role="banner">
+    <div class="container header-row">
+      <a href="#top" class="brand" data-od-id="brand" aria-label="D&amp;B Charpente — accueil">
+        <span class="brand-mark" aria-hidden="true">D&amp;B</span>
+        <span>
+          D&amp;B Charpente
+          <small>Couvreur-charpentier · Langueux (22)</small>
+        </span>
+        <span class="brand-note" aria-label="Marque à fournir par le client">marque à fournir</span>
+      </a>
+
+      <nav class="nav-desktop" aria-label="Navigation principale">
+        <a href="#services" data-od-id="nav-services">Prestations</a>
+        <a href="#realisations" data-od-id="nav-realisations">Réalisations</a>
+        <a href="#certifications" data-od-id="nav-certifications">Certifications</a>
+        <a href="#contact" data-od-id="nav-contact">Contact</a>
+      </nav>
+
+      <a href="tel:0296000000" class="urgence-badge" data-od-id="urgence-badge" aria-label="Intervention d'urgence — appeler le 02 96 XX XX XX">
+        <span class="dot" aria-hidden="true"></span>
+        <span><span class="label-strong">Urgence</span> · 02 96 XX XX XX</span>
+      </a>
+
+      <button type="button" class="menu-toggle" data-od-id="menu-toggle" aria-expanded="false" aria-controls="mobile-drawer" aria-label="Ouvrir le menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <line x1="3" y1="7" x2="21" y2="7"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="17" x2="21" y2="17"></line>
+        </svg>
+      </button>
+    </div>
+
+    <div id="mobile-drawer" class="mobile-drawer" aria-hidden="true">
+      <nav aria-label="Navigation mobile">
+        <a href="#services" data-od-id="nav-services-mobile">Prestations</a>
+        <a href="#realisations" data-od-id="nav-realisations-mobile">Réalisations</a>
+        <a href="#certifications" data-od-id="nav-certifications-mobile">Certifications</a>
+        <a href="#contact" data-od-id="nav-contact-mobile">Contact</a>
+      </nav>
+      <a href="tel:0296000000" class="urgence-badge">
+        <span class="dot" aria-hidden="true"></span>
+        <span><span class="label-strong">Urgence</span> · 02 96 XX XX XX</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============================================================
+         HERO
+         ============================================================ -->
+    <section class="hero" data-od-id="hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">Couvreur-charpentier · Langueux (22)</span>
+          <h1 id="hero-title">
+            Quatre associés.<br/>
+            <span class="accent">Un seul interlocuteur.</span><br/>
+            La toiture de votre maison entre de bonnes mains.
+          </h1>
+          <p class="hero-sub">
+            D&amp;B Charpente intervient à <strong>Langueux, Saint-Brieuc et dans tout le département des Côtes-d'Armor</strong>.
+            Ardoise, charpente, ossature, étanchéité et zinguerie&nbsp;: une équipe formée,
+            quatre associés présents sur chaque chantier.
+          </p>
+          <div class="hero-ctas">
+            <a href="#contact" class="btn btn-primary" data-od-id="hero-cta-devis">
+              Demander un devis
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+            <a href="tel:0296000000" class="btn btn-outline" data-od-id="hero-cta-call">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              Appeler maintenant
+            </a>
+          </div>
+
+          <dl class="hero-meta" aria-label="Indicateurs clés">
+            <div class="hero-meta-item">
+              <dt class="num">17</dt>
+              <dd class="lbl">ans d'expérience</dd>
+            </div>
+            <div class="hero-meta-item">
+              <dt class="num">+100</dt>
+              <dd class="lbl">réalisations depuis 2007</dd>
+            </div>
+            <div class="hero-meta-item">
+              <dt class="num">4</dt>
+              <dd class="lbl">associés · équipe formée</dd>
+            </div>
+            <div class="hero-meta-item">
+              <dt class="num">22</dt>
+              <dd class="lbl">Côtes-d'Armor</dd>
+            </div>
+          </dl>
+        </div>
+
+        <figure class="hero-photo">
+          <span class="corner-tag" aria-hidden="true">Langueux · 22</span>
+          <img
+            src="./assets/hero-ardoise.jpg"
+            alt="Toiture en ardoise d'une maison bretonne avec pignon à croupette — illustration de couverture ardoise"
+            width="1600" height="900"
+            loading="eager"
+            fetchpriority="high"
+          />
+          <figcaption class="chip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+              <path d="M12 2 4 6v6c0 5 3.5 9.5 8 10 4.5-.5 8-5 8-10V6l-8-4z"/>
+            </svg>
+            Couverture ardoise · image illustrative
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ============================================================
+         POURQUOI
+         ============================================================ -->
+    <section class="surface-band" id="pourquoi" data-od-id="pourquoi" aria-labelledby="pourquoi-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Pourquoi D&amp;B Charpente</span>
+            <h2 id="pourquoi-title">Un contact humain à l'écoute de vos attentes.</h2>
+          </div>
+          <p>Quatre associés, une équipe formée, des certifications à jour&nbsp;: on intervient vite, on explique simplement, on tient les délais.</p>
+        </div>
+
+        <div class="pourquoi-grid">
+          <article class="pourquoi-card feature" data-od-id="pourquoi-feature">
+            <span class="badge">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true">
+                <path d="M12 2 4 6v6c0 5 3.5 9.5 8 10 4.5-.5 8-5 8-10V6l-8-4z"/>
+              </svg>
+              Expérience prouvée
+            </span>
+            <span class="pourquoi-num">17<small style="font-size:0.45em; font-weight:600; color:inherit;">&nbsp;ans</small></span>
+            <h3>Plus de 17 ans d'expérience, plus d'une centaine de réalisations.</h3>
+            <p>Fondée en 2007, l'entreprise a grandi sans grossir&nbsp;: on reste sur le terrain, on connaît nos clients et nos chantiers.</p>
+          </article>
+
+          <article class="pourquoi-card" data-od-id="pourquoi-associes">
+            <span class="badge">Équipe</span>
+            <span class="pourquoi-num">4<span style="font-size:0.45em; font-weight:600;">&nbsp;associés</span></span>
+            <h3>Quatre associés et une équipe formée.</h3>
+            <p>Un interlocuteur unique par chantier, une équipe stable, des compagnons qui maîtrisent les techniques traditionnelles et modernes.</p>
+          </article>
+
+          <article class="pourquoi-card" data-od-id="pourquoi-certif">
+            <span class="badge">Certifications</span>
+            <span class="pourquoi-num" style="color: var(--accent);">RGE</span>
+            <h3>RGE &amp; Qualibat.</h3>
+            <p>Reconnu Garant Environnemental et qualification bâtiment&nbsp;: vous ouvrez droit aux aides de l'État pour vos travaux d'isolation et de toiture.</p>
+          </article>
+
+          <article class="pourquoi-card" data-od-id="pourquoi-local" style="background: var(--accent); color: var(--white); border-color: var(--accent);">
+            <span class="badge" style="background: oklch(1 0 0 / 0.18); color: var(--white);">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              Ancrage local
+            </span>
+            <h3 style="color: var(--white);">Entreprise locale.</h3>
+            <p style="color: oklch(0.95 0.02 80);">On connaît les contraintes climatiques bretonnes&nbsp;: vent, pluie, salinité, mousse. Les matériaux et les fixations sont choisis pour durer sur la côte.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ============================================================
+         SERVICES — bento 2 grandes + 2 petites
+         ============================================================ -->
+    <section id="services" data-od-id="services" aria-labelledby="services-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Nos savoir-faire</span>
+            <h2 id="services-title">Cinq métiers, un seul interlocuteur.</h2>
+          </div>
+          <p>De la charpente à la dernière feuille de zinc, on prend en charge l'enveloppe complète de votre toiture. Étude, devis, chantier, finitions.</p>
+        </div>
+
+        <div class="services-grid">
+          <!-- Tile 1 — large / feature -->
+          <article class="service-card size-1" data-od-id="service-couverture">
+            <span class="num" aria-hidden="true">01 / Couverture</span>
+            <div class="media">
+              <img
+                src="./assets/service-couverture.jpg"
+                alt="Couverture en ardoise et plomb — exemple de toiture traditionnelle"
+                width="1600" height="1562"
+                loading="lazy"
+              />
+            </div>
+            <div class="body">
+              <h3>Couverture</h3>
+              <p>Ardoise, tuile, zinc&nbsp;: pose, rénovation et réparation. On travaille les matériaux bretons dans les règles de l'art.</p>
+              <ul>
+                <li>Ardoise naturelle &amp; fibre-ciment</li>
+                <li>Tuile canal, plate, mécanique</li>
+                <li>Couverture zinc à joint debout</li>
+                <li>Réfection complète &amp; dépannage</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Tile 2 — small -->
+          <article class="service-card" data-od-id="service-charpente">
+            <span class="num" aria-hidden="true">02</span>
+            <div class="media">
+              <img
+                src="./assets/service-charpente.jpg"
+                alt="Charpente traditionnelle — ferme à crue en bois massif"
+                width="1600" height="1200"
+                loading="lazy"
+              />
+            </div>
+            <div class="body">
+              <h3>Charpente</h3>
+              <p>Traditionnelle &amp; moderne, sur mesure.</p>
+              <ul>
+                <li>Charpente traditionnelle</li>
+                <li>Fermes industrialisées</li>
+                <li>Réparation &amp; renforcement</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Tile 3 — small -->
+          <article class="service-card" data-od-id="service-ossature">
+            <span class="num" aria-hidden="true">03</span>
+            <div class="media">
+              <img
+                src="./assets/service-ossature.jpg"
+                alt="Villa à ossature bois — construction neuve"
+                width="1600" height="1146"
+                loading="lazy"
+              />
+            </div>
+            <div class="body">
+              <h3>Ossature bois</h3>
+              <p>Extensions, surélévations, maisons neuves.</p>
+              <ul>
+                <li>Murs à ossature bois</li>
+                <li>Extension &amp; surélévation</li>
+                <li>Bardage bois &amp; composite</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Tile 4 — small -->
+          <article class="service-card" data-od-id="service-etancheite">
+            <span class="num" aria-hidden="true">04</span>
+            <div class="media">
+              <img
+                src="./assets/service-etancheite.jpg"
+                alt="Toiture plate avec membrane EPDM — étanchéité"
+                width="1600" height="1331"
+                loading="lazy"
+              />
+            </div>
+            <div class="body">
+              <h3>Étanchéité</h3>
+              <p>Toits plats, terrasses, balcons.</p>
+              <ul>
+                <li>Membrane EPDM</li>
+                <li>Membrane bitumineuse</li>
+                <li>Toiture végétalisée</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Tile 5 — small -->
+          <article class="service-card" data-od-id="service-zinguerie">
+            <span class="num" aria-hidden="true">05</span>
+            <div class="media">
+              <img
+                src="./assets/service-zinguerie.jpg"
+                alt="Zinguerie — membron en zinc et bande de filet en plomb"
+                width="1600" height="1200"
+                loading="lazy"
+              />
+            </div>
+            <div class="body">
+              <h3>Zinguerie</h3>
+              <p>Gouttières, chéneaux, habillages, raccords.</p>
+              <ul>
+                <li>Gouttières pendantes &amp; rampantes</li>
+                <li>Chéneaux &amp; noues</li>
+                <li>Habillages de rives &amp; lucarnes</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ============================================================
+         RÉALISATIONS
+         ============================================================ -->
+    <section class="surface-band" id="realisations" data-od-id="realisations" aria-labelledby="realisations-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Nos réalisations</span>
+            <h2 id="realisations-title">Quelques exemples de chantiers.</h2>
+          </div>
+          <p>Un échantillon de notre travail en Côtes-d'Armor et au-delà. Photos et références client seront ajoutées par l'entreprise.</p>
+        </div>
+
+        <div class="real-grid">
+          <figure class="real-card" data-od-id="real-1">
+            <span class="index">01</span>
+            <img
+              src="./assets/realisation-1.jpg"
+              alt="Maisons à pondalez sous le viaduc de Morlaix — architecture bretonne en ardoise"
+              width="1600" height="1067"
+              loading="lazy"
+            />
+            <figcaption class="label">
+              <span class="tag">Ardoise</span>
+              Morlaix · chantier exemple
+            </figcaption>
+          </figure>
+
+          <figure class="real-card" data-od-id="real-2">
+            <span class="index">02</span>
+            <img
+              src="./assets/realisation-2.jpg"
+              alt="Maison à pondalez, Morlaix — colombages et toiture ardoise"
+              width="1600" height="2400"
+              loading="lazy"
+            />
+            <figcaption class="label">
+              <span class="tag">Charpente</span>
+              Morlaix · chantier exemple
+            </figcaption>
+          </figure>
+
+          <figure class="real-card" data-od-id="real-3">
+            <span class="index">03</span>
+            <img
+              src="./assets/realisation-3.jpg"
+              alt="Maison en granit rose entre les rochers, Côte de Granit Rose, Côtes-d'Armor"
+              width="1600" height="1200"
+              loading="lazy"
+            />
+            <figcaption class="label">
+              <span class="tag">Couverture</span>
+              Côtes-d'Armor · illustration
+            </figcaption>
+          </figure>
+
+          <figure class="real-card" data-od-id="real-4">
+            <span class="index">04</span>
+            <img
+              src="./assets/realisation-4.jpg"
+              alt="Toiture en ardoise — pureau et fixation traditionnelle"
+              width="1600" height="1067"
+              loading="lazy"
+            />
+            <figcaption class="label">
+              <span class="tag">Ardoise</span>
+              Côtes-d'Armor · illustration
+            </figcaption>
+          </figure>
+
+          <figure class="real-card" data-od-id="real-5">
+            <span class="index">05</span>
+            <img
+              src="./assets/realisation-5.jpg"
+              alt="Charpente traditionnelle — assemblage de fermes en bois massif"
+              width="1600" height="2390"
+              loading="lazy"
+            />
+            <figcaption class="label">
+              <span class="tag">Charpente</span>
+              Chantier exemple
+            </figcaption>
+          </figure>
+
+          <figure class="real-card" data-od-id="real-6">
+            <span class="index">06</span>
+            <img
+              src="./assets/realisation-6.jpg"
+              alt="Couvreur sur chantier — intervention de couverture"
+              width="1600" height="1200"
+              loading="lazy"
+            />
+            <figcaption class="label">
+              <span class="tag">Couverture</span>
+              Chantier exemple
+            </figcaption>
+          </figure>
+        </div>
+
+        <p class="real-note">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>
+          </svg>
+          Photos d'illustration Wikimedia Commons. Le client fournira ses propres photos de chantiers avant mise en ligne.
+        </p>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ============================================================
+         CERTIFICATIONS
+         ============================================================ -->
+    <section id="certifications" data-od-id="certifications" aria-labelledby="certifications-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Nos certifications</span>
+            <h2 id="certifications-title">RGE &amp; Qualibat. Les bons signes avant de signer.</h2>
+          </div>
+          <p>Deux qualifications reconnues par l'État, qui valident notre savoir-faire et ouvrent droit aux aides publiques pour vos travaux.</p>
+        </div>
+
+        <div class="cert-grid">
+          <article class="cert-card" data-od-id="cert-rge">
+            <div class="cert-mark" aria-hidden="true">RGE</div>
+            <div>
+              <h3>Reconnu Garant Environnemental</h3>
+              <p>Label de l'ADEME et de l'État. Indispensable pour bénéficier des aides (MaPrimeRénov', éco-PTZ, CEE) sur vos travaux d'isolation et de toiture.</p>
+              <span class="placeholder-tag">Logo à fournir par le client</span>
+            </div>
+          </article>
+
+          <article class="cert-card" data-od-id="cert-qualibat">
+            <div class="cert-mark qualibat" aria-hidden="true">QB</div>
+            <div>
+              <h3>Qualibat</h3>
+              <p>Qualification bâtiment reconnue par les assureurs et les donneurs d'ordre. Elle atteste de notre capacité technique et de notre régularité administrative.</p>
+              <span class="placeholder-tag">Logo à fournir par le client</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ============================================================
+         ZONE D'INTERVENTION
+         ============================================================ -->
+    <section class="surface-band" id="zone" data-od-id="zone" aria-labelledby="zone-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Zone d'intervention</span>
+            <h2 id="zone-title">Tout le pays de Saint-Brieuc, et au-delà.</h2>
+          </div>
+          <p>Basés à Langueux, on intervient dans un rayon d'une trentaine de kilomètres autour de Saint-Brieuc. Au-delà, on étudie la demande.</p>
+        </div>
+
+        <div class="zone-grid">
+          <div class="zone-map" data-od-id="zone-map" aria-hidden="true">
+            <svg viewBox="0 0 400 360" role="img" aria-label="Carte schématique des Côtes-d'Armor avec épingle sur Langueux">
+              <defs>
+                <pattern id="dotpat" width="6" height="6" patternUnits="userSpaceOnUse">
+                  <circle cx="1" cy="1" r="0.8" fill="oklch(1 0 0 / 0.18)"/>
+                </pattern>
+              </defs>
+              <!-- Bretagne silhouette schématique -->
+              <path d="M30 200 L60 140 L110 110 L160 100 L210 90 L260 110 L320 130 L370 170 L380 220 L370 270 L340 300 L300 320 L240 320 L180 315 L120 310 L70 290 L40 250 Z"
+                fill="url(#dotpat)" stroke="oklch(0.55 0.015 240)" stroke-width="1.5" stroke-linejoin="round"/>
+              <!-- 22 label -->
+              <text x="220" y="220" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="oklch(0.75 0.015 240)" letter-spacing="2">CÔTES-D'ARMOR</text>
+              <text x="220" y="236" font-family="Inter, sans-serif" font-size="11" fill="oklch(0.55 0.015 240)">Département 22</text>
+              <!-- Coast label -->
+              <text x="60" y="195" font-family="Inter, sans-serif" font-size="9" fill="oklch(0.55 0.015 240)">Côte de Granit Rose</text>
+              <!-- Langueux pin -->
+              <g transform="translate(225, 195)">
+                <circle r="22" fill="oklch(0.55 0.13 55 / 0.18)"/>
+                <circle r="11" fill="oklch(0.55 0.13 55 / 0.35)"/>
+                <circle r="5" fill="oklch(0.55 0.13 55)"/>
+                <circle r="2" fill="oklch(0.99 0 0)"/>
+              </g>
+              <line x1="225" y1="195" x2="290" y2="155" stroke="oklch(0.55 0.13 55)" stroke-width="1" stroke-dasharray="2 2"/>
+              <rect x="290" y="138" width="86" height="22" rx="3" fill="oklch(0.55 0.13 55)"/>
+              <text x="333" y="153" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="oklch(0.99 0 0)">LANGUEUX</text>
+              <!-- Other communes dots -->
+              <circle cx="240" cy="180" r="3" fill="oklch(1 0 0 / 0.6)"/>
+              <circle cx="200" cy="195" r="3" fill="oklch(1 0 0 / 0.6)"/>
+              <circle cx="255" cy="200" r="3" fill="oklch(1 0 0 / 0.6)"/>
+              <circle cx="225" cy="170" r="3" fill="oklch(1 0 0 / 0.6)"/>
+              <circle cx="195" cy="175" r="3" fill="oklch(1 0 0 / 0.6)"/>
+            </svg>
+            <div class="map-foot">
+              <span>Basés à Langueux</span>
+              <span>17 Rue de Faligot, 22360</span>
+            </div>
+          </div>
+
+          <div class="zone-list">
+            <h3>Nous intervenons notamment à</h3>
+            <ul class="communes" aria-label="Communes desservies">
+              <li class="head">Langueux</li>
+              <li class="head">Saint-Brieuc</li>
+              <li>Yffiniac</li>
+              <li>Hillion</li>
+              <li>Plérin</li>
+              <li>Ploufragan</li>
+              <li>Trégueux</li>
+              <li>Lamballe</li>
+              <li>Quintin</li>
+              <li>Binic-Étables</li>
+              <li>Pordic</li>
+              <li>Saint-Quay-Portrieux</li>
+              <li>Dinan</li>
+              <li>Dinard</li>
+              <li>Lannion</li>
+            </ul>
+            <p>Vous ne voyez pas votre commune&nbsp;? Appelez-nous, on vous dira franchement si on peut intervenir ou pas.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ============================================================
+         CONTACT
+         ============================================================ -->
+    <section id="contact" data-od-id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Contactez-nous</span>
+            <h2 id="contact-title">Parlez-nous de votre projet.</h2>
+          </div>
+          <p>Un appel, un mail ou le formulaire ci-dessous. On rappelle sous 24&nbsp;h ouvrées et on se déplace pour chiffrer.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-card" data-od-id="contact-info">
+            <span class="eyebrow">D&amp;B Charpente · Brice Domalain</span>
+            <h2>Un seul numéro, <span class="accent">un seul interlocuteur.</span></h2>
+
+            <div class="contact-cta">
+              <a href="tel:0296000000" class="big-phone" data-od-id="contact-phone">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                02 96 XX XX XX
+              </a>
+              <span class="placeholder-tag">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>
+                </svg>
+                Numéro à confirmer par le client
+              </span>
+            </div>
+
+            <div class="contact-info">
+              <div class="row">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+                </svg>
+                <div>
+                  <a href="mailto:contact@db-charpente.fr">contact@db-charpente.fr</a>
+                  <br/><span class="placeholder-tag">à confirmer par le client</span>
+                </div>
+              </div>
+              <div class="row">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+                </svg>
+                <div>
+                  17 Rue de Faligot<br/>22360 Langueux
+                </div>
+              </div>
+              <div class="row">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                </svg>
+                <div>
+                  Lun–Ven · 8h–18h<br/>Urgence 7j/7 sur appel
+                </div>
+              </div>
+              <div class="row">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                  <path d="M12 2 4 6v6c0 5 3.5 9.5 8 10 4.5-.5 8-5 8-10V6l-8-4z"/>
+                </svg>
+                <div>
+                  Gérant&nbsp;: <strong>Brice Domalain</strong><br/>SIREN 949521082 · créée 2023
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <form class="contact-form" data-od-id="contact-form" novalidate aria-label="Formulaire de demande de devis">
+            <h3>Demander un devis</h3>
+            <p class="form-sub">On vous rappelle sous 24&nbsp;h ouvrées pour cadrer le projet.</p>
+
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="f-name">Nom</label>
+                <input id="f-name" name="name" type="text" required autocomplete="name" placeholder="Jean Dupont" />
+              </div>
+              <div class="form-field">
+                <label for="f-phone">Téléphone</label>
+                <input id="f-phone" name="phone" type="tel" required autocomplete="tel" placeholder="06 12 34 56 78" />
+              </div>
+              <div class="form-field full">
+                <label for="f-email">Email</label>
+                <input id="f-email" name="email" type="email" required autocomplete="email" placeholder="jean@exemple.fr" />
+              </div>
+              <div class="form-field full">
+                <label for="f-presta">Type de prestation</label>
+                <select id="f-presta" name="prestation" required>
+                  <option value="" disabled selected>Choisir une prestation</option>
+                  <option>Couverture (ardoise, tuile, zinc)</option>
+                  <option>Charpente</option>
+                  <option>Ossature bois / extension</option>
+                  <option>Étanchéité toiture plate</option>
+                  <option>Zinguerie</option>
+                  <option>Intervention d'urgence</option>
+                  <option>Autre / je ne sais pas</option>
+                </select>
+              </div>
+              <div class="form-field full">
+                <label for="f-msg">Décrivez votre projet</label>
+                <textarea id="f-msg" name="message" required placeholder="Adresse du chantier, surface approximative, type de travaux, délais souhaités…"></textarea>
+                <span class="help">Plus vous êtes précis, plus on pourra vous répondre vite.</span>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary" data-od-id="form-submit">
+                Envoyer ma demande
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+                  <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                </svg>
+              </button>
+              <p class="form-note">En envoyant ce formulaire, vous acceptez d'être recontacté·e par D&amp;B Charpente au sujet de votre demande. Aucune transmission à des tiers.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="site-footer" data-od-id="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#top" class="brand">
+            <span class="brand-mark" aria-hidden="true">D&amp;B</span>
+            <span>
+              D&amp;B Charpente
+              <small>Couvreur-charpentier · Langueux (22)</small>
+            </span>
+          </a>
+          <p>Entreprise locale de couverture et charpente. Quatre associés, une équipe formée, plus de 17 ans de terrain en Côtes-d'Armor.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Prestations</h4>
+          <ul>
+            <li><a href="#services">Couverture</a></li>
+            <li><a href="#services">Charpente</a></li>
+            <li><a href="#services">Ossature bois</a></li>
+            <li><a href="#services">Étanchéité</a></li>
+            <li><a href="#services">Zinguerie</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <address>
+            17 Rue de Faligot<br/>
+            22360 Langueux<br/><br/>
+            <a href="tel:0296000000">02 96 XX XX XX</a><br/>
+            <a href="mailto:contact@db-charpente.fr">contact@db-charpente.fr</a>
+          </address>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© <span id="year">2025</span> D&amp;B Charpente · Gérant Brice Domalain · SIREN 949521082</span>
+        <span>
+          <a href="#" aria-label="Mentions légales (placeholder)">Mentions légales</a> ·
+          <a href="./assets/CREDITS.md" aria-label="Crédits photos">Crédits photos</a> ·
+          Démo générée par <a href="https://sixelasco.fr" rel="noopener">Sixelasco</a>
+          — contenus à valider par le client
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Sticky header scroll style
+    (function () {
+      const header = document.querySelector('.site-header');
+      const onScroll = () => {
+        if (window.scrollY > 8) header.classList.add('is-scrolled');
+        else header.classList.remove('is-scrolled');
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+
+    // Mobile menu toggle
+    (function () {
+      const btn = document.querySelector('.menu-toggle');
+      const drawer = document.getElementById('mobile-drawer');
+      if (!btn || !drawer) return;
+      const setOpen = (open) => {
+        btn.setAttribute('aria-expanded', String(open));
+        drawer.setAttribute('aria-hidden', String(!open));
+        drawer.classList.toggle('is-open', open);
+        document.body.style.overflow = open ? 'hidden' : '';
+      };
+      btn.addEventListener('click', () => {
+        const open = btn.getAttribute('aria-expanded') !== 'true';
+        setOpen(open);
+      });
+      drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') setOpen(false);
+      });
+    })();
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Form: prevent submit, show inline confirmation
+    (function () {
+      const form = document.querySelector('.contact-form');
+      if (!form) return;
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const note = form.querySelector('.form-note');
+        if (note) {
+          note.innerHTML = '<strong style="color:var(--accent);">Merci !</strong> Votre demande est enregistrée pour démonstration. Dans la version en ligne, elle sera envoyée à contact@db-charpente.fr.';
+        }
+        form.querySelectorAll('input, textarea, select, button').forEach(el => el.disabled = true);
+      });
+    })();
+  </script>
+</body>
+</html>

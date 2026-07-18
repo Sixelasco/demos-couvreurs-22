@@ -1,0 +1,1073 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Janvier Constructions Bois — Menuisier &amp; Charpentier à Trégastel, Côte de Granit Rose</title>
+<meta name="description" content="Sébastien Janvier, artisan menuisier-charpentier certifié RGE à Trégastel (Côtes-d'Armor). Maisons ossature bois, charpente, menuiseries, ITE et concept Evoluty. 50 km autour de Trégastel, Côte de Granit Rose.">
+<meta name="theme-color" content="#1a2a3d">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..700;1,400..600&family=Lora:ital,wght@0,400..600;1,400..500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/original/hero-cote-granit-rose.jpg">
+<style>
+  /* ============================================================
+     Tokens — Heritage terroir breton
+     Fond: parchemin grisé  · Encre: bleu marine breton
+     Accent: hermine rouge  · Filets: hairline
+     ============================================================ */
+  :root {
+    --bg:         oklch(0.965 0.014 84);     /* parchemin grisé */
+    --bg-deep:    oklch(0.948 0.018 80);
+    --surface:    oklch(0.985 0.006 86);     /* carte claire */
+    --ink:        oklch(0.295 0.062 268);    /* marine breton */
+    --ink-soft:   oklch(0.42 0.052 268);
+    --muted:      oklch(0.52 0.024 70);
+    --rule:       oklch(0.78 0.020 75);
+    --accent:     oklch(0.52 0.190 28);      /* hermine rouge */
+    --accent-deep: oklch(0.40 0.160 28);
+    --ink-on-dark: oklch(0.96 0.012 86);
+    --on-dark-muted: oklch(0.74 0.022 75);
+
+    --display: "EB Garamond", "Iowan Old Style", Georgia, "Times New Roman", serif;
+    --body:    "Lora", Georgia, "Times New Roman", serif;
+    --mono:    "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+    --gutter: clamp(1.25rem, 4.2vw, 3.5rem);
+    --header-h: 78px;
+    --measure: 64ch;
+  }
+
+  /* ============ Base ============ */
+  *,*::before,*::after { box-sizing: border-box; }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--header-h) + 14px);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  }
+  body {
+    margin: 0;
+    font-family: var(--body);
+    font-size: 1.0625rem;
+    line-height: 1.68;
+    color: var(--ink);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    /* Subtle paper grain via stacked radial gradients — keeps warmth without a beige wash */
+    background-image:
+      radial-gradient(ellipse 60% 50% at 50% 0%, oklch(0.985 0.006 86 / 0.4), transparent 70%),
+      radial-gradient(ellipse 50% 40% at 0% 30%, oklch(0.92 0.022 78 / 0.35), transparent 60%);
+    background-attachment: fixed;
+  }
+  img { display: block; max-width: 100%; height: auto; }
+  h1, h2, h3, h4 { font-family: var(--display); font-weight: 500; line-height: 1.06; margin: 0; letter-spacing: -0.005em; }
+  p { margin: 0; }
+  a { color: inherit; }
+  ::selection { background: var(--accent); color: var(--ink-on-dark); }
+  .wrap { max-width: 1240px; margin-inline: auto; padding-inline: var(--gutter); }
+  .rule { height: 1px; background: var(--rule); border: 0; margin: 0; }
+
+  .label {
+    font-family: var(--body);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: inline-flex; align-items: center; gap: 0.6rem;
+  }
+  .label::before {
+    content: ""; width: 28px; height: 1px; background: var(--accent);
+  }
+  .section { padding-block: clamp(4.5rem, 9vw, 8rem); }
+  .section-title { font-size: clamp(2rem, 4.8vw, 3.4rem); max-width: 18ch; text-wrap: balance; }
+  .section-lede { color: var(--ink-soft); max-width: var(--measure); margin-top: 1.1rem; font-size: 1.1rem; }
+
+  /* Reveal */
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+
+  /* ============ Buttons ============ */
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    font-family: var(--body); font-weight: 600; font-size: 0.95rem;
+    padding: 0.95rem 1.6rem;
+    border: 1px solid transparent;
+    border-radius: 0;
+    text-decoration: none; cursor: pointer;
+    min-height: 44px;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  }
+  .btn-primary { background: var(--ink); color: var(--ink-on-dark); border-color: var(--ink); }
+  .btn-primary:hover { background: var(--accent); border-color: var(--accent); transform: translateY(-1px); }
+  .btn-ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
+  .btn-ghost:hover { background: var(--ink); color: var(--ink-on-dark); }
+  .btn-ghost-on-dark { background: transparent; color: var(--ink-on-dark); border-color: oklch(0.96 0.012 86 / 0.6); }
+  .btn-ghost-on-dark:hover { background: var(--ink-on-dark); color: var(--ink); border-color: var(--ink-on-dark); }
+  .btn .arr { transition: transform 0.25s ease; }
+  .btn:hover .arr { transform: translateX(3px); }
+
+  /* ============ Header ============ */
+  .site-header {
+    position: fixed; inset: 0 0 auto 0; z-index: 50;
+    height: var(--header-h);
+    display: flex; align-items: center;
+    color: var(--ink-on-dark);
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    border-bottom: 1px solid transparent;
+  }
+  .site-header .wrap { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+  .site-header.scrolled {
+    background: oklch(0.965 0.014 84 / 0.94);
+    -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+    color: var(--ink);
+    border-bottom-color: var(--rule);
+  }
+  .brand { display: flex; align-items: baseline; gap: 0.6rem; text-decoration: none; }
+  .brand-mark {
+    font-family: var(--display); font-weight: 600; font-size: 1.3rem;
+    letter-spacing: 0.005em; line-height: 1;
+    color: var(--accent);
+    transform: translateY(2px);
+  }
+  .brand-name { font-family: var(--display); font-weight: 500; font-size: 1.05rem; letter-spacing: 0.01em; }
+  .brand-name strong { font-weight: 600; }
+
+  .nav { display: flex; align-items: center; gap: 1.6rem; }
+  .nav a {
+    text-decoration: none; font-size: 0.92rem; font-weight: 500;
+    color: inherit; opacity: 0.85;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid transparent;
+    transition: opacity 0.2s ease, border-color 0.2s ease;
+  }
+  .nav a:hover { opacity: 1; border-bottom-color: var(--accent); }
+  .header-actions { display: flex; align-items: center; gap: 1rem; }
+  .header-phone {
+    text-decoration: none; font-family: var(--mono); font-size: 0.86rem; font-weight: 500;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    color: inherit;
+  }
+  .header-phone:hover { color: var(--accent); }
+  .header-phone::before {
+    content: ""; width: 14px; height: 14px; flex: none;
+    background: currentColor;
+    -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z'/></svg>") no-repeat center / contain;
+            mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z'/></svg>") no-repeat center / contain;
+  }
+  .menu-btn {
+    display: none; background: transparent; border: 1px solid currentColor;
+    color: inherit; width: 40px; height: 40px; cursor: pointer;
+    align-items: center; justify-content: center;
+  }
+  .menu-btn span, .menu-btn span::before, .menu-btn span::after {
+    content: ""; display: block; width: 18px; height: 1px; background: currentColor;
+    position: relative;
+  }
+  .menu-btn span::before { position: absolute; top: -6px; }
+  .menu-btn span::after { position: absolute; top: 6px; }
+
+  @media (max-width: 960px) {
+    .nav { display: none; }
+    .menu-btn { display: inline-flex; }
+    .header-phone span { display: none; }
+  }
+  @media (max-width: 480px) {
+    .header-actions .btn { display: none; }
+  }
+
+  /* ============ Hero ============ */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    color: var(--ink-on-dark);
+    display: flex; align-items: stretch;
+    overflow: hidden;
+    background: var(--ink);
+  }
+  .hero-media {
+    position: absolute; inset: 0; z-index: 0;
+  }
+  .hero-media img {
+    width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%;
+  }
+  .hero-media::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(180deg, oklch(0.18 0.04 268 / 0.55) 0%, oklch(0.18 0.04 268 / 0.35) 40%, oklch(0.18 0.04 268 / 0.78) 100%);
+  }
+  .hero .wrap {
+    position: relative; z-index: 1;
+    padding-top: calc(var(--header-h) + 4rem);
+    padding-bottom: 4.5rem;
+    display: flex; flex-direction: column; justify-content: space-between;
+    width: 100%;
+  }
+  .hero-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 2rem; }
+  .hero-eyebrow {
+    font-family: var(--body); font-size: 0.74rem; font-weight: 600;
+    letter-spacing: 0.24em; text-transform: uppercase;
+    color: var(--ink-on-dark);
+    display: inline-flex; align-items: center; gap: 0.6rem;
+  }
+  .hero-eyebrow::before { content: ""; width: 36px; height: 1px; background: var(--accent); }
+  .hero-coord {
+    font-family: var(--mono); font-size: 0.78rem; font-weight: 400;
+    text-align: right; color: oklch(0.96 0.012 86 / 0.78);
+    line-height: 1.4;
+  }
+  .hero-coord strong { display: block; color: var(--ink-on-dark); font-weight: 500; }
+
+  .hero-headline {
+    font-family: var(--display);
+    font-size: clamp(2.6rem, 7vw, 5.4rem);
+    font-weight: 500;
+    line-height: 1.02;
+    letter-spacing: -0.015em;
+    max-width: 14ch;
+    text-wrap: balance;
+    margin-top: 2.2rem;
+  }
+  .hero-headline em { font-style: italic; color: var(--accent); }
+
+  .hero-bottom {
+    display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: end;
+    margin-top: 3rem;
+  }
+  .hero-sub {
+    max-width: 46ch; font-size: 1.08rem; line-height: 1.6;
+    color: oklch(0.96 0.012 86 / 0.9);
+  }
+  .hero-cta { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+
+  .hero-stats {
+    margin-top: 3.5rem;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 0; padding-top: 1.2rem; border-top: 1px solid oklch(0.96 0.012 86 / 0.22);
+  }
+  .hero-stats > div {
+    padding: 0.2rem 1.2rem 0.2rem 0;
+    border-right: 1px solid oklch(0.96 0.012 86 / 0.18);
+  }
+  .hero-stats > div:last-child { border-right: 0; }
+  .hero-stats dt {
+    font-family: var(--mono); font-size: 0.74rem; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: oklch(0.96 0.012 86 / 0.65);
+    margin-bottom: 0.35rem;
+  }
+  .hero-stats dd {
+    margin: 0; font-family: var(--display); font-size: 1.6rem; font-weight: 500;
+    color: var(--ink-on-dark);
+  }
+  @media (max-width: 720px) {
+    .hero-top { flex-direction: column; }
+    .hero-coord { text-align: left; }
+    .hero-bottom { grid-template-columns: 1fr; }
+    .hero-stats { grid-template-columns: repeat(2, 1fr); row-gap: 1.2rem; }
+    .hero-stats > div { border-right: 0; padding-right: 0; }
+  }
+
+  /* ============ Trust band ============ */
+  .trustband {
+    background: var(--ink); color: var(--ink-on-dark);
+    padding-block: 1.3rem;
+    border-top: 1px solid oklch(0.96 0.012 86 / 0.15);
+  }
+  .trustband-inner {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+    gap: 1.4rem;
+    font-family: var(--body);
+  }
+  .trustband-item { display: inline-flex; align-items: center; gap: 0.7rem; font-size: 0.92rem; }
+  .trustband-item strong { font-weight: 600; }
+  .trustband-item .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+
+  /* ============ Savoir-faire ============ */
+  .savoir { background: var(--bg); }
+  .savoir-grid {
+    margin-top: 3rem;
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 0;
+    border-top: 1px solid var(--rule);
+  }
+  .savoir-card {
+    padding: 2.4rem 2rem 2.4rem 0;
+    border-bottom: 1px solid var(--rule);
+    display: grid; grid-template-columns: 60px 1fr; gap: 1.4rem;
+    align-items: start;
+  }
+  .savoir-card:nth-child(odd) { padding-right: 2.4rem; border-right: 1px solid var(--rule); }
+  .savoir-card:nth-child(even) { padding-left: 2.4rem; }
+  .savoir-num {
+    font-family: var(--mono); font-size: 0.86rem; font-weight: 500;
+    color: var(--accent); letter-spacing: 0.05em;
+  }
+  .savoir-card h3 {
+    font-size: 1.5rem; margin-bottom: 0.55rem; font-weight: 500;
+  }
+  .savoir-card p { color: var(--ink-soft); font-size: 0.98rem; line-height: 1.62; }
+  .savoir-card ul { margin: 0.7rem 0 0; padding: 0; list-style: none; }
+  .savoir-card li {
+    padding: 0.2rem 0 0.2rem 1.1rem; position: relative;
+    font-size: 0.92rem; color: var(--ink-soft);
+  }
+  .savoir-card li::before {
+    content: "—"; position: absolute; left: 0; color: var(--accent);
+  }
+  @media (max-width: 760px) {
+    .savoir-grid { grid-template-columns: 1fr; }
+    .savoir-card,
+    .savoir-card:nth-child(odd) { padding: 1.6rem 0; border-right: 0; }
+    .savoir-card:nth-child(even) { padding-left: 0; }
+  }
+
+  /* ============ Engagements (dark) ============ */
+  .engage {
+    background: var(--ink); color: var(--ink-on-dark);
+    position: relative;
+  }
+  .engage::before {
+    content: ""; position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 50% 40% at 20% 0%, oklch(0.30 0.060 268 / 0.6), transparent 60%),
+      radial-gradient(ellipse 40% 30% at 90% 100%, oklch(0.18 0.040 268 / 0.7), transparent 60%);
+    pointer-events: none;
+  }
+  .engage .wrap { position: relative; }
+  .engage .label { color: oklch(0.70 0.150 30); }
+  .engage .label::before { background: oklch(0.70 0.150 30); }
+  .engage h2 { color: var(--ink-on-dark); }
+  .engage-lede { color: var(--on-dark-muted); }
+
+  .engage-grid {
+    margin-top: 3.5rem;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 1px solid oklch(0.96 0.012 86 / 0.15);
+  }
+  .engage-item {
+    padding: 2rem 1.4rem 2rem 0;
+    border-right: 1px solid oklch(0.96 0.012 86 / 0.12);
+    border-bottom: 1px solid oklch(0.96 0.012 86 / 0.12);
+  }
+  .engage-item:last-child { border-right: 0; }
+  .engage-item h3 {
+    font-size: 1.05rem; font-weight: 600; margin: 0.9rem 0 0.5rem;
+    color: var(--ink-on-dark);
+    letter-spacing: 0.005em;
+  }
+  .engage-item p { color: var(--on-dark-muted); font-size: 0.93rem; line-height: 1.58; }
+  .engage-glyph {
+    width: 40px; height: 40px;
+    display: grid; place-items: center;
+    color: var(--accent);
+  }
+  @media (max-width: 900px) { .engage-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .engage-grid { grid-template-columns: 1fr; } }
+
+  /* ============ Evoluty ============ */
+  .evoluty {
+    background: var(--bg-deep);
+    position: relative;
+  }
+  .evoluty-inner {
+    display: grid; grid-template-columns: 1.05fr 1fr; gap: 4rem; align-items: center;
+  }
+  .evoluty-figure {
+    position: relative; aspect-ratio: 4/5;
+    background: var(--ink);
+    overflow: hidden;
+  }
+  .evoluty-figure img { width: 100%; height: 100%; object-fit: cover; }
+  .evoluty-figure::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 60%, oklch(0.18 0.04 268 / 0.5) 100%);
+  }
+  .evoluty-tag {
+    position: absolute; left: 1.4rem; bottom: 1.4rem; z-index: 1;
+    color: var(--ink-on-dark);
+    font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .evoluty-tag strong { display: block; font-family: var(--display); font-size: 1.2rem; font-weight: 500; letter-spacing: 0; text-transform: none; }
+  .evoluty-body h2 { font-size: clamp(2rem, 4.4vw, 3rem); }
+  .evoluty-body p { color: var(--ink-soft); margin-top: 1.2rem; font-size: 1.06rem; line-height: 1.7; }
+  .evoluty-list {
+    margin: 1.8rem 0 0; padding: 0; list-style: none;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem 2rem;
+    border-top: 1px solid var(--rule);
+  }
+  .evoluty-list li {
+    padding: 0.9rem 0 0.9rem 1.4rem; position: relative;
+    border-bottom: 1px solid var(--rule);
+    font-size: 0.96rem;
+  }
+  .evoluty-list li::before {
+    content: ""; position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+    width: 8px; height: 8px;
+    background: var(--accent);
+  }
+  .evoluty-list b { display: block; font-family: var(--display); font-weight: 500; font-size: 1.08rem; margin-bottom: 0.15rem; }
+  @media (max-width: 880px) {
+    .evoluty-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .evoluty-list { grid-template-columns: 1fr; }
+  }
+
+  /* ============ Galerie ============ */
+  .galerie { background: var(--bg); }
+  .galerie-head {
+    display: flex; align-items: end; justify-content: space-between; gap: 2rem;
+    margin-bottom: 2.5rem;
+  }
+  .galerie-grid {
+    display: grid; grid-template-columns: repeat(6, 1fr); grid-auto-rows: 200px; gap: 12px;
+  }
+  .galerie-item {
+    position: relative; overflow: hidden; background: var(--ink);
+  }
+  .galerie-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1); }
+  .galerie-item:hover img { transform: scale(1.04); }
+  .galerie-caption {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    padding: 0.7rem 1rem;
+    background: linear-gradient(180deg, transparent, oklch(0.18 0.04 268 / 0.85));
+    color: var(--ink-on-dark);
+    font-size: 0.84rem; font-weight: 500;
+    display: flex; justify-content: space-between; align-items: end;
+    transform: translateY(100%); transition: transform 0.3s ease;
+  }
+  .galerie-item:hover .galerie-caption { transform: none; }
+  .galerie-caption span { font-family: var(--mono); font-size: 0.7rem; opacity: 0.7; }
+  .g1 { grid-column: span 4; grid-row: span 2; }
+  .g2 { grid-column: span 2; grid-row: span 1; }
+  .g3 { grid-column: span 2; grid-row: span 1; }
+  .g4 { grid-column: span 2; grid-row: span 2; }
+  .g5 { grid-column: span 2; grid-row: span 1; }
+  .g6 { grid-column: span 2; grid-row: span 1; }
+  @media (max-width: 880px) {
+    .galerie-grid { grid-template-columns: repeat(4, 1fr); }
+    .g1 { grid-column: span 4; }
+    .g2, .g3, .g5, .g6 { grid-column: span 2; }
+    .g4 { grid-column: span 4; grid-row: span 1; }
+  }
+  @media (max-width: 520px) {
+    .galerie-grid { grid-template-columns: 1fr; grid-auto-rows: 220px; }
+    .g1, .g2, .g3, .g4, .g5, .g6 { grid-column: span 1; grid-row: span 1; }
+  }
+
+  /* ============ Zone ============ */
+  .zone {
+    background: var(--ink); color: var(--ink-on-dark);
+    padding-bottom: 0;
+  }
+  .zone .label { color: oklch(0.70 0.150 30); }
+  .zone .label::before { background: oklch(0.70 0.150 30); }
+  .zone h2 { color: var(--ink-on-dark); }
+  .zone-inner {
+    margin-top: 2.5rem;
+    display: grid; grid-template-columns: 1.1fr 1fr; gap: 4rem; align-items: start;
+  }
+  .zone-list {
+    margin: 0; padding: 0; list-style: none;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0.2rem 2rem;
+  }
+  .zone-list li {
+    padding: 0.7rem 0 0.7rem 1.3rem; position: relative;
+    border-bottom: 1px solid oklch(0.96 0.012 86 / 0.12);
+    font-family: var(--display); font-size: 1.1rem; color: var(--ink-on-dark);
+  }
+  .zone-list li::before {
+    content: "·"; position: absolute; left: 0; color: var(--accent); font-weight: 700;
+  }
+  .zone-figure {
+    aspect-ratio: 5/4; overflow: hidden; position: relative;
+    border: 1px solid oklch(0.96 0.012 86 / 0.15);
+  }
+  .zone-figure img { width: 100%; height: 100%; object-fit: cover; }
+  .zone-pin {
+    position: absolute; left: 1rem; top: 1rem; padding: 0.5rem 0.9rem;
+    background: oklch(0.965 0.014 84 / 0.94);
+    color: var(--ink); font-family: var(--mono); font-size: 0.78rem;
+    display: inline-flex; gap: 0.5rem; align-items: center;
+  }
+  .zone-pin::before { content: "◎"; color: var(--accent); }
+  .zone-cta {
+    margin-top: 3rem; padding: 2rem 0; border-top: 1px solid oklch(0.96 0.012 86 / 0.15);
+    display: flex; flex-wrap: wrap; gap: 1.2rem; justify-content: space-between; align-items: center;
+    color: var(--on-dark-muted);
+  }
+  .zone-cta strong { color: var(--ink-on-dark); font-weight: 500; font-family: var(--display); font-size: 1.1rem; }
+  @media (max-width: 880px) {
+    .zone-inner { grid-template-columns: 1fr; }
+    .zone-list { grid-template-columns: 1fr; }
+  }
+
+  /* ============ Contact ============ */
+  .contact { background: var(--bg); }
+  .contact-inner {
+    display: grid; grid-template-columns: 1.05fr 1fr; gap: 4rem; align-items: start;
+  }
+  .contact-block { display: flex; flex-direction: column; gap: 1.5rem; }
+  .contact-row {
+    display: grid; grid-template-columns: 110px 1fr; gap: 1.2rem;
+    padding: 1.2rem 0; border-top: 1px solid var(--rule);
+    align-items: baseline;
+  }
+  .contact-row:last-of-type { border-bottom: 1px solid var(--rule); }
+  .contact-row dt { font-family: var(--mono); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); }
+  .contact-row dd { margin: 0; font-family: var(--display); font-size: 1.2rem; }
+  .contact-row dd a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); padding-bottom: 1px; transition: border-color 0.2s ease, color 0.2s ease; }
+  .contact-row dd a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .contact-form {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    padding: 2.4rem 2.2rem;
+  }
+  .contact-form h3 { font-size: 1.4rem; margin-bottom: 0.5rem; font-weight: 500; }
+  .contact-form p { color: var(--ink-soft); font-size: 0.95rem; margin-bottom: 1.5rem; }
+  .field { display: flex; flex-direction: column; gap: 0.35rem; margin-bottom: 1rem; }
+  .field label { font-family: var(--mono); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); }
+  .field input, .field textarea, .field select {
+    font-family: var(--body); font-size: 1rem; color: var(--ink);
+    background: transparent;
+    border: 0; border-bottom: 1px solid var(--rule);
+    padding: 0.55rem 0.1rem;
+    transition: border-color 0.2s ease;
+  }
+  .field input:focus, .field textarea:focus, .field select:focus {
+    outline: 0; border-bottom-color: var(--accent);
+  }
+  .field textarea { min-height: 110px; resize: vertical; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-submit { margin-top: 0.6rem; }
+  .form-fineprint { font-size: 0.78rem; color: var(--muted); margin-top: 1rem; }
+  @media (max-width: 880px) {
+    .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+
+  /* ============ Footer ============ */
+  .footer {
+    background: var(--ink); color: var(--on-dark-muted);
+    padding: 3rem 0 1.5rem;
+    border-top: 1px solid oklch(0.96 0.012 86 / 0.1);
+  }
+  .footer-top {
+    display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 2.5rem;
+    padding-bottom: 2.5rem; border-bottom: 1px solid oklch(0.96 0.012 86 / 0.12);
+  }
+  .footer h4 {
+    color: var(--ink-on-dark); font-family: var(--mono); font-size: 0.74rem;
+    text-transform: uppercase; letter-spacing: 0.16em; font-weight: 500;
+    margin-bottom: 1rem;
+  }
+  .footer p, .footer li { font-size: 0.92rem; line-height: 1.6; }
+  .footer ul { list-style: none; padding: 0; margin: 0; }
+  .footer li { padding: 0.2rem 0; }
+  .footer a { color: inherit; text-decoration: none; }
+  .footer a:hover { color: var(--accent); }
+  .footer-brand .brand-name strong { color: var(--ink-on-dark); }
+  .footer-brand .brand-mark { color: var(--accent); }
+  .footer-bottom {
+    padding-top: 1.4rem;
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem;
+    font-size: 0.84rem;
+  }
+  .footer-bottom .demo-mark {
+    color: var(--ink-on-dark); font-family: var(--mono); font-size: 0.78rem;
+    letter-spacing: 0.06em;
+  }
+  @media (max-width: 880px) {
+    .footer-top { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 520px) {
+    .footer-top { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- =================== HEADER =================== -->
+<header class="site-header" id="siteHeader" data-od-id="site-header">
+  <div class="wrap">
+    <a class="brand" href="#top" data-od-id="brand">
+      <span class="brand-mark">J·</span>
+      <span class="brand-name"><strong>Janvier Constructions Bois</strong></span>
+    </a>
+    <nav class="nav" aria-label="Navigation principale" data-od-id="primary-nav">
+      <a href="#savoir">Savoir-faire</a>
+      <a href="#evoluty">Evoluty</a>
+      <a href="#galerie">Réalisations</a>
+      <a href="#zone">Zone</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <a class="header-phone" href="tel:+33296159281" data-od-id="header-phone"><span>02 96 15 92 81</span></a>
+      <a class="btn btn-primary" href="#contact" data-od-id="header-cta">Demander un devis</a>
+      <button class="menu-btn" type="button" aria-label="Ouvrir le menu" data-od-id="menu-btn"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- =================== HERO =================== -->
+<section class="hero" id="top" data-od-id="hero">
+  <div class="hero-media">
+    <img src="assets/original/hero-cote-granit-rose.jpg" alt="" width="1200" height="900" fetchpriority="high">
+  </div>
+  <div class="wrap">
+    <div class="hero-top">
+      <span class="hero-eyebrow" data-od-id="hero-eyebrow">Menuisier · Charpentier · Côte de Granit Rose</span>
+      <div class="hero-coord" data-od-id="hero-coord">
+        <strong>48°49′ N · 3°31′ O</strong>
+        ZA du Dolmen, 22730 Trégastel
+      </div>
+    </div>
+    <h1 class="hero-headline" data-od-id="hero-headline">
+      Bâtir en bois,<br>
+      <em>racine après racine.</em>
+    </h1>
+    <div class="hero-bottom">
+      <p class="hero-sub" data-od-id="hero-sub">
+        Sébastien Janvier, artisan menuisier-charpentier depuis 2007, dessine
+        et construit des ouvrages en bois qui durent — charpentes, maisons
+        ossature bois, menuiseries sur mesure — dans un rayon de 50&nbsp;km
+        autour de Trégastel.
+      </p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#contact" data-od-id="hero-cta-primary">Demander un devis <span class="arr">→</span></a>
+        <a class="btn btn-ghost-on-dark" href="#savoir" data-od-id="hero-cta-secondary">Découvrir nos savoir-faire</a>
+      </div>
+    </div>
+
+    <dl class="hero-stats" data-od-id="hero-stats">
+      <div>
+        <dt>Depuis</dt>
+        <dd>2007</dd>
+      </div>
+      <div>
+        <dt>Certifié</dt>
+        <dd>RGE</dd>
+      </div>
+      <div>
+        <dt>Rayon</dt>
+        <dd>50 km</dd>
+      </div>
+      <div>
+        <dt>Concept</dt>
+        <dd>Evoluty</dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<!-- =================== TRUST BAND =================== -->
+<div class="trustband" data-od-id="trustband">
+  <div class="wrap trustband-inner">
+    <span class="trustband-item"><span class="dot"></span><strong>Entreprise certifiée RGE</strong> — travaux éligibles aux aides publiques</span>
+    <span class="trustband-item"><span class="dot"></span>Artisan menuisier &amp; charpentier depuis 2007</span>
+    <span class="trustband-item"><span class="dot"></span>Trégastel · Lannion · Perros-Guirec · Côte de Granit Rose</span>
+  </div>
+</div>
+
+<!-- =================== SAVOIR-FAIRE =================== -->
+<section class="section savoir" id="savoir" data-od-id="savoir">
+  <div class="wrap">
+    <span class="label">Savoir-faire</span>
+    <h2 class="section-title">Quatre métiers, un seul bois.</h2>
+    <p class="section-lede">
+      Sébastien Janvier intervient sur le gros œuvre comme sur la finition.
+      Menuiserie, charpente, isolation et construction bois&nbsp;: une
+      continuité de geste qui garantit la cohérence technique de chaque
+      ouvrage, de l'arbalétrier à la dernière latte de parquet.
+    </p>
+
+    <div class="savoir-grid">
+      <article class="savoir-card reveal" data-od-id="savoir-card-1">
+        <span class="savoir-num">01</span>
+        <div>
+          <h3>Menuiserie intérieure &amp; extérieure</h3>
+          <p>Fabriquée dans l'atelier de Trégastel, posée chez vous. Escaliers, portes, fenêtres, parquets — pour le neuf comme pour la rénovation.</p>
+          <ul>
+            <li>Escaliers sur mesure, droits, balancés, quart-tournant</li>
+            <li>Fenêtres &amp; portes bois, double ou triple vitrage</li>
+            <li>Parquet massif ou contrecollé, finition huilée ou vernie</li>
+          </ul>
+        </div>
+      </article>
+      <article class="savoir-card reveal" data-od-id="savoir-card-2">
+        <span class="savoir-num">02</span>
+        <div>
+          <h3>Charpente &amp; ossature bois</h3>
+          <p>Charpentes traditionnelles neuves, rénovations de charpentes anciennes, ossature bois pour extensions et maisons individuelles.</p>
+          <ul>
+            <li>Charpentes traditionnelles en douglas et chêne local</li>
+            <li>Ossature bois pour constructions neuves BBC</li>
+            <li>Réfection de charpentes anciennes, traitement &amp; renforts</li>
+          </ul>
+        </div>
+      </article>
+      <article class="savoir-card reveal" data-od-id="savoir-card-3">
+        <span class="savoir-num">03</span>
+        <div>
+          <h3>Aménagements extérieurs</h3>
+          <p>Terrasses, garde-corps, habillages de piscines et de spas, carports et abris de jardin. Le bois prolonge la maison vers le jardin.</p>
+          <ul>
+            <li>Terrasses en douglas, mélèze ou bois exotique</li>
+            <li>Garde-corps, brise-vue, habillage de piscines &amp; spas</li>
+            <li>Carports, abris de jardin, préaux</li>
+          </ul>
+        </div>
+      </article>
+      <article class="savoir-card reveal" data-od-id="savoir-card-4">
+        <span class="savoir-num">04</span>
+        <div>
+          <h3>ITE &amp; extension bois</h3>
+          <p>Isolation Thermique par l'Extérieur en fibre de bois, extensions à ossature bois. Confort d'hiver, fraîcheur d'été, économies d'énergie.</p>
+          <ul>
+            <li>ITE en panneaux fibre de bois, parements bardage</li>
+            <li>Extensions à ossature bois, plain-pied ou étage</li>
+            <li>Agrément RGE — accès aux aides MaPrimeRénov', éco-PTZ, CEE</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- =================== ENGAGEMENTS =================== -->
+<section class="section engage" data-od-id="engage">
+  <div class="wrap">
+    <span class="label">Notre engagement</span>
+    <h2 class="section-title">Un artisan, une parole, un seul interlocuteur.</h2>
+    <p class="section-lede engage-lede">
+      De la première visite à la remise des clés, Sébastien reste votre
+      contact direct&nbsp;: pas de sous-traitance, pas de plateau
+      téléphonique. Il dessine, il chiffre, il pose.
+    </p>
+
+    <div class="engage-grid">
+      <div class="engage-item reveal" data-od-id="engage-1">
+        <div class="engage-glyph" aria-hidden="true">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M8 32 L20 8 L32 32 Z" />
+            <path d="M14 32 L20 20 L26 32" />
+            <path d="M2 32 L38 32" />
+          </svg>
+        </div>
+        <h3>Bois local &amp; certifié</h3>
+        <p>Douglas et chêne issus de forêts bretonnes et normandes tracées. Essences sélectionnées pour leur tenue et leur vieillissement en climat maritime.</p>
+      </div>
+      <div class="engage-item reveal" data-od-id="engage-2">
+        <div class="engage-glyph" aria-hidden="true">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4">
+            <circle cx="20" cy="20" r="14" />
+            <path d="M14 20 L18 24 L26 16" />
+          </svg>
+        </div>
+        <h3>Certifié RGE</h3>
+        <p>Agrément Reconnu Garant de l'Environnement. Vos travaux d'ITE et de rénovation énergétique ouvrent droit aux aides publiques en cours.</p>
+      </div>
+      <div class="engage-item reveal" data-od-id="engage-3">
+        <div class="engage-glyph" aria-hidden="true">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M4 12 L20 4 L36 12 L20 20 Z" />
+            <path d="M4 12 L4 28 L20 36 L36 28 L36 12" />
+            <path d="M20 20 L20 36" />
+          </svg>
+        </div>
+        <h3>Devis sous 10 jours</h3>
+        <p>Visite gratuite à Trégastel et dans un rayon de 50&nbsp;km. Étude, métré, chiffrage détaillé et planning remis sous dix jours ouvrés.</p>
+      </div>
+      <div class="engage-item reveal" data-od-id="engage-4">
+        <div class="engage-glyph" aria-hidden="true">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M6 8 L6 32 L34 32" />
+            <path d="M10 24 L16 18 L22 22 L30 12" />
+            <circle cx="30" cy="12" r="2" fill="currentColor" />
+          </svg>
+        </div>
+        <h3>Garantie décennale</h3>
+        <p>Assurance décennale en cours de validité. Tous les ouvrages bois (charpente, ossature, menuiseries extérieures) sont couverts dix ans.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== EVOLUTY =================== -->
+<section class="section evoluty" id="evoluty" data-od-id="evoluty">
+  <div class="wrap">
+    <div class="evoluty-inner">
+      <figure class="evoluty-figure">
+        <img src="assets/original/chantier-maison-bois.jpg" alt="Chantier d'une maison ossature bois signée Janvier Constructions Bois" loading="lazy" width="1000" height="750">
+        <figcaption class="evoluty-tag">
+          <strong>Concept Evoluty</strong>
+          Maison ossature bois BBC · Pose &lt; 4&nbsp;h
+        </figcaption>
+      </figure>
+      <div class="evoluty-body">
+        <span class="label">Signature maison</span>
+        <h2>Evoluty&nbsp;: la maison bois qui se démonte et se transporte.</h2>
+        <p>
+          Sébastien Janvier a mis au point Evoluty, un concept de maison
+          ossature bois basse consommation pensée pour se monter sur site en
+          moins de quatre heures, et se démonter sans dommage. Une réponse
+          pragmatique aux terrains temporaires, aux résidences secondaires
+          en bord de mer, aux projets d'habitat léger de qualité.
+        </p>
+        <ul class="evoluty-list">
+          <li><b>Basse consommation</b>Étanchéité soignée, isolation renforcée, confort d'hiver comme d'été.</li>
+          <li><b>Démontable</b>Modules conçus pour être remontés ailleurs, sans perte de matière.</li>
+          <li><b>Transportable</b>Préfabrication en atelier, acheminement par convoi classique.</li>
+          <li><b>Pose rapide</b>Grue, calage, fixation&nbsp;: chantier bouclé en une journée.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== GALERIE =================== -->
+<section class="section galerie" id="galerie" data-od-id="galerie">
+  <div class="wrap">
+    <div class="galerie-head">
+      <div>
+        <span class="label">Réalisations</span>
+        <h2 class="section-title">Chantiers, ateliers, ouvrages.</h2>
+      </div>
+      <p class="section-lede" style="margin: 0; max-width: 36ch;">
+        Sélection de projets conduits sur la Côte de Granit Rose, du Trégor
+        aux communes voisines.
+      </p>
+    </div>
+
+    <div class="galerie-grid">
+      <figure class="galerie-item g1">
+        <img src="assets/original/chantier-maison-bois.jpg" alt="Construction d'une maison ossature bois" loading="lazy" width="1000" height="750">
+        <figcaption class="galerie-caption"><span>Maison ossature bois</span><span>Lannion</span></figcaption>
+      </figure>
+      <figure class="galerie-item g2">
+        <img src="assets/original/chantier-ite.jpg" alt="Chantier d'isolation thermique par l'extérieur" loading="lazy" width="1000" height="750">
+        <figcaption class="galerie-caption"><span>ITE fibre de bois</span><span>Trégastel</span></figcaption>
+      </figure>
+      <figure class="galerie-item g3">
+        <img src="assets/original/atelier-douglas.jpg" alt="Atelier de menuiserie — plan de travail en douglas" loading="lazy" width="2048" height="1536">
+        <figcaption class="galerie-caption"><span>Atelier Trégastel</span><span>ZA du Dolmen</span></figcaption>
+      </figure>
+      <figure class="galerie-item g4">
+        <img src="assets/original/phare-ploumanach.jpg" alt="Phare de Ploumanac'h sur la Côte de Granit Rose" loading="lazy" width="1920" height="1280">
+        <figcaption class="galerie-caption"><span>Patrimoine local</span><span>Ploumanac'h</span></figcaption>
+      </figure>
+      <figure class="galerie-item g5">
+        <img src="assets/original/hero-cote-granit-rose.jpg" alt="Côte de granit rose à proximité de Trégastel" loading="lazy" width="1200" height="900">
+        <figcaption class="galerie-caption"><span>Côte de granit rose</span><span>Trégastel</span></figcaption>
+      </figure>
+      <figure class="galerie-item g6">
+        <img src="assets/original/chantier-ite.jpg" alt="Détail bardage bois" loading="lazy" width="1000" height="750">
+        <figcaption class="galerie-caption"><span>Bardage</span><span>Perros-Guirec</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- =================== ZONE =================== -->
+<section class="section zone" id="zone" data-od-id="zone">
+  <div class="wrap">
+    <span class="label">Zone d'intervention</span>
+    <h2 class="section-title">Partout où la Côte de Granit Rose regarde la mer.</h2>
+    <div class="zone-inner">
+      <div>
+        <p style="color: var(--on-dark-muted); max-width: 52ch; font-size: 1.05rem; line-height: 1.7;">
+          Atelier basé à Trégastel, chantiers conduits dans un rayon de
+          50&nbsp;km&nbsp;: Trégor, pays du Léon, côte de granit rose,
+          Lannion, Morlaix jusqu'à Guingamp. Au-delà, étude au cas par cas
+          selon la nature du chantier.
+        </p>
+        <ul class="zone-list">
+          <li>Trégastel</li>
+          <li>Perros-Guirec</li>
+          <li>Lannion</li>
+          <li>Trébeurden</li>
+          <li>Pleumeur-Bodou</li>
+          <li>Louannec</li>
+          <li>Bégard</li>
+          <li>Guingamp</li>
+          <li>Plouaret</li>
+          <li>Morlaix</li>
+          <li>Roscoff</li>
+          <li>Paimpol</li>
+        </ul>
+      </div>
+      <figure class="zone-figure">
+        <img src="assets/original/phare-ploumanach.jpg" alt="Phare de Ploumanac'h — paysage caractéristique de la Côte de Granit Rose" loading="lazy">
+        <div class="zone-pin">Côte de granit rose</div>
+      </figure>
+    </div>
+    <div class="zone-cta">
+      <span><strong>Votre commune n'est pas listée&nbsp;?</strong> Appelez-nous&nbsp;: nous intervenons souvent au-delà.</span>
+      <a class="btn btn-ghost-on-dark" href="tel:+33296159281">02 96 15 92 81 <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- =================== CONTACT =================== -->
+<section class="section contact" id="contact" data-od-id="contact">
+  <div class="wrap">
+    <span class="label">Contact</span>
+    <h2 class="section-title">Parlons de votre projet.</h2>
+    <p class="section-lede" style="margin-bottom: 3rem;">
+      Visite, devis et conseils gratuits. Sébastien répond personnellement
+      à chaque demande, du lundi au vendredi de 8&nbsp;h à 18&nbsp;h.
+    </p>
+
+    <div class="contact-inner">
+      <dl class="contact-block" data-od-id="contact-info">
+        <div class="contact-row">
+          <dt>Atelier</dt>
+          <dd>ZA du Dolmen<br>22730 Trégastel</dd>
+        </div>
+        <div class="contact-row">
+          <dt>Téléphone</dt>
+          <dd>
+            <a href="tel:+33296159281">02 96 15 92 81</a><br>
+            <a href="tel:+33682546277">06 82 54 62 77</a>
+          </dd>
+        </div>
+        <div class="contact-row">
+          <dt>Courriel</dt>
+          <dd><a href="mailto:contact@janvier-constructions-bois.fr">contact@janvier-constructions-bois.fr</a></dd>
+        </div>
+        <div class="contact-row">
+          <dt>Horaires</dt>
+          <dd>Lundi – Vendredi&nbsp;: 8&nbsp;h – 18&nbsp;h</dd>
+        </div>
+        <div class="contact-row">
+          <dt>Identité</dt>
+          <dd>SARL Janvier Le Pape<br>N° TVA&nbsp;: 83495097271</dd>
+        </div>
+      </dl>
+
+      <form class="contact-form" id="contact-form" data-od-id="contact-form" onsubmit="event.preventDefault(); var btn=this.querySelector('button'); btn.textContent='Demande envoyée — merci'; btn.disabled=true; this.reset();">
+        <h3>Décrivez votre projet</h3>
+        <p>Sébastien vous répond sous 48&nbsp;h ouvrées, avec une première estimation ou un créneau de visite.</p>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="f-name">Nom</label>
+            <input id="f-name" name="name" type="text" required autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="f-phone">Téléphone</label>
+            <input id="f-phone" name="phone" type="tel" autocomplete="tel">
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-email">Courriel</label>
+          <input id="f-email" name="email" type="email" required autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="f-type">Nature du projet</label>
+          <select id="f-type" name="type">
+            <option value="">— Choisir —</option>
+            <option>Menuiserie intérieure</option>
+            <option>Menuiserie extérieure</option>
+            <option>Charpente / ossature bois</option>
+            <option>ITE / extension bois</option>
+            <option>Concept Evoluty</option>
+            <option>Autre / à préciser</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-msg">Votre message</label>
+          <textarea id="f-msg" name="message" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary form-submit">Envoyer ma demande <span class="arr">→</span></button>
+        <p class="form-fineprint">En soumettant, vous acceptez d'être recontacté par Janvier Constructions Bois au sujet de votre projet. Aucune inscription, aucun transfert tiers.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- =================== FOOTER =================== -->
+<footer class="footer" data-od-id="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="brand" href="#top" style="margin-bottom: 0.8rem;">
+          <span class="brand-mark">J·</span>
+          <span class="brand-name"><strong>Janvier Constructions Bois</strong></span>
+        </a>
+        <p>Menuiserie, charpente, ossature bois &amp; ITE sur la Côte de Granit Rose depuis 2007. Atelier à Trégastel, chantiers dans un rayon de 50&nbsp;km.</p>
+      </div>
+      <div>
+        <h4>Savoir-faire</h4>
+        <ul>
+          <li><a href="#savoir">Menuiserie</a></li>
+          <li><a href="#savoir">Charpente</a></li>
+          <li><a href="#savoir">Ossature bois</a></li>
+          <li><a href="#savoir">ITE</a></li>
+          <li><a href="#evoluty">Concept Evoluty</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Atelier</h4>
+        <ul>
+          <li>ZA du Dolmen</li>
+          <li>22730 Trégastel</li>
+          <li><a href="tel:+33296159281">02 96 15 92 81</a></li>
+          <li><a href="tel:+33682546277">06 82 54 62 77</a></li>
+          <li><a href="mailto:contact@janvier-constructions-bois.fr">Nous écrire</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Informations</h4>
+        <ul>
+          <li>SARL Janvier Le Pape</li>
+          <li>N° TVA 83495097271</li>
+          <li>Certifié RGE</li>
+          <li>Garantie décennale</li>
+          <li>Lun – Ven · 8h – 18h</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="yr">2025</span> Janvier Constructions Bois — Tous droits réservés.</span>
+      <span class="demo-mark">Démo générée par Sixelasco · Site de prospection — contenus à valider avec le client</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Header scroll state
+  (function () {
+    var h = document.getElementById('siteHeader');
+    function onScroll() {
+      if (window.scrollY > 8) h.classList.add('scrolled'); else h.classList.remove('scrolled');
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+
+  // Reveal on scroll
+  (function () {
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window) || !els.length) {
+      els.forEach(function (e) { e.classList.add('in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
+    els.forEach(function (e) { io.observe(e); });
+  })();
+
+  // Year
+  document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
